@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E0106: Мобилна учтивост</title>
+		<meta charset="utf-8">
+		
+		<!-- удобство за смартфони -->
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="WebGL.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			if ( !THREE.WEBGL.isWebGLAvailable() )
+				alert( THREE.WEBGL.getWebGLErrorMessage() );
+
+			var renderer = new THREE.WebGLRenderer( {antialias:true} );
+			
+			document.body.appendChild( renderer.domElement );
+			document.body.style.margin = 0;
+			document.body.style.overflow = 'hidden';
+
+			var scene = new THREE.Scene();
+			scene.background = new THREE.Color('white');
+			
+			// аспектът тук е грешен, но по-надолу се извиква
+			// ръчно onWindowResize, който слага правилния аспект
+			var camera = new THREE.PerspectiveCamera( 60, 1, 1, 100 );
+			camera.position.set(1,1,2);
+			camera.lookAt(new THREE.Vector3(0,0,0));
+			
+			var light = new THREE.PointLight();
+			light.position.set(0,20,40);
+			scene.add( light );
+
+			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+			var material = new THREE.MeshLambertMaterial();
+			var cube = new THREE.Mesh( geometry, material );
+			scene.add( cube );
+
+			var clock = new THREE.Clock(true);
+			
+			renderer.setAnimationLoop( frame );
+			
+			// улавя се промяна на размера на прозореца
+			// и се вика функцията onWindowResize
+			window.addEventListener( 'resize', onWindowResize, false );
+			onWindowResize();
+			
+			function frame()
+			{
+				var t = clock.getElapsedTime();
+				cube.rotation.set(0,t,0);
+				
+				renderer.render( scene, camera );
+			}
+			
+			
+			// функция, която да поправи образа при
+			// промяна на размера на прозореца или
+			// завъртане на смартфона / таблета
+			function onWindowResize( event )
+			{
+				// създаването на камера и оразмеряване на
+				// рендера са пренесени тук
+				camera.aspect = window.innerWidth/window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight, true );
+			}			
+		</script>
+	</body>
+</html>
+
+

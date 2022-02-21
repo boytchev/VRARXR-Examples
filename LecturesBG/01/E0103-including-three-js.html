@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>E0103: Включване на Three.js</title>
+		<meta charset="utf-8">
+		
+		<!-- JS библиотеки също се включват със <script>,
+			 но вместо код се подава име на файл в src. -->
+		<script src="three.min.js"></script>
+		<script src="WebGL.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			// Проверяваме дали браузърът ни поддържа WebGL
+			if ( !THREE.WEBGL.isWebGLAvailable() )
+				alert( THREE.WEBGL.getWebGLErrorMessage() );
+			else
+				alert( 'Има WebGL' );
+		</script>
+	</body>
+</html>
+
+

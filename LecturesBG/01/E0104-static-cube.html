@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<!-- Пълна програма за показване на статичен куб -->
+
+<html>
+	<head>
+		<title>E0104: Статичен куб</title>
+		<meta charset="utf-8">
+		<script src="three.min.js"></script>
+		<script src="WebGL.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			// Проверка за поддръжка на WebGL
+			if ( !THREE.WEBGL.isWebGLAvailable() )
+				alert( THREE.WEBGL.getWebGLErrorMessage() );
+
+			// Създаваме генератор на образ с размер на целия прозорец
+			var renderer = new THREE.WebGLRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight, true );
+			
+			// Добавяме рисувателното поле към уеб страницата, като
+			// искаме да е долепена до ръба и да е без скролбарове
+			document.body.appendChild( renderer.domElement );
+			document.body.style.margin = 0;
+			document.body.style.overflow = 'hidden';
+
+			// Създаваме главната сцена с бял фон
+			var scene = new THREE.Scene();
+				scene.background = new THREE.Color('white');
+			
+			// Създаваме, позиционираме и добавяме към сцената
+			// камера с пропорции същите като на прозореца
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 60, aspect, 1, 100 );
+				camera.position.set( 1, 1, 2 );
+				camera.lookAt( new THREE.Vector3(0,0,0) );
+			
+			// Създаваме, позиционираме и добавяме 
+			// към сцената точков светлинен източник 
+			var light = new THREE.PointLight();
+				light.position.set( 0, 20, 40 );
+				
+			scene.add( light );
+
+			// Създаваме куб и го добавяме към сцената
+			var geometry = new THREE.BoxGeometry( 1, 1, 1 ),
+				material = new THREE.MeshLambertMaterial(),
+				cube = new THREE.Mesh( geometry, material );
+				
+			scene.add( cube );
+			
+			// Генерираме кадър от сцената, видана през камерата
+			renderer.render( scene, camera );
+		</script>
+	</body>
+</html>
+
+
