@@ -2,13 +2,13 @@
 
 <html>
 	<head>
-		<title>E0201: Статистика със stats.js</title>
+		<title>E0202: 3D кръстачка</title>
 		<meta charset="utf-8">
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
 		<script src="three.min.js"></script>
-		<script src="stats.min.js"></script> <!--включване на stats-->
+		<script src="stats.min.js"></script>
 	</head>
 	
 	<body>
@@ -19,26 +19,39 @@
 			document.body.style.margin = 0;
 			document.body.style.overflow = 'hidden';
 
-			// създаване и конфигуриране на инстанция на статистиката
 			var stats = new Stats();
 				document.body.appendChild( stats.dom );
 			
 			var scene = new THREE.Scene();
-				scene.background = new THREE.Color( 'white' );
+				scene.background = new THREE.Color('white');
 			
 			var camera = new THREE.PerspectiveCamera( 60, 1, 1, 100 );
-				camera.position.set( 1, 1, 2 );
+				camera.position.set( 3, 5, 8 );
 				camera.lookAt( new THREE.Vector3( 0, 0, 0 ) );
 			
 			var light = new THREE.PointLight();
 				light.position.set( 0, 20, 40 );
 				scene.add( light );
 
-			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+			// общ материал за трите обекта
 			var material = new THREE.MeshLambertMaterial();
-			var cube = new THREE.Mesh( geometry, material );
-				scene.add( cube );
-
+			
+			// обект по оста X
+			var geometryX = new THREE.BoxGeometry( 10, 1, 1 );
+			var objectX = new THREE.Mesh( geometryX, material );
+				scene.add( objectX );
+			
+			// обект по оста Y
+			var geometryY = new THREE.BoxGeometry( 1, 10, 1 );
+			var objectY = new THREE.Mesh( geometryY, material );
+				scene.add( objectY );
+			
+			// обект по оста Z
+			var geometryZ = new THREE.BoxGeometry( 1, 1, 10 );
+			var objectZ = new THREE.Mesh( geometryZ, material );
+				scene.add( objectZ );
+			
+			
 			renderer.setAnimationLoop( frame );
 			
 			window.addEventListener( 'resize', onWindowResize, false );
@@ -46,9 +59,13 @@
 			
 			function frame( time )
 			{
-				cube.rotation.set( 0, time/1000, 0 );
-
-				// измерваме в тази точка спрямо предишната тази точка
+				var t = time/1000;
+				
+				// въртим еднакво и трите обекта
+				objectX.rotation.set( t/3, t/4, t/5 );
+				objectY.rotation.set( t/3, t/4, t/5 );
+				objectZ.rotation.set( t/3, t/4, t/5 );
+				
 				stats.update();
 				
 				renderer.render( scene, camera );
