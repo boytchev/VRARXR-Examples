@@ -2,6 +2,7 @@
 
 - [Лекция №1 &ndash; Запознаване](#лекция-1--запознаване)
 - [Лекция №2 &ndash; Обекти](#лекция-2--обекти)
+- [Лекция №3 &ndash; Материали](#лекция-3--материали)
 
 
 
@@ -87,4 +88,82 @@
 
 [<kbd><img src="LecturesBG/02/E0213-cone-with-hole.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/02/E0213-cone-with-hole.html)
 
+
+## Лекция №3 &ndash; Материали
+
+**E0301**. Основен материал &ndash; без полутонове.
+
+[<kbd><img src="LecturesBG/03/E0301-basic-material.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0301-basic-material.html)
+
+**E0302**. Ламбертов материал с полутонове.
+
+[<kbd><img src="LecturesBG/03/E0302-lambert-material.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0302-lambert-material.html)
+
+**E0303**. Фонгов материал с полутонове и лъскавина.
+
+[<kbd><img src="LecturesBG/03/E0303-phong-material.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0303-phong-material.html)
+
+**E0304**. Сравнение на ламбертов и фонгов материал.
+
+[<kbd><img src="LecturesBG/03/E0304-comparison-lambert-phong.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0304-comparison-lambert-phong.html)
+
+**E0305**. Фасетно (плоско) осветяване на отделните стени.
+
+[<kbd><img src="LecturesBG/03/E0305-flat-shading.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0305-flat-shading.html)
+
+**E0306**. Контролиране на степента на лъскавината при фонгов материал.
+
+[<kbd><img src="LecturesBG/03/E0306-shininess.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0306-shininess.html)
+
+**E0307**. Прозрачност без ръчно контролиране на реда на рисуване.
+
+[<kbd><img src="LecturesBG/03/E0307-opacity.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0307-opacity.html)
+
+**E0308**. Прозрачност с ръчно контролиране на реда на рисуване.
+
+[<kbd><img src="LecturesBG/03/E0308-opacity-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0308-opacity-2.html)
+
+**E0309**. Помощен материал за визуализиране на ориентацията на нормалните вектори.
+
+[<kbd><img src="LecturesBG/03/E0309-normal-material.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0309-normal-material.html)
+
+**E0310**. Помощен обект за визуализиране на нормалните вектори като отсечки.
+
+[<kbd><img src="LecturesBG/03/E0310-normal-helper.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0310-normal-helper.html)
+
+**E0311**. Използване на точкова светлина.
+
+[<kbd><img src="LecturesBG/03/E0311-point-light.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0311-point-light.html)
+
+**E0312**. Модел с три цветни и подвижни точкови светлини.
+
+[<kbd><img src="LecturesBG/03/E0312-three-point-lights.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0312-three-point-lights.html)
+
+**E0313**. Създаване на сянка на обект върху друг обект.
+
+[<kbd><img src="LecturesBG/03/E0313-shadow.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0313-shadow.html)
+
+**E0314**. Сянка пти точкова светлина.
+
+[<kbd><img src="LecturesBG/03/E0314-point-light-shadow.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0314-point-light-shadow.html)
+
+**E0315**. Използване на насочена светлина.
+
+[<kbd><img src="LecturesBG/03/E0315-directional-light.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0315-directional-light.html)
+
+**E0316**. Използване на прожекторна светлина.
+
+[<kbd><img src="LecturesBG/03/E0316-spot-light.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0316-spot-light.html)
+
+**E0317**. Използване на полусферична светлина.
+
+[<kbd><img src="LecturesBG/03/E0317-hemisphere-light.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0317-hemisphere-light.html)
+
+**E0318**. Използване на околна светлина и прожекторна светлина.
+
+[<kbd><img src="LecturesBG/03/E0318-ambient-and-spot-lights.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0318-ambient-and-spot-lights.html)
+
+**E0319**. Добавяне на излъчвана светлина от обект.
+
+[<kbd><img src="LecturesBG/03/E0319-emissive-light.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/03/E0319-emissive-light.html)
 
