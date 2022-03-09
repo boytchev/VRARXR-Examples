@@ -4,6 +4,7 @@
 - [Лекция №2 &ndash; Обекти](#лекция-2--обекти)
 - [Лекция №3 &ndash; Материали](#лекция-3--материали)
 - [Лекция №4 &ndash; Анимация](#лекция-4--анимация)
+- [Лекция №5 &ndash; Роботи](#лекция-5--роботи)
 
 
 
@@ -275,3 +276,84 @@
 **E0426**. Интерактивна навигация с OrbitControls.
 
 [<kbd><img src="LecturesBG/04/E0426-navigation-orbit.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/04/E0426-navigation-orbit.html)
+
+
+
+## Лекция №5 &ndash; Роботи
+
+**E0501**. Използване на вложени обекти за сглобяване на съставен обект.
+
+[<kbd><img src="LecturesBG/05/E0501-Example-E0206-rotating-ladder.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0501-Example-E0206-rotating-ladder.html)
+
+**E0502**. Използване на вложени обекти за олекотяване на движение.
+
+[<kbd><img src="LecturesBG/05/E0502-Example-E0408-trajectory-formula.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0502-Example-E0408-trajectory-formula.html)
+
+**E0503**. Ръчно движение и ориентация на тухла по окръжност.
+
+[<kbd><img src="LecturesBG/05/E0503-Rotating-cuboid-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0503-Rotating-cuboid-1.html)
+
+**E0504**. Автоматична ориентация на тухла чрез вложен обект.
+
+[<kbd><img src="LecturesBG/05/E0504-Rotating-cuboid-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0504-Rotating-cuboid-2.html)
+
+**E0505**. Една степен на свобода &ndash; с транслация.
+
+[<kbd><img src="LecturesBG/05/E0505-Translation-DOF=1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0505-Translation-DOF=1.html)
+
+**E0506**. Една степен на свобода &ndash; с ротация.
+
+[<kbd><img src="LecturesBG/05/E0506-Rotation-DOF=1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0506-Rotation-DOF=1.html)
+
+**E0507**. Две степени на свобода &ndash; с транслации.
+
+[<kbd><img src="LecturesBG/05/E0507-Translations-DOF=2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0507-Translations-DOF=2.html)
+
+**E0508**. Две степени на свобода &ndash; с ротации.
+
+[<kbd><img src="LecturesBG/05/E0508-Rotations-DOF=2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0508-Rotations-DOF=2.html)
+
+**E0509**. Две степени на свобода &ndash; с транслация и ротация.
+
+[<kbd><img src="LecturesBG/05/E0509-Rotation-and-translation-DOF=2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0509-Rotation-and-translation-DOF=2.html)
+
+**E0510**. Основен елемент на робот.
+
+[<kbd><img src="LecturesBG/05/E0510-Robot-element.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0510-Robot-element.html)
+
+**E0511**. Ръчно въртене в шарнира на елемент на робот.
+
+[<kbd><img src="LecturesBG/05/E0511-Gui-element.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0511-Gui-element.html)
+
+**E0512**. Проблем при закачен втори елемент на робот.
+
+[<kbd><img src="LecturesBG/05/E0512-Attempt-at-two-elements.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0512-Attempt-at-two-elements.html)
+
+**E0513**. Робот от 2 свързани елемента.
+
+[<kbd><img src="LecturesBG/05/E0513-Two-elements.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0513-Two-elements.html)
+
+**E0514**. Робот от 4 свързани елемента.
+
+[<kbd><img src="LecturesBG/05/E0514-Four-elements.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0514-Four-elements.html)
+
+**E0515**. Плавно движение на елементите на робот.
+
+[<kbd><img src="LecturesBG/05/E0515-Smooth-motion.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0515-Smooth-motion.html)
+
+**E0516**. Добавяне на щипци в края на манипулатор на робот.
+
+[<kbd><img src="LecturesBG/05/E0516-Tongs.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0516-Tongs.html)
+
+**E0517**. Ръчно захващане на обекти с робот и определяне на позата.
+
+[<kbd><img src="LecturesBG/05/E0517-Robot-scene.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0517-Robot-scene.html)
+
+**E0518**. Автоматична смяна на една поза с друга поза.
+
+[<kbd><img src="LecturesBG/05/E0518-Automatic-control.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0518-Automatic-control.html)
+
+**E0519**. Автоматична смяна на поза през междинна, неутрална поза.
+
+[<kbd><img src="LecturesBG/05/E0519-Full-control.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0519-Full-control.html)
+
