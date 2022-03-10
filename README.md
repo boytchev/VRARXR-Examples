@@ -5,6 +5,7 @@
 - [Лекция №3 &ndash; Материали](#лекция-3--материали)
 - [Лекция №4 &ndash; Анимация](#лекция-4--анимация)
 - [Лекция №5 &ndash; Роботи](#лекция-5--роботи)
+- [Лекция №6 &ndash; Физика](#лекция-6--физика)
 
 
 
@@ -357,3 +358,82 @@
 
 [<kbd><img src="LecturesBG/05/E0519-Full-control.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/05/E0519-Full-control.html)
 
+
+
+## Лекция №6 &ndash; Физика
+
+**E0601**. Включване на библиотеката Physijs.
+
+[<kbd><img src="LecturesBG/06/E0601-Physijs-library.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0601-Physijs-library.html)
+
+**E0602**. Падане на топка върху твърда земя.
+
+[<kbd><img src="LecturesBG/06/E0602-Ground.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0602-Ground.html)
+
+**E0603**. Падане на две топки.
+
+[<kbd><img src="LecturesBG/06/E0603-Two-balls.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0603-Two-balls.html)
+
+**E0604**. Падане на 20 топки.
+
+[<kbd><img src="LecturesBG/06/E0604-Twenty-balls.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0604-Twenty-balls.html)
+
+**E0605**. Обекти с форма на кубове, но с физично поведение на сфери.
+
+[<kbd><img src="LecturesBG/06/E0605-Twenty-cubes.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0605-Twenty-cubes.html)
+
+**E0606**. Кубове с поведение на кубове.
+
+[<kbd><img src="LecturesBG/06/E0606-Twenty-cubes-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0606-Twenty-cubes-2.html)
+
+**E0607**. Вертикално подскачане на кубчета.
+
+[<kbd><img src="LecturesBG/06/E0607-Jumping-cubes.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0607-Jumping-cubes.html)
+
+**E0608**. Вертикално подскачане със завъртане.
+
+[<kbd><img src="LecturesBG/06/E0608-Jumping-cubes-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0608-Jumping-cubes-2.html)
+
+**E0609**. Модел на домино.
+
+[<kbd><img src="LecturesBG/06/E0609-Domino.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0609-Domino.html)
+
+**E0610**. Капсули като единични обекти.
+
+[<kbd><img src="LecturesBG/06/E0610-Capsules.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0610-Capsules.html)
+
+**E0611**. Капсули като групови обекти.
+
+[<kbd><img src="LecturesBG/06/E0611-Capsule-groups.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0611-Capsule-groups.html)
+
+**E0612**. Пешки.
+
+[<kbd><img src="LecturesBG/06/E0612-Pawns.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0612-Pawns.html)
+
+**E0613**. Гравитационен колапс.
+
+[<kbd><img src="LecturesBG/06/E0613-Gravity-collapse.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0613-Gravity-collapse.html)
+
+**E0614**. Планета около звезда.
+
+[<kbd><img src="LecturesBG/06/E0614-Gravity.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0614-Gravity.html)
+
+**E0615**. Симулация на задачата за трите тела.
+
+[<kbd><img src="LecturesBG/06/E0615-Three-body-problem.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0615-Three-body-problem.html)
+
+**E0616**. Модел на панта с ограничение.
+
+[<kbd><img src="LecturesBG/06/E0616-Door-with-hinge.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0616-Door-with-hinge.html)
+
+**E0617**. Установяване на удар между два обекта.
+
+[<kbd><img src="LecturesBG/06/E0617-Collissions.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0617-Collissions.html)
+
+**E0618**. Падащи обекти разбиват плочки на пода.
+
+[<kbd><img src="LecturesBG/06/E0618-Floor-of-tiles.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0618-Floor-of-tiles.html)
+
+**E0619**. Понички падат в кутия, направена от височинна карта.
+
+[<kbd><img src="LecturesBG/06/E0619-Donuts-box.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0619-Donuts-box.html)
