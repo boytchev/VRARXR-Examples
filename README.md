@@ -6,6 +6,7 @@
 - [Лекция №4 &ndash; Анимация](#лекция-4--анимация)
 - [Лекция №5 &ndash; Роботи](#лекция-5--роботи)
 - [Лекция №6 &ndash; Физика](#лекция-6--физика)
+- [Лекция №7 &ndash; Стерео-1](#лекция-7--стерео-1)
 
 
 
@@ -437,3 +438,40 @@
 **E0619**. Понички падат в кутия, направена от височинна карта.
 
 [<kbd><img src="LecturesBG/06/E0619-Donuts-box.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/06/E0619-Donuts-box.html)
+
+
+
+## Лекция №7 &ndash; Стерео-1
+
+**E0701**. Илюстрация на стереопсис.
+
+[<kbd><img src="LecturesBG/07/E0701-Stereopsis.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/07/E0701-Stereopsis.html)
+
+**E0702**. Конвергенция (събиране) на очи.
+
+[<kbd><img src="LecturesBG/07/E0702-Convergence.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/07/E0702-Convergence.html)
+
+**E0703**. Сцена без тримерни подсказки.
+
+[<kbd><img src="LecturesBG/07/E0703-No-hint.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/07/E0703-No-hint.html)
+
+**E0704**. Сцена с тримерна подсказка от размера на обектите.
+
+[<kbd><img src="LecturesBG/07/E0704-Hint-size.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/07/E0704-Hint-size.html)
+
+**E0705**. Сцена с тримерна подсказка от цвета на обектите.
+
+[<kbd><img src="LecturesBG/07/E0705-Hint-color.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/07/E0705-Hint-color.html)
+
+**E0706**. Сцена с тримерна подсказка от текстурата на обектите.
+
+[<kbd><img src="LecturesBG/07/E0706-Hint-texture.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/07/E0706-Hint-texture.html)
+
+**E0707**. Сцена с тримерна подсказка от паралакс.
+
+[<kbd><img src="LecturesBG/07/E0707-Hint-paralax.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/07/E0707-Hint-paralax.html)
+
+**E0708**. Сцена с тримерна подсказка от припокриване на обектите.
+
+[<kbd><img src="LecturesBG/07/E0708-Hint-overlap.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/07/E0708-Hint-overlap.html)
+
