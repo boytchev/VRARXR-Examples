@@ -561,4 +561,4 @@
 
 **E0908**. Определяне на шума в данните от акселометъра.
 
-[<kbd><img src="LecturesBG/09/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/09/.html)
+[<kbd><img src="LecturesBG/09/E0908-Accelometer-noise.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/09/E0908-Accelometer-noise.html)
