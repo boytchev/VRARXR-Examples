@@ -9,6 +9,7 @@
 - [Лекция №7 &ndash; Стерео-1](#лекция-7--стерео-1)
 - [Лекция №8 &ndash; Стерео-2](#лекция-8--стерео-2)
 - [Лекция №9 &ndash; Позициониране](#лекция-9--позициониране)
+- [Лекция №10 &ndash; Камера](#лекция-10--камера)
 
 
 
@@ -562,3 +563,56 @@
 **E0908**. Определяне на шума в данните от акселометъра.
 
 [<kbd><img src="LecturesBG/09/E0908-Accelometer-noise.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/09/E0908-Accelometer-noise.html)
+
+
+
+
+## Лекция №10 &ndash; Камера
+
+**E1001**. Проверка дали могат да се извлекат медийни данни.
+
+[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+
+**E1002**. Извеждане на списък от входни и изходни медийни канали.
+
+[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+
+**E1003**. Получаване на видео поток от камерата на устройството.
+
+[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+
+**E1004**. Софтуерно пускане и спиране на камерата.
+
+[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+
+**E1005**. Получаване на стоп-кадър (snapshot) от видео.
+
+[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+
+**E1006**. Конвертиране на цветно изображение в черно-бяло.
+
+[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+
+**E1007**. Наслагване на прозрачен слой с компютърно генерирана графика.
+
+[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+
+**E1008**. Демонстрация на хлъзгане на слоевете.
+
+[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+
+**E1009**. Премахване на хлъзгането с корекция във фрустума.
+
+[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+
+**E1010**. 
+
+[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+
+**E1011**.
+
+[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+
+**E1012**.
+
+[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
