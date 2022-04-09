@@ -12,7 +12,29 @@
 	</head>
 	
 	<body>
-		<button id="button" onclick="getVideo()" style="position:fixed; left:0; top:0; z-index:100; ">Видео</button>
+		<div  id="panel" style="position:fixed; left:0; top:0; z-index:100; ">
+		Ъгъл: <select id="FOV">
+  <option>5&deg;</option>  
+  <option>10&deg;</option>  
+  <option>15&deg;</option>  
+  <option>20&deg;</option>  
+  <option>25&deg;</option>  
+  <option>50&deg;</option>  
+  <option>35&deg;</option>  
+  <option>40&deg;</option>  
+  <option>45&deg;</option>  
+  <option>50&deg;</option>  
+  <option>55&deg;</option>  
+  <option>60&deg;</option>  
+  <option>65&deg;</option>  
+  <option>70&deg;</option>  
+  <option>75&deg;</option>  
+  <option>80&deg;</option>  
+  <option>85&deg;</option>  
+  <option>90&deg;</option>  
+</select>  
+		<button id="button" onclick="getVideo()">Видео</button>
+		</div>
 		<video id="video" autoplay style="display:none; position:fixed; left:0; top:0; z-index:-100; width: 100%;"></video>
 
 		
@@ -27,7 +49,7 @@
 				// pпоказва се видео, скрива се бутона
 				document.getElementById('video').srcObject = stream;
 				document.getElementById('video').style.display = "block";
-				document.getElementById('button').style.display = "none";
+				document.getElementById('panel').style.display = "none";
 
 			}
 			
@@ -35,7 +57,8 @@
 			
 			light.position.set( 0, 0, 0 );
 			
-			camera = new THREE.PerspectiveCamera( 30, window.innerWidth/window.innerHeight, 400, 3000 );
+			var fov = document.getElementById( 'fov' ).value;
+			camera = new THREE.PerspectiveCamera( fov, window.innerWidth/window.innerHeight, 400, 3000 );
 			camera.position.set( 0, 0, 0 );
 			camera.lookAt( new THREE.Vector3( 0, 0, -1 ) );
 			
