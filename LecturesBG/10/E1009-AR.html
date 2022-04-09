@@ -8,7 +8,6 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
 		<script src="three.min.js"></script>
-		<script src="WebGL.js"></script>
 		<script src="vax.js"></script>
 	</head>
 	
@@ -43,7 +42,7 @@
 			scene.fog = new THREE.Fog( 'lightcyan', 500, 3000 );
 			
 			// обекти
-			var geometry = new THREE.OctahedronBufferGeometry( 1 );
+			var geometry = new THREE.OctahedronGeometry( 1 );
 
 			var n = 300;
 			var objects = [];
@@ -63,12 +62,10 @@
 				scene.add( mesh );
 			}
 
-			function animate()
+			function animate( t )
 			{
 				for( var i=0; i<n; i++ )
 					objects[i].rotation.y = t+i;
-					
-				//camera.rotation.set( 0, t/5, 0, 'YZX' );
 			}
 			
 			// слушаме за събитието на ориентацията на устройство
