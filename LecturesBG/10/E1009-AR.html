@@ -8,37 +8,21 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
 		<script src="three.min.js"></script>
+		<script src="WebGL.js"></script>
 		<script src="vax.js"></script>
 	</head>
 	
 	<body>
-		<div  id="panel" style="position:fixed; left:0; top:0; z-index:100; ">
-		Ъгъл: <select id="FOV">
-  <option>5&deg;</option>  
-  <option>10&deg;</option>  
-  <option>15&deg;</option>  
-  <option>20&deg;</option>  
-  <option>25&deg;</option>  
-  <option>50&deg;</option>  
-  <option>35&deg;</option>  
-  <option>40&deg;</option>  
-  <option>45&deg;</option>  
-  <option>50&deg;</option>  
-  <option>55&deg;</option>  
-  <option>60&deg;</option>  
-  <option>65&deg;</option>  
-  <option>70&deg;</option>  
-  <option>75&deg;</option>  
-  <option>80&deg;</option>  
-  <option>85&deg;</option>  
-  <option>90&deg;</option>  
-</select>  
-		<button id="button" onclick="getVideo()">Видео</button>
-		</div>
+		<button id="button" onclick="getVideo()" style="position:fixed; left:0; top:0; z-index:100; ">Видео</button>
 		<video id="video" autoplay style="display:none; position:fixed; left:0; top:0; z-index:-100; width: 100%;"></video>
 
+		<button id="dec" onclick="fov(-5)" style="display:none; position:fixed; left:0em; top:0; z-index:100; ">-</button>
+		<span id="fov" style="display:none; position:fixed; left:3em; top:0; z-index:100; ">50</span>
+		<button id="inc" onclick="fov(5)" style="display:none; position:fixed; left:6em; top:0; z-index:100; ">+</button>
 		
 		<script>
+			var angle = 50;
+			
 			function getVideo()
 			{
 				navigator.mediaDevices.getUserMedia( {video:{facingMode:"environment"}} ).then(showVideo);
@@ -49,23 +33,33 @@
 				// pпоказва се видео, скрива се бутона
 				document.getElementById('video').srcObject = stream;
 				document.getElementById('video').style.display = "block";
-				document.getElementById('panel').style.display = "none";
+				document.getElementById('button').style.display = "none";
 
+				document.getElementById('inc').style.display = "inline";
+				document.getElementById('fov').style.display = "inline";
+				document.getElementById('dec').style.display = "inline";
 			}
 			
 			vaxInit( {antialias:true, alpha:true} );
 			
 			light.position.set( 0, 0, 0 );
 			
-			var fov = document.getElementById( 'fov' ).value;
-			camera = new THREE.PerspectiveCamera( fov, window.innerWidth/window.innerHeight, 400, 3000 );
-			camera.position.set( 0, 0, 0 );
-			camera.lookAt( new THREE.Vector3( 0, 0, -1 ) );
+			function dec( )
+			{
+			}
+			function fov( dAngle )
+			{
+				angle += dAngle;
+				camera = new THREE.PerspectiveCamera( angle, window.innerWidth/window.innerHeight, 400, 3000 );
+				camera.position.set( 0, 0, 0 );
+				camera.lookAt( new THREE.Vector3( 0, 0, -1 ) );
+			}
+			fov(0);
 			
 			scene.fog = new THREE.Fog( 'lightcyan', 500, 3000 );
 			
 			// обекти
-			var geometry = new THREE.OctahedronGeometry( 1 );
+			var geometry = new THREE.OctahedronBufferGeometry( 1 );
 
 			var n = 300;
 			var objects = [];
@@ -89,6 +83,8 @@
 			{
 				for( var i=0; i<n; i++ )
 					objects[i].rotation.y = t+i;
+					
+				//camera.rotation.set( 0, t/5, 0, 'YZX' );
 			}
 			
 			// слушаме за събитието на ориентацията на устройство
