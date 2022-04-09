@@ -17,7 +17,7 @@
 		<video id="video" autoplay style="display:none; position:fixed; left:0; top:0; z-index:-100; width: 100%;"></video>
 
 		<button id="dec" onclick="fov(-5)" style="display:none; position:fixed; left:0em; top:0; z-index:100; ">-</button>
-		<span id="fov" style="display:none; position:fixed; left:3em; top:0; z-index:100; ">50</span>
+		<span id="fov" style="display:none; position:fixed; left:3em; top:0; z-index:100; background:white;">50</span>
 		<button id="inc" onclick="fov(5)" style="display:none; position:fixed; left:6em; top:0; z-index:100; ">+</button>
 		
 		<script>
@@ -44,12 +44,10 @@
 			
 			light.position.set( 0, 0, 0 );
 			
-			function dec( )
-			{
-			}
 			function fov( dAngle )
 			{
 				angle += dAngle;
+				document.getElementById('fov').innerHTML = angle;
 				camera = new THREE.PerspectiveCamera( angle, window.innerWidth/window.innerHeight, 400, 3000 );
 				camera.position.set( 0, 0, 0 );
 				camera.lookAt( new THREE.Vector3( 0, 0, -1 ) );
