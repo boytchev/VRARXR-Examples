@@ -571,39 +571,39 @@
 
 **E1001**. Проверка дали могат да се извлекат медийни данни.
 
-[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+[<kbd><img src="LecturesBG/10/E1001-Check-getUserMedia.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1001-Check-getUserMedia.html)
 
 **E1002**. Извеждане на списък от входни и изходни медийни канали.
 
-[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+[<kbd><img src="LecturesBG/10/E1002-Media-devices.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1002-Media-devices.html)
 
 **E1003**. Получаване на видео поток от камерата на устройството.
 
-[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+[<kbd><img src="LecturesBG/10/E1003-Video-stream.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1003-Video-stream.html)
 
 **E1004**. Софтуерно пускане и спиране на камерата.
 
-[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+[<kbd><img src="LecturesBG/10/E1004-Stop-video-stream.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1004-Stop-video-stream.html)
 
 **E1005**. Получаване на стоп-кадър (snapshot) от видео.
 
-[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+[<kbd><img src="LecturesBG/10/E1005-Snapshot.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1005-Snapshot.html)
 
 **E1006**. Конвертиране на цветно изображение в черно-бяло.
 
-[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+[<kbd><img src="LecturesBG/10/E1006-Grayscale.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1006-Grayscale.html)
 
 **E1007**. Наслагване на прозрачен слой с компютърно генерирана графика.
 
-[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+[<kbd><img src="LecturesBG/10/E1007-Transparent-canvas.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1007-Transparent-canvas.html)
 
 **E1008**. Демонстрация на хлъзгане на слоевете.
 
-[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+[<kbd><img src="LecturesBG/10/E1008-AR-sliding-effect.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1008-AR-sliding-effect.html)
 
 **E1009**. Премахване на хлъзгането с корекция във фрустума.
 
-[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+[<kbd><img src="LecturesBG/10/E1009-AR.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1009-AR.html)
 
 **E1010**. 
 
