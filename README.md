@@ -605,14 +605,14 @@
 
 [<kbd><img src="LecturesBG/10/E1009-AR.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1009-AR.html)
 
-**E1010**. 
+**E1010**. Намиране на лица с филтър за достоверност.
 
-[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+[<kbd><img src="LecturesBG/10/E1010-Face-detection-(pico.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1010-Face-detection-(pico.js).html)
 
-**E1011**.
+**E1011**. Намиране на лица без филтър за достоверност.
 
-[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+[<kbd><img src="LecturesBG/10/E1011-Face-detection-2-(pico.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1011-Face-detection-2-(pico.js).html)
 
-**E1012**.
+**E1012**. Намиране на лица, очи и усти.
 
-[<kbd><img src="LecturesBG/10/.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/.html)
+[<kbd><img src="LecturesBG/10/E1012-Face-detection-(tracking.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1012-Face-detection-(tracking.js).html)
