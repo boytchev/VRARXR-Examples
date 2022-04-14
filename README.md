@@ -687,23 +687,23 @@
 
 [<kbd><img src="LecturesBG/11/E1116-Perlin-noise.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1116-Perlin-noise.html)
 
-**E1117**. Терен с шум на Перлин *ndash; 1.
+**E1117**. Терен с шум на Перлин &ndash; 1.
 
 [<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-1.html)
 
-**E1117**. Терен с шум на Перлин *ndash; 2.
+**E1117**. Терен с шум на Перлин &ndash; 2.
 
 [<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-2.html)
 
-**E1117**. Терен с шум на Перлин *ndash; 3.
+**E1117**. Терен с шум на Перлин &ndash; 3.
 
 [<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-3.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-3.html)
 
-**E1117**. Терен с шум на Перлин *ndash; 4.
+**E1117**. Терен с шум на Перлин &ndash; 4.
 
 [<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-4.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-4.html)
 
-**E1117**. Терен с шум на Перлин *ndash; 1, 2, 3 и 4.
+**E1117**. Терен с шум на Перлин &ndash; 1, 2, 3 и 4.
 
 [<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-1234.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-1234.html)
 
