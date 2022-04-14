@@ -10,6 +10,7 @@
 - [Лекция №8 &ndash; Стерео-2](#лекция-8--стерео-2)
 - [Лекция №9 &ndash; Позициониране](#лекция-9--позициониране)
 - [Лекция №10 &ndash; Камера](#лекция-10--камера)
+- [Лекция №11 &ndash; Текстури](#лекция-11--текстури)
 
 
 
@@ -616,3 +617,96 @@
 **E1012**. Намиране на лица, очи и усти.
 
 [<kbd><img src="LecturesBG/10/E1012-Face-detection-(tracking.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1012-Face-detection-(tracking.js).html)
+
+
+
+
+## Лекция №11 &ndash; Текстури
+
+**E1101**. Текстура върху куб.
+
+[<kbd><img src="LecturesBG/11/E1101-Texture-on-cube.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1101-Texture-on-cube.html)
+
+**E1102**. Вградена текстура с Data URI.
+
+[<kbd><img src="LecturesBG/11/E1102-Data-URI.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1102-Data-URI.html)
+
+**E1103**. Каменна стена.
+
+[<kbd><img src="LecturesBG/11/E1103-Stone-wall.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1103-Stone-wall.html)
+
+**E1104**. Грешни текстурни координати.
+
+[<kbd><img src="LecturesBG/11/E1104-Wrong-UV-coordinates.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1104-Wrong-UV-coordinates.html)
+
+**E1105**. Правилни текстурни координати.
+
+[<kbd><img src="LecturesBG/11/E1105-Correct-UV-coordinates.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1105-Correct-UV-coordinates.html)
+
+**E1106**. Текстура върху сфера.
+
+[<kbd><img src="LecturesBG/11/E1106-Texture-on-sphere.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1106-Texture-on-sphere.html)
+
+**E1107**. Модел на земното кълбо.
+
+[<kbd><img src="LecturesBG/11/E1107-Earth.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1107-Earth.html)
+
+**E1108**. Текстурна пикселизация и текстурен шум.
+
+[<kbd><img src="LecturesBG/11/E1108-Pixelization-and-noise.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1108-Pixelization-and-noise.html)
+
+**E1109**. Премахване на пикселизацията и шума с mipmap текстури.
+
+[<kbd><img src="LecturesBG/11/E1109-No-pixelization-and-noise.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1109-No-pixelization-and-noise.html)
+
+**E1110**. Използване на анизотропичен филтър.
+
+[<kbd><img src="LecturesBG/11/E1110-Anisotropy.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1110-Anisotropy.html)
+
+**E1111**. Текстура с прозрачност.
+
+[<kbd><img src="LecturesBG/11/E1111-Transparent-texture.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1111-Transparent-texture.html)
+
+**E1112**. Текстура с изпъкналост.
+
+[<kbd><img src="LecturesBG/11/E1112-Bumps.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1112-Bumps.html)
+
+**E1113**. Кубична текстура.
+
+[<kbd><img src="LecturesBG/11/E1113-Cube-texture.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1113-Cube-texture.html)
+
+**E1114**. Рисувана (канвас) текстура.
+
+[<kbd><img src="LecturesBG/11/E1114-Canvas-texture.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1114-Canvas-texture.html)
+
+**E1115**. Текстура с шум.
+
+[<kbd><img src="LecturesBG/11/E1115-Noise.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1115-Noise.html)
+
+**E1116**. Шум на Перлин.
+
+[<kbd><img src="LecturesBG/11/E1116-Perlin-noise.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1116-Perlin-noise.html)
+
+**E1117**. Терен с шум на Перлин *ndash; 1.
+
+[<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-1.html)
+
+**E1117**. Терен с шум на Перлин *ndash; 2.
+
+[<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-2.html)
+
+**E1117**. Терен с шум на Перлин *ndash; 3.
+
+[<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-3.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-3.html)
+
+**E1117**. Терен с шум на Перлин *ndash; 4.
+
+[<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-4.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-4.html)
+
+**E1117**. Терен с шум на Перлин *ndash; 1, 2, 3 и 4.
+
+[<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-1234.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-1234.html)
+
+**E1118**. Модел на остров с шум на Перлин.
+
+[<kbd><img src="LecturesBG/11/E1118-Island.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1118-Island.html)
