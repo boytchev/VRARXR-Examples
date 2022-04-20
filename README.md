@@ -11,6 +11,7 @@
 - [Лекция №9 &ndash; Позициониране](#лекция-9--позициониране)
 - [Лекция №10 &ndash; Камера](#лекция-10--камера)
 - [Лекция №11 &ndash; Текстури](#лекция-11--текстури)
+- [Лекция №12 &ndash; Скелети](#лекция-12--скелети)
 
 
 
@@ -710,3 +711,74 @@
 **E1118**. Модел на остров с шум на Перлин.
 
 [<kbd><img src="LecturesBG/11/E1118-Island.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1118-Island.html)
+
+
+
+
+## Лекция №12 &ndash; Скелети
+
+**E1201**. Модел на бягащ човек.
+
+[<kbd><img src="LecturesBG/12/E1201-Running-human.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1201-Running-human.html)
+
+**E1202**. Скелет на крак.
+
+[<kbd><img src="LecturesBG/12/E1202-Leg-skeleton.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1202-Leg-skeleton.html)
+
+**E1203**. Скелет на крак и ходило.
+
+[<kbd><img src="LecturesBG/12/E1203-Leg-skeleton-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1203-Leg-skeleton-2.html)
+
+**E1204**. Скелет от два крака.
+
+[<kbd><img src="LecturesBG/12/E1204-Two-legs-skeleton.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1204-Two-legs-skeleton.html)
+
+**E1205**. Модел на кожа чрез сплайн.
+
+[<kbd><img src="LecturesBG/12/E1205-Spline-skin.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1205-Spline-skin.html)
+
+**E1206**. Модел на кожа чрез подразделяне.
+
+[<kbd><img src="LecturesBG/12/E1206-Subdivision-skin.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1206-Subdivision-skin.html)
+
+**E1207**. Свързване на кожа с кост.
+
+[<kbd><img src="LecturesBG/12/E1207-SkinnedMesh-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1207-SkinnedMesh-1.html)
+
+**E1208**. Свързване на кожа с няколко кости.
+
+[<kbd><img src="LecturesBG/12/E1208-SkinnedMesh-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1208-SkinnedMesh-2.html)
+
+**E1209**. Модел на огъващ се маркуч.
+
+[<kbd><img src="LecturesBG/12/E1209-Hose.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1209-Hose.html)
+
+**E1210**. Морфинг на поза на робот.
+
+[<kbd><img src="LecturesBG/12/E1210-Posture-morphing-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1210-Posture-morphing-1.html)
+
+**E1211**. Морфинг на поза на човек.
+
+[<kbd><img src="LecturesBG/12/E1211-Posture-morphing-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1211-Posture-morphing-2.html)
+
+**E1212**. Морфинг на върховете на обект.
+
+[<kbd><img src="LecturesBG/12/E1212-Vertex-morphing.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1212-Vertex-morphing.html)
+
+**E1213**. Морфинг на плътен обект без нормали.
+
+[<kbd><img src="LecturesBG/12/E1213-Vertex-wo-normal-morphing.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1213-Vertex-wo-normal-morphing.html)
+
+**E1214**. Морфинг на плътен обект с нормали.
+
+[<kbd><img src="LecturesBG/12/E1214-Vertex-with-normal-morphing.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1214-Vertex-with-normal-morphing.html)
+
+**E1215**. Морфинг между три обекта.
+
+[<kbd><img src="LecturesBG/12/E1215-Double-morphing.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1215-Double-morphing.html)
+
+**E1216**. Морфинг на глава на Лий Пери Смит.
+
+[<kbd><img src="LecturesBG/12/E1216-Head-morphing.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1216-Head-morphing.html)
+
+
