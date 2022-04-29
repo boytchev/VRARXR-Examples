@@ -788,31 +788,31 @@
 
 ## Упражнение №9 &ndash; Позициониране
 
-**E0903**. Къде сме ние.
+**S0903**. Къде сме ние.
 
 [<kbd><img src="ExercisesBG/09/S0903-My-locaiton-map.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0903-My-locaiton-map)
 
-**E0905**. Диапазони на ъгли.
+**S0905**. Диапазони на ъгли.
 
 [<kbd><img src="ExercisesBG/09/S0905-Device-orientation.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0905-Device-orientation.html)
 
-**E0907**. Търкаляща се топка.
+**S0907**. Търкаляща се топка.
 
 [<kbd><img src="ExercisesBG/09/S0907-Rolling-ball.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0907-Rolling-ball.html)
 
-**E0908**. Симулиран смартфон.
+**S0908**. Симулиран смартфон.
 
 [<kbd><img src="ExercisesBG/09/S0908-Simulated-smartphone.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0908-Simulated-smartphone.html)
 
-**E0909**. Вградена карта.
+**S0909**. Вградена карта.
 
 [<kbd><img src="ExercisesBG/09/S0909-Embedded-map.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0909-Embedded-map.html)
 
-**E0910**. Крачкомер - събиране на данни.
+**S0910**. Крачкомер - събиране на данни.
 
 [<kbd><img src="ExercisesBG/09/S0910-Collect-data.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0910-Collect-data.html)
 
-**E0910**. Крачкомер.
+**S0910**. Крачкомер.
 
 [<kbd><img src="ExercisesBG/09/S0910-Count-steps.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0910-Count-steps.html)
 
