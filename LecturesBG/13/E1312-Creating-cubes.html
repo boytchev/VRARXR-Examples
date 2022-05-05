@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1312: Създаване на кубове</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="VRButton.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxInitVR();
+				
+			// земя
+			var ground = new THREE.Mesh(
+				new THREE.BoxGeometry(300,4,300),
+				new THREE.MeshPhongMaterial({color:'lightgreen'})
+			);
+			ground.position.set( 0, -2, 0 );
+			ground.receiveShadow = true;
+			scene.add( ground );
+
+			// пилони 
+			var pillars = [];
+			for( var i=0; i<60; i++)
+			{
+				var p = pillar( new THREE.Vector3(THREE.Math.randFloat(-100,100),THREE.Math.randFloat(10,100),THREE.Math.randFloat(-100,100)),ground.material);
+					p.scale.set( 0.1, 0.1, 0.1 );
+					pillars.push( p );
+					scene.add( p );
+			}
+
+			// десен контролер
+			var move = false, // дали е натиснат десният спусък
+				rightController = renderer.xr.getController( 0 );
+				rightController.addEventListener( 'selectstart', createCube );
+				rightController.addEventListener( 'squeezestart', function(){ move = true; } );
+				rightController.addEventListener( 'squeezeend', function(){ move = false; } );
+			
+			// видим лъч
+			var ray = new THREE.Mesh(
+						new THREE.CylinderGeometry( 0.01, 0.01, 100 ).rotateX( Math.PI/2 ).translate( 0, 0, -50 ),
+						new THREE.MeshBasicMaterial( {
+							color: 'yellow',
+							transparent: true,
+							opacity: 0.5} )
+					);
+				rightController.add( ray );
+			
+			// подвижен потребител
+			var user = new THREE.Group();
+				user.add( camera, rightController );
+				scene.add( user );
+
+			// трасиращ лъч и център на екрана
+			var raycaster = new THREE.Raycaster();
+
+			// обекти, които ще следим за сечение
+			var intersectables = [ground, ...pillars];
+			
+			var v = new THREE.Vector3();
+			
+			var marker = new THREE.Mesh(
+					new THREE.IcosahedronGeometry( 0.1, 3 ),
+					new THREE.MeshPhongMaterial( {color:'crimson', shininess:100} )
+				);
+				scene.add( marker );
+		
+			// макет на кубче, което се създава
+			var texture = new THREE.TextureLoader().load( 'cube.png' );
+			var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 ),
+				material = new THREE.MeshBasicMaterial( {map: texture} ),
+				cube = new THREE.Mesh( geometry, material );
+
+			function pointing()
+			{
+				rightController.getWorldDirection( v );
+
+				// начало и посока на лъча
+				raycaster.ray.origin.setFromMatrixPosition( rightController.matrixWorld );
+				raycaster.ray.direction.set( -v.x, -v.y, -v.z );
+				
+				// пресичане с всички обекти
+				var intersections = raycaster.intersectObjects( intersectables );
+				
+				// трептене на най-близкият балон ресечен от лъча
+				if( intersections.length )
+				{
+					marker.position.copy( intersections[0].point );
+					marker.normal = intersections[0].face.normal;
+				}
+				else
+					marker.position.y = -100;
+			}
+			
+			function createCube()
+			{
+				// създаваме куб на мястото на маркера
+				if( marker.position.y < -90 ) return;
+				
+				cube = cube.clone();
+				cube.position.copy( marker.position );
+				cube.position.addScaledVector( marker.normal, 0.5 );
+				scene.add( cube ); // за да видим новия куб
+				intersectables.push( cube ); // за да долепяме други кубове към него
+			}
+			
+			function animate( t, dT )
+			{
+				pointing();
+				
+				if( move )
+				{
+					// сочена посока
+					rightController.getWorldDirection( v );
+					
+					// преобразуване в хоризонтален вектор с дължина 1
+					v.y = 0;
+					v.normalize();
+					
+					// движение по посока на вектора
+					user.position.addScaledVector( v, -10*dT );
+				}
+			}
+		</script>	
+	</body>
+</html>
+
+

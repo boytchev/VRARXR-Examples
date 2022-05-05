@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1303: Центриран VR куб</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="VRButton.js"></script>
+		<script src="WebGL.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxInitVR();
+			
+			// създаване на куб 
+			var geometry = new THREE.BoxBufferGeometry( 3, 3, 3, 10, 10, 10 ),
+				material = new THREE.MeshBasicMaterial( {color: 'black', wireframe: true} ),
+				cube = new THREE.Mesh( geometry, material );
+				scene.add( cube );
+
+			var centered,
+				v = new THREE.Vector3();
+			
+			function animate()
+			{
+				// само веднъж
+				if( !centered && renderer.xr.isPresenting )
+				{
+					// местим куба там, където е шлема
+					//cube.position.y = renderer.xr.getCamera(camera).getWorldPosition(v).y;
+					renderer.xr.getCamera(camera).getWorldPosition( cube.position );
+
+					centered = true;
+				}
+			}
+		</script>	
+	</body>
+</html>
+
+

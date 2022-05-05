@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1306: Изображение на контролер</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="VRButton.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxInitVR();
+			
+			// създаване на куб 
+			var geometry = new THREE.BoxGeometry( 3, 3, 3, 10, 10, 10 ),
+				material = new THREE.MeshBasicMaterial( {color: 'black', wireframe: true} ),
+				cube = new THREE.Mesh( geometry, material );
+				cube.position.y = 1.5;
+				scene.add( cube );
+
+			var rightController = renderer.xr.getControllerGrip( 0 ),
+				leftController = renderer.xr.getControllerGrip( 1 );
+				scene.add( rightController, leftController );
+				
+			// паралелепипед за ляв контролер, цилиндър за десен
+			var leftImage = new THREE.Mesh(
+					new THREE.BoxGeometry( 0.1, 0.2, 0.1 ),
+					new THREE.MeshPhongMaterial( {color:'cornflowerblue'} )
+				);
+				leftImage.position.y = -0.1;
+				leftController.add( leftImage );
+
+			var rightImage = new THREE.Mesh(
+					new THREE.CylinderGeometry( 0.05, 0.05, 0.2 ),
+					new THREE.MeshPhongMaterial( {color:'crimson'} )
+				);
+				rightImage.position.y = -0.1;
+				rightController.add( rightImage );
+			
+			function animate()
+			{
+				
+			}
+		</script>	
+	</body>
+</html>
+
+

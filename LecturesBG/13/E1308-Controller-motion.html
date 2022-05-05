@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1308: Движение с контролер</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="VRButton.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxInitVR();
+
+			// земя
+			var ground = new THREE.Mesh(
+				new THREE.BoxGeometry(300,4,300),
+				new THREE.MeshPhongMaterial({color:'lightgreen'})
+			);
+			ground.position.set( 0, -2, 0 );
+			ground.receiveShadow = true;
+			scene.add( ground );
+
+			// мрежа от квадратчета по земята
+			scene.add( new THREE.GridHelper( 300, 30, 'white', 'white' ) );
+			
+			// пилони 
+			for( var i=0; i<60; i++)
+			{
+				var p = pillar( new THREE.Vector3(THREE.Math.randFloat(-100,100),THREE.Math.randFloat(10,100),THREE.Math.randFloat(-100,100)),ground.material);
+					p.scale.set( 0.1, 0.1, 0.1 );
+					scene.add( p );
+			}
+
+			// десен контролер
+			var move = false, // дали е натиснат десният спусък
+				rightController = renderer.xr.getController( 0 );
+				rightController.addEventListener( 'selectstart', function(){ move = true; } );
+				rightController.addEventListener( 'selectend', function(){ move = false; } );
+				rightController.add( new THREE.ArrowHelper( new THREE.Vector3(0,0,-1), new THREE.Vector3(0,0,0), 20, 'red', 1, 0.4 ) );
+				//scene.add( rightController );
+			
+			// подвижен потребител
+			var user = new THREE.Group();
+				user.add( camera );
+				user.add( rightController );
+				scene.add( user );
+
+			var v = new THREE.Vector3();
+			
+			function animate( t, dT )
+			{
+				if( move )
+				{
+					// сочена посока
+					rightController.getWorldDirection( v );
+					
+					// преобразуване в хоризонтален вектор с дължина 1
+					v.y = 0;
+					v.normalize();
+					
+					// движение по посока на вектора
+					user.position.addScaledVector( v, -10*dT );
+				}
+			}
+		</script>	
+	</body>
+</html>
+
+

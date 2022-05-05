@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1305: Контролери</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="VRButton.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxInitVR();
+			
+			// създаване на куб 
+			var geometry = new THREE.BoxGeometry( 3, 3, 3, 10, 10, 10 ),
+				material = new THREE.MeshBasicMaterial( {color: 'black', wireframe: true} ),
+				cube = new THREE.Mesh( geometry, material );
+				cube.position.y = 1.5;
+				scene.add( cube );
+
+			var rightController = renderer.xr.getController( 0 );
+				rightController.addEventListener( 'select', function(){ console.log('Десен контролер използван спусък'); } );
+				rightController.addEventListener( 'selectstart', function(){ console.log('Десен контролер натиснат спусък'); } );
+				rightController.addEventListener( 'selectend', function(){ console.log('Десен контролер пуснат спусък'); } );
+				rightController.addEventListener( 'squeeze', function(){ console.log('Десен контролер използвана ръкохватка'); } );
+				rightController.addEventListener( 'squeezestart', function(){ console.log('Десен контролер стисната ръкохватка'); } );
+				rightController.addEventListener( 'squeezeend', function(){ console.log('Десен контролер пусната ръкохватка'); } );
+
+			var leftController = renderer.xr.getController( 1 );
+				leftController.addEventListener( 'select', function(){ console.log('Ляв контролер използван спусък'); } );
+				leftController.addEventListener( 'selectstart', function(){ console.log('Ляв контролер натиснат спусък'); } );
+				leftController.addEventListener( 'selectend', function(){ console.log('Ляв контролер пуснат спусък'); } );
+				leftController.addEventListener( 'squeeze', function(){ console.log('Ляв контролер използвана ръкохватка'); } );
+				leftController.addEventListener( 'squeezestart', function(){ console.log('Ляв контролер стисната ръкохватка'); } );
+				leftController.addEventListener( 'squeezeend', function(){ console.log('Ляв контролер пусната ръкохватка'); } );
+			
+			function animate()
+			{
+				// резултатът се вижда в конзолата
+			}
+		</script>	
+	</body>
+</html>
+
+

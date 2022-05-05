@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1304: Тунел</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="VRButton.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxInitVR();
+			
+			// създаване на тунел 
+			var geometry = new THREE.BoxGeometry( 3, 3, 30, 10, 10, 100 ),
+				material = new THREE.MeshBasicMaterial( {color: 'black', wireframe: true} ),
+				cube = new THREE.Mesh( geometry, material );
+				cube.position.y = 1.5; // основата на тунела е на ниво 0
+				scene.add( cube );
+
+			var user = new THREE.Group();
+				user.add( camera );
+				scene.add( user );
+			
+			function animate( t )
+			{
+				user.position.z = 14*Math.sin(t/2);
+			}
+		</script>	
+	</body>
+</html>
+
+

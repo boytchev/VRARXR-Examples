@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1302: VR куб</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="VRButton.js"></script> <!-- първи ред на промяна -->
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxInit();
+				
+			document.body.appendChild( VRButton.createButton( renderer ) ); // втори ред на промяна
+			renderer.xr.enabled = true; // трети ред на промяна
+			
+			camera.position.set( 0, 0, 0 );
+			
+			// създаване на куб 
+			var geometry = new THREE.BoxGeometry( 3, 3, 3, 10, 10, 10 ),
+				material = new THREE.MeshBasicMaterial( {color: 'black', wireframe: true} ),
+				cube = new THREE.Mesh( geometry, material );
+				scene.add( cube );
+
+			function animate()
+			{
+			}
+		</script>	
+	</body>
+</html>
+
+
