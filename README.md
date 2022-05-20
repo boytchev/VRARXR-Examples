@@ -17,6 +17,7 @@
 
 ## Упражнения
 - [Упражнение №9 &ndash; Позициониране](#упражнение-9--позициониране)
+- [Упражнение №10 &ndash; Камера](#упражнение-10--камера)
 
 
 ## Лекция №1 &ndash; Запознаване
@@ -847,7 +848,7 @@
 
 **S0903**. Къде сме ние.
 
-[<kbd><img src="ExercisesBG/09/S0903-My-locaiton-map.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0903-My-locaiton-map)
+[<kbd><img src="ExercisesBG/09/S0903-My-locaiton-map.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0903-My-locaiton-map.html)
 
 **S0905**. Диапазони на ъгли.
 
@@ -875,4 +876,50 @@
 
 
 
+
+## Упражнение №10 &ndash; Камера
+
+**S1001**. 
+
+[<kbd><img src="ExercisesBG/10/S1001-Front-camera.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1001-Front-camera.html)
+
+**S1002**. 
+
+[<kbd><img src="ExercisesBG/10/S1001-Rear-camera.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1001-Rear-camera.html)
+
+**S1003**. 
+
+[<kbd><img src="ExercisesBG/10/S1002-Black-and-white-photo.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1002-Black-and-white-photo.html)
+
+**S1005**. 
+
+[<kbd><img src="ExercisesBG/10/S1005-Haar-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1005-Haar-1.html)
+
+**S1005**. 
+
+[<kbd><img src="ExercisesBG/10/S1005-Haar-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1005-Haar-2.html)
+
+**S1006**. 
+
+[<kbd><img src="ExercisesBG/10/S1006-Face-video-detection-(pico.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1006-Face-video-detection-(pico.js).html)
+
+**S1007**. 
+
+[<kbd><img src="ExercisesBG/10/S1007-Face-control-(pico.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1007-Face-control-(pico.js).html)
+
+**S1008**. 
+
+[<kbd><img src="ExercisesBG/10/S1008-Face-video-detection-(tracking.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1008-Face-video-detection-(tracking.js).html)
+
+**S1009**. 
+
+[<kbd><img src="ExercisesBG/10/S1009-UFO.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1009-UFO.html)
+
+**S1009**. 
+
+[<kbd><img src="ExercisesBG/10/S1009-UFO-Body.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1009-UFO-Body.html)
+
+**S1010**. 
+
+[<kbd><img src="ExercisesBG/10/S1010-Face-control-(clmtrackr.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1010-Face-control-(clmtrackr.js).html)
 
