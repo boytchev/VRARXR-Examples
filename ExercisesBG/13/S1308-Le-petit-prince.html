@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>S1308: Малкият принц</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="VRButton.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxInitVR();
+
+			// небе
+			scene.background = new THREE.Color(0x000010);
+			
+			// планета
+			var planet = new THREE.Mesh(
+				new THREE.IcosahedronGeometry( 40, 7 ),
+				new THREE.MeshLambertMaterial( {color: 'brown'} )
+			);
+			scene.add( planet );
+
+			// звезди - ръчно създадена геометрия
+			var points = [], point = new THREE.Vector3(),
+				starGeometry = new THREE.BufferGeometry();
+				
+			for (var i=0; i<5000; i++)
+			{
+				point.set( THREE.Math.randFloatSpread(1), THREE.Math.randFloatSpread(1), THREE.Math.randFloatSpread(1) );
+				point.setLength( THREE.Math.randFloat(400,900) );
+				points.push( point.x, point.y, point.z );
+			}
+				
+			starGeometry.setAttribute( 'position', new THREE.BufferAttribute( new Float32Array(points), 3 ) );
+			
+			var stars = new THREE.Points( starGeometry, new THREE.PointsMaterial( {size:2} ) );
+				planet.add( stars );
+
+				
+			// стъбло на дърво
+			var stem = new THREE.Mesh(
+				new THREE.CylinderGeometry( 0.1, 1, 6 ),
+				new THREE.MeshLambertMaterial( {color: 'brown'} )
+			);
+			stem.position.y = 42.5;
+			
+			// коро... хм листа на дърво, че онази дума е мръсна
+			var leaves = new THREE.Mesh(
+				new THREE.IcosahedronGeometry( 4, 0 ),
+				new THREE.MeshLambertMaterial( {color: 'green'} )
+			);
+			leaves.position.y = 47;
+			
+			// едно дърво като групов обект, точката (0,0,0)
+			// е на 40 единици под основата на стъблото
+			var masterTree = new THREE.Group();
+			masterTree.add( stem, leaves );
+			
+			
+			// създаване на много дървета по планетата
+			for (var i=0; i<100; i++)
+			{
+				var tree = masterTree.clone();
+				tree.rotation.set( 2*Math.PI*Math.random(), 2*Math.PI*Math.random(), 2*Math.PI*Math.random() );
+				planet.add( tree );
+			}
+			
+			// десен контролер
+			var rightController = renderer.xr.getController( 0 );
+			
+			// подвижен потребител със собствена светлина
+			var user = new THREE.Group();
+				user.add( camera, rightController );
+				user.position.y = 40+1.6;
+				scene.add( user );
+
+			var axis = new THREE.Vector3();
+			
+			function animate( t, dT )
+			{
+				// взимаме оста X (ляво-дясно) на контролера
+				var matrix = rightController.matrixWorld.elements;
+				axis.set( matrix[0], matrix[1], matrix[2] ).normalize();
+		
+				// въртим планетата заедно с дърветата около тази ос
+				planet.rotateOnWorldAxis( axis, 0.2*dT );
+			}
+		</script>	
+	</body>
+</html>
+
+

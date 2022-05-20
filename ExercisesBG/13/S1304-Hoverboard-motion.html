@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1304: Двуколка</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="VRButton.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxInitVR();
+
+			// земя
+			var ground = new THREE.Mesh(
+				new THREE.BoxGeometry( 300, 4, 300 ),
+				new THREE.MeshPhongMaterial( {color: 'lightgreen'} )
+			);
+			ground.position.set( 0, -2, 0 );
+			ground.receiveShadow = true;
+			scene.add( ground );
+
+			// мрежа от квадратчета по земята
+			scene.add( new THREE.GridHelper( 300, 30, 'white', 'white' ) );
+			
+			// пилони 
+			for( var i=0; i<60; i++)
+			{
+				var p = pillar( new THREE.Vector3(THREE.Math.randFloat(-100,100),THREE.Math.randFloat(10,100),THREE.Math.randFloat(-100,100)),ground.material);
+					p.scale.set( 0.1, 0.1, 0.1 );
+					scene.add( p );
+			}
+
+			// десен контролер
+			var right = false, // дали е натиснат десният спусък
+				rightController = renderer.xr.getController( 0 );
+				rightController.addEventListener( 'selectstart', function(){ right = true; } );
+				rightController.addEventListener( 'selectend', function(){ right = false; } );
+
+			// ляв контролер
+			var left = false, // дали е натиснат левият спусък
+				leftController = renderer.xr.getController( 1 );
+				leftController.addEventListener( 'selectstart', function(){ left = true; } );
+				leftController.addEventListener( 'selectend', function(){ left = false; } );
+			
+			// подвижен потребител
+			var user = new THREE.Group();
+				user.add( camera );
+				scene.add( user );
+				
+			var dir = new THREE.Vector3( 0, 0, -10 ), // вектор на движение
+				axisY = new THREE.Vector3( 0, 1, 0 ), // вертикална посока
+				angle = 0.6; // скорост на въртене
+			
+			function animate( t, dT )
+			{
+				if( left && right )
+				{
+					// движение напред
+					user.position.addScaledVector( dir, dT );
+				}
+				else if( left )
+				{
+					// движение напред със завой наляво
+					user.rotation.y -= angle*dT;
+					dir.applyAxisAngle( axisY, -angle*dT );
+					user.position.addScaledVector( dir, dT );
+				}
+				else if( right )
+				{
+					// движение напред със завой надясно
+					user.rotation.y += angle*dT;
+					dir.applyAxisAngle( axisY, angle*dT );
+					user.position.addScaledVector( dir, dT );
+				}
+			}
+		</script>	
+	</body>
+</html>
+
+

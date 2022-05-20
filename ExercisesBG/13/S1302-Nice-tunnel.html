@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1304: Тунел</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="VRButton.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxInitVR();
+			
+			scene.background = 'black';
+			scene.fog = new THREE.Fog( 'black', 0, 10 );
+			
+			var texture = new THREE.TextureLoader().load( 'cube.png' );
+				texture.wrapS = THREE.RepeatWrapping;
+				texture.wrapT = THREE.RepeatWrapping;
+				texture.repeat.set( 10, 100 );
+				
+			// създаване на тунел 
+			var geometry = new THREE.BoxGeometry( 3, 30, 3 ).rotateX(Math.PI/2),
+				material = new THREE.MeshBasicMaterial( {map: texture, side: THREE.BackSide} ),
+				tunnel = new THREE.Mesh( geometry, material );
+				tunnel.position.y = 1.5;
+				scene.add( tunnel );
+				
+			// създаване на двата края на тунела
+			// (заради текстурата - да не я променяме ръчно)
+			var texture = new THREE.TextureLoader().load( 'cube.png' );
+				texture.wrapS = THREE.RepeatWrapping;
+				texture.wrapT = THREE.RepeatWrapping;
+				texture.repeat.set( 10, 10 );
+			var geometry = new THREE.BoxGeometry( 3, 3, 3 ),
+				material = new THREE.MeshBasicMaterial( {map: texture} ),
+				side = new THREE.Mesh( geometry, material );
+				side.position.set( 0, 1.5, 15+4*0.3 );
+				scene.add( side );
+
+			side = side.clone();
+				side.position.set( 0, 1.5, -15-4*0.3 );
+				scene.add( side );
+
+			// единични кубчета, пръснати случайно
+			var texture = new THREE.TextureLoader().load( 'cube.png' );
+				texture.wrapS = THREE.RepeatWrapping;
+				texture.wrapT = THREE.RepeatWrapping;
+				texture.repeat.set( 1, 1 );
+			var geometry = new THREE.BoxGeometry( 0.3, 0.3, 0.3 ),
+				material = new THREE.MeshBasicMaterial( {map: texture} );
+			
+			for( var i=0; i<150; i++ )
+			{
+				var x = -1.5+0.15 + 0.3*THREE.Math.randInt(0,9),
+					y = 0.15,
+					z = THREE.Math.randInt(-140,140)*0.3+0.15;
+					
+				box = new THREE.Mesh( geometry, material );
+				box.position.set( x, y, z );
+				scene.add( box );
+			}
+			
+			
+			var user = new THREE.Group();
+				user.add( camera );
+				scene.add( user );
+			
+			function animate( t )
+			{
+				user.position.z = 13.7*Math.sin(t/4);
+			}
+		</script>	
+	</body>
+</html>
+
+

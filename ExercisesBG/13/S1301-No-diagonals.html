@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>S1301: Без диагонали</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="VRButton.js"></script>
+		<script src="vax.js"></script>
+		
+	</head>
+	
+	<body>
+		<script>
+			vaxInitVR();
+			
+			// създаване на куб 
+			var cube = new THREE.Group();
+				scene.add( cube );
+
+			// двойка противоположни стени
+			var pair = new THREE.Group();
+			
+			var side = new THREE.GridHelper( 3, 10, 'black', 'black' );
+				side.position.y = 1.5;
+				pair.add( side );
+
+			side = side.clone();
+				side.position.y = -1.5;
+				pair.add( side );
+			
+			// първа двойка
+			cube.add( pair );
+			
+			// втора двойка
+			pair = pair.clone();
+			pair.rotation.x = Math.PI/2;
+			cube.add( pair );
+			
+			// трета двойка
+			pair = pair.clone();
+			pair.rotation.z = Math.PI/2;
+			cube.add( pair );
+			
+			var centered,
+				v = new THREE.Vector3();
+			
+			function animate( t )
+			{
+				// само веднъж
+				if( !centered && renderer.xr.isPresenting )
+				{
+					// местим куба там, където е шлема
+					cube.position.y = renderer.xr.getCamera(camera).getWorldPosition(v).y;
+
+					centered = cube.position.y != 0;
+				}
+			}
+		</script>	
+	</body>
+</html>
+
+
