@@ -879,47 +879,47 @@
 
 ## Упражнение №10 &ndash; Камера
 
-**S1001**. 
+**S1001**. Включване на предна (селфи) камера.
 
 [<kbd><img src="ExercisesBG/10/S1001-Front-camera.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1001-Front-camera.html)
 
-**S1002**. 
+**S1001**. Включване на задна камера.
 
 [<kbd><img src="ExercisesBG/10/S1001-Rear-camera.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1001-Rear-camera.html)
 
-**S1003**. 
+**S1002**. Показване на черно-бял кадър от камерата.
 
 [<kbd><img src="ExercisesBG/10/S1002-Black-and-white-photo.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1002-Black-and-white-photo.html)
 
-**S1005**. 
+**S1005**. Хаар шаблон 1.
 
 [<kbd><img src="ExercisesBG/10/S1005-Haar-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1005-Haar-1.html)
 
-**S1005**. 
+**S1005**. Хаар шаблон 2.
 
 [<kbd><img src="ExercisesBG/10/S1005-Haar-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1005-Haar-2.html)
 
-**S1006**. 
+**S1006**. Намиране на лица във видео с pico.js.
 
 [<kbd><img src="ExercisesBG/10/S1006-Face-video-detection-(pico.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1006-Face-video-detection-(pico.js).html)
 
-**S1007**. 
+**S1007**. Контролиране на 3D обект с лице.
 
 [<kbd><img src="ExercisesBG/10/S1007-Face-control-(pico.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1007-Face-control-(pico.js).html)
 
-**S1008**. 
+**S1008**. Намиране на лица във видео с tracking.js.
 
 [<kbd><img src="ExercisesBG/10/S1008-Face-video-detection-(tracking.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1008-Face-video-detection-(tracking.js).html)
 
-**S1009**. 
-
-[<kbd><img src="ExercisesBG/10/S1009-UFO.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1009-UFO.html)
-
-**S1009**. 
+**S1009**. Опростен модел на НЛО.
 
 [<kbd><img src="ExercisesBG/10/S1009-UFO-Body.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1009-UFO-Body.html)
 
-**S1010**. 
+**S1009**. Полет на НЛО с камера и добавена реалност.
+
+[<kbd><img src="ExercisesBG/10/S1009-UFO.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1009-UFO.html)
+
+**S1010**. Намиране на черти на лица с clmtrackr.js.
 
 [<kbd><img src="ExercisesBG/10/S1010-Face-control-(clmtrackr.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1010-Face-control-(clmtrackr.js).html)
 
