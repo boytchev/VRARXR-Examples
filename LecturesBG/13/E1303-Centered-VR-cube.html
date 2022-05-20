@@ -9,7 +9,6 @@
 		
 		<script src="three.min.js"></script>
 		<script src="VRButton.js"></script>
-		<script src="WebGL.js"></script>
 		<script src="vax.js"></script>
 	</head>
 	
@@ -18,7 +17,7 @@
 			vaxInitVR();
 			
 			// създаване на куб 
-			var geometry = new THREE.BoxBufferGeometry( 3, 3, 3, 10, 10, 10 ),
+			var geometry = new THREE.BoxGeometry( 3, 3, 3, 10, 10, 10 ),
 				material = new THREE.MeshBasicMaterial( {color: 'black', wireframe: true} ),
 				cube = new THREE.Mesh( geometry, material );
 				scene.add( cube );
@@ -35,7 +34,7 @@
 					//cube.position.y = renderer.xr.getCamera(camera).getWorldPosition(v).y;
 					renderer.xr.getCamera(camera).getWorldPosition( cube.position );
 
-					centered = true;
+					centered = cube.position.y!=0;
 				}
 			}
 		</script>	

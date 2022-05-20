@@ -17,19 +17,20 @@
 			vaxInitVR();
 
 			// земя
-			var ground = new THREE.Mesh(
+			var	ground = new THREE.Mesh(
 				new THREE.BoxGeometry(300,4,300),
 				new THREE.MeshPhongMaterial({color:'lightgreen'})
 			);
+			ground.material.polygonOffset = true;
+			ground.material.polygonOffsetUnits = 1;
+			ground.material.polygonOffsetFactor = 1;
 			ground.position.set( 0, -2, 0 );
 			scene.add( ground );
 
 			// мрежа от квадратчета по земята
-			var grid = new THREE.GridHelper( 300, 30, 'white', 'white' ) ;
+			var grid = new THREE.GridHelper( 300, 30, 'white', 'white' );
 				grid.material.transparent = true;
-				grid.material.opacity = 0.4;
-				grid.renderOrder = 1;
-				grid.position.set( 0, 0.1, 0 );
+				grid.material.opacity = 0.5;
 			scene.add( grid );
 			
 			// пилони 
