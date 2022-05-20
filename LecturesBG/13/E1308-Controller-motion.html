@@ -15,7 +15,7 @@
 	<body>
 		<script>
 			vaxInitVR();
-			camera = new THREE.PerspectiveCamera( 60, 1, 0.1, 400 );
+			camera = new THREE.PerspectiveCamera( 30, 1, 0.2, 200 );
 
 			// земя
 			var	ground = new THREE.Mesh(
@@ -23,15 +23,15 @@
 				new THREE.MeshPhongMaterial({color:'lightgreen'})
 			);
 			ground.material.polygonOffset = true;
-			ground.material.polygonOffsetUnits = 1;
-			ground.material.polygonOffsetFactor = 1;
+			ground.material.polygonOffsetUnits = 2;
+			ground.material.polygonOffsetFactor = 2;
 			ground.position.set( 0, -2, 0 );
 			scene.add( ground );
 
 			// мрежа от квадратчета по земята
 			var grid = new THREE.GridHelper( 300, 30, 'white', 'white' );
 				grid.material.transparent = true;
-				grid.material.opacity = 0.5;
+				grid.material.opacity = 0.3;
 			scene.add( grid );
 			
 			// пилони 
