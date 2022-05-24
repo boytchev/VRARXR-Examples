@@ -14,6 +14,7 @@
 - [Лекция №11 &ndash; Текстури](#лекция-11--текстури)
 - [Лекция №12 &ndash; Скелети](#лекция-12--скелети)
 - [Лекция №13 &ndash; VR шлемове](#лекция-13--vr-шлемове)
+- [Лекция №14 &ndash; Външни модели](#лекция-14--външни-модели)
 
 ## Упражнения
 - [Упражнение №9 &ndash; Позициониране](#упражнение-9--позициониране)
@@ -840,6 +841,88 @@
 **E1312**. Създаване на кубове с посочване с контролер.
 
 [<kbd><img src="LecturesBG/13/E1312-Creating-cubes.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/13/E1312-Creating-cubes.html)
+
+
+
+
+
+## Лекция №14 &ndash; Външни модели
+
+**E1401**. Глобално аудио.
+
+[<kbd><img src="LecturesBG/14/E1401-Global-audio.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1401-Global-audio.html)
+
+**E1402**. Позиционно аудио.
+
+[<kbd><img src="LecturesBG/14/E1402-Positional-audio.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1402-Positional-audio.html)
+
+**E1403**. Булдозер в 3MF формат 1 (счупен).
+
+[<kbd><img src="LecturesBG/14/E1403-3MF-bulldozer-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1403-3MF-bulldozer-1.html)
+
+**E1404**. Булдозер в 3MF формат 2 (накриво).
+
+[<kbd><img src="LecturesBG/14/E1404-3MF-bulldozer-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1404-3MF-bulldozer-2.html)
+
+**E1405**. Булдозер в 3MF формат 3.
+
+[<kbd><img src="LecturesBG/14/E1405-3MF-bulldozer-3.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1405-3MF-bulldozer-3.html)
+
+**E1406**. Елф Collada формат.
+
+[<kbd><img src="LecturesBG/14/E1406-Collada-elf.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1406-Collada-elf.html)
+
+**E1407**. Поза на скелет в BVH формат.
+
+[<kbd><img src="LecturesBG/14/E1407-BVH-posture.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1407-BVH-posture.html)
+
+**E1408**. Пирует на скелет в BVH формат.
+
+[<kbd><img src="LecturesBG/14/E1408-BVH-pirouette.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1408-BVH-pirouette.html)
+
+**E1409**. Модел на Mixamo 1 (тъмни текстури).
+
+[<kbd><img src="LecturesBG/14/E1409-Mixamo-boss-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1409-Mixamo-boss-1.html)
+
+**E1410**. Модел на Mixamo 2.
+
+[<kbd><img src="LecturesBG/14/E1410-Mixamo-boss-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1410-Mixamo-boss-2.html)
+
+**E1411**. Няколко модела едновременно.
+
+[<kbd><img src="LecturesBG/14/E1411-Several-models.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1411-Several-models.html)
+
+**E1412**. Феникс 1 (вече без грешка в шейдъра).
+
+[<kbd><img src="LecturesBG/14/E1412-Phoenix-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1412-Phoenix-1.html)
+
+**E1413**. Феникс 2 (променен материал).
+
+[<kbd><img src="LecturesBG/14/E1413-Phoenix-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1413-Phoenix-2.html)
+
+**E1414**. Феникс 3 (грешни текстури).
+
+[<kbd><img src="LecturesBG/14/E1414-Phoenix-3.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1414-Phoenix-3.html)
+
+**E1415**. Феникс 4.
+
+[<kbd><img src="LecturesBG/14/E1415-Phoenix-4.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1415-Phoenix-4.html)
+
+**E1416**. Модел на слон.
+
+[<kbd><img src="LecturesBG/14/E1416-Elephant.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1416-Elephant.html)
+
+**E1417**. модел на Mixamo за GIF анимация.
+
+[<kbd><img src="LecturesBG/14/E1417-GIF-Boss.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1417-GIF-Boss.html)
+
+**E1418**. Тест на GIF анимация.
+
+[<kbd><img src="LecturesBG/14/E1418-GIF-Boss-test.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1418-GIF-Boss-test.html)
+
+**E1419**. Експорт в GLTF формат.
+
+[<kbd><img src="LecturesBG/14/E1419-GLTF-export.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/14/E1419-GLTF-export.html)
 
 
 
