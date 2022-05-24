@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1411: Няколко модела (FBX и OBJ формати)</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="FirstPersonControls.js"></script>
+		<script src="FBXLoader.js"></script>
+		<script src="OBJLoader.js"></script>
+		<script src="fflate.min.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxSceneInit( 0 );
+				
+			scene.background = new THREE.Color( 'lightgray' );
+			
+			ambientLight.color = new THREE.Color( 'white' );
+			spotLight.position.set( -80, 40, 20 );
+			spotLight.intensity = 1;
+
+			renderer.gammaFactor = 0.7;
+				
+			// навигация
+			var control = new THREE.FirstPersonControls( camera, renderer.domElement );
+				control.lookSpeed = 0.1;
+				control.movementSpeed = 10;
+				
+			// създаване на Mei
+			var mei,
+				meiAnimator,
+				meiLoader = new THREE.FBXLoader().load( 'Models/sketchfab/mei/Mei_Run.fbx', meiLoaded );
+			
+			function meiLoaded( object )
+			{
+				mei = object;
+				mei.traverse( function ( child )
+				{
+					if( child.isMesh )
+					{
+						child.material.map.encoding = THREE.GammaEncoding;
+						child.castShadow = true;
+						child.receiveShadow = true;
+					}
+				} );				
+				
+				mei.scale.set( 0.1, 0.1, 0.1 );
+				scene.add( mei );
+				
+				// анимация
+				meiAnimator = new THREE.AnimationMixer( mei );
+				meiAnimator.clipAction( mei.animations[0] ).play();
+			}
+
+			new THREE.OBJLoader().load( 'Models/sketchfab/trees/source/Stylized TreeA.obj', treeLoaded );
+			
+			function treeLoaded( tree )
+			{
+				tree.children[0].material.map = new THREE.TextureLoader().load( 'Models/sketchfab/trees/textures/TreeOF1.png' );
+				tree.children[0].material.alphaMap = new THREE.TextureLoader().load( 'Models/sketchfab/trees/textures/TreeOFAlpha.jpg' );
+				tree.children[0].material.transparent = true;
+			
+				tree.children[1].material = ground.material;
+				
+				tree.traverse( function ( child )
+				{
+					if( child.isMesh )
+					{
+						child.material.side = THREE.DoubleSide;
+						child.castShadow = true;
+						child.receiveShadow = true;
+					}
+				} );				
+				
+				tree.scale.set( 5, 5, 5 );
+				scene.add( tree );
+			}
+
+			function animate( t, dT )
+			{
+				if( meiAnimator ) meiAnimator.update( dT );
+				
+				control.update( dT );
+				
+				if( mei )
+				{
+					mei.position.x = 34*Math.cos(t);
+					mei.position.z = 34*Math.sin(t);
+					
+					mei.rotation.y = -t;
+				}
+				
+				camera.position.x = THREE.Math.clamp( camera.position.x, -200, 200 );
+				camera.position.y = THREE.Math.clamp( camera.position.y, 2, 100 );
+				camera.position.z = THREE.Math.clamp( camera.position.z, -200, 200 );
+			}
+			
+		</script>	
+	</body>
+</html>
+
+

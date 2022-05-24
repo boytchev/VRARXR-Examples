@@ -1,0 +1,11 @@
+Model Information:
+* title:	Elephant Idle
+* source:	https://sketchfab.com/3d-models/elephant-idle-a8e7e10f005f4baab0a2f5079d759fcd
+* author:	GremorySaiyan (https://sketchfab.com/GremorySaiyan)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Elephant Idle" (https://sketchfab.com/3d-models/elephant-idle-a8e7e10f005f4baab0a2f5079d759fcd) by GremorySaiyan (https://sketchfab.com/GremorySaiyan) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

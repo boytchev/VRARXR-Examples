@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1408: Пирует (BVH формат)</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="FirstPersonControls.js"></script>
+		<script src="BVHLoader.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxSceneInit( 20 );
+				
+			scene.background = new THREE.Color( 'lightgray' );
+			
+			var light = new THREE.PointLight( 'white', 1 );
+				light.position.z = -50;
+				scene.add( light );
+				
+			// навигация
+			var control = new THREE.FirstPersonControls( camera, renderer.domElement );
+				control.lookSpeed = 0.1;
+				control.movementSpeed = 10;
+				
+			// създаване на поза
+			var loader = new THREE.BVHLoader( );
+				loader.load( 'Models/pirouette.bvh', objectLoaded );
+				
+			var animator,dancer;
+			
+			function objectLoaded( object )
+			{
+				// танцьорът е главната костт* на скелета
+				dancer = object.skeleton.bones[ 0 ];
+					dancer.skeleton = object.skeleton;
+					dancer.scale.set( 0.1, 0.1, 0.1 );
+					dancer.position.y = 8.5;
+					scene.add( dancer );
+				
+				// добавяме образ за скелета
+				var dancerSkeleton = new THREE.SkeletonHelper( dancer );
+					dancerSkeleton.material.depthTest = true;
+					dancerSkeleton.material.depthWrite = true;
+					dancerSkeleton.castShadow = true;
+					scene.add( dancerSkeleton );
+
+				// променяме цветовете, че оригиналните синьо и зелено
+				// се сливат със зелената земя и зелените пилони
+				var colors = dancerSkeleton.geometry.getAttribute('color');
+				for( var i=0; i<colors.count; i+=2)
+				{
+					colors.setXYZ( i,   1, 0, 0 );
+					colors.setXYZ( i+1, 0, 0, 0 );
+				}
+				colors.needsUpdate = true;
+				
+				// анимация
+				animator = new THREE.AnimationMixer( dancer );
+				animator.clipAction( object.clip ).play();
+			}
+
+			function animate( t, dT )
+			{
+				if( animator ) animator.update( dT );
+				control.update( dT );
+				
+				if( dancer )
+				{
+					dancer.position.multiplyScalar( 0.1 );
+					dancer.position.y -= 0.75;
+				}
+				
+				camera.position.x = THREE.Math.clamp( camera.position.x, -200, 200 );
+				camera.position.y = THREE.Math.clamp( camera.position.y, 2, 100 );
+				camera.position.z = THREE.Math.clamp( camera.position.z, -200, 200 );
+			}
+			
+			
+			// _________________________________________________
+			// *с две "т"-та, че в Е1407 има едно липсващо
+			//
+		</script>	
+	</body>
+</html>
+
+

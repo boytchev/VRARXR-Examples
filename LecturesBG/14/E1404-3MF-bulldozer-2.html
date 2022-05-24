@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1404: Булдозер (3MF формат) - опит 2</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="FirstPersonControls.js"></script>
+		<script src="3MFLoader.js"></script>
+		<script src="fflate.min.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxSceneInit( 20 );
+				
+			scene.background = new THREE.Color( 'lightgray' );
+			
+			var light = new THREE.PointLight( 'white', 1 );
+				light.position.z = -50;
+				scene.add( light );
+				
+			// навигация
+			var control = new THREE.FirstPersonControls( camera, renderer.domElement );
+				control.lookSpeed = 0.1;
+				control.movementSpeed = 10;
+				
+			// създаване на булдозер
+			var loader = new THREE.ThreeMFLoader( );
+				loader.load( 'Models/truck.3mf', objectLoaded );
+				
+			function objectLoaded( object )
+			{
+				scene.add( object );
+			}
+
+			function animate( t, dT )
+			{
+				control.update( dT );
+				
+				camera.position.x = THREE.Math.clamp( camera.position.x, -200, 200 );
+				camera.position.y = THREE.Math.clamp( camera.position.y, 2, 100 );
+				camera.position.z = THREE.Math.clamp( camera.position.z, -200, 200 );
+			}
+		</script>	
+	</body>
+</html>
+
+

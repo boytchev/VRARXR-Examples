@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1419: Експорт на GLTF</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="GLTFExporter.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<a id="link" style="display: none;"></a>
+		<button onclick="exportObject()" style="position:fixed; z-index:10;">Export</button>
+		<script>
+			vaxInit( );
+
+			scene.background = new THREE.Color( 0, 0, 0 );
+			
+			// създаване на основното тяло
+			var geometry = new THREE.IcosahedronBufferGeometry( 21 ),
+				material = new THREE.MeshStandardMaterial({
+									color: 'deeppink',
+									metalness: 0.8,
+									roughness: 0.5
+								});
+				virus = new THREE.Mesh( geometry, material );
+
+			// създаване на онова там, не знам как се казва, стърчащото на вируса
+			
+			var pos = geometry.getAttribute( 'position' ),
+				nor = geometry.getAttribute( 'normal' );
+				
+			for( var i=0; i<pos.count; i+=3 )
+			{
+				// средата на всяка стена
+				var x = (pos.getX(i) + pos.getX(i+1) + pos.getX(i+2)) / 3,
+					y = (pos.getY(i) + pos.getY(i+1) + pos.getY(i+2)) / 3,
+					z = (pos.getZ(i) + pos.getZ(i+1) + pos.getZ(i+2)) / 3;
+					
+				// нормалният вектр към стената
+				var nx = x + nor.getX(i),
+					ny = y + nor.getY(i),
+					nz = z + nor.getZ(i);
+					
+				// създаваме пилон на това място
+				var p = pillar( new THREE.Vector3(0,30,0), material );
+					p.geometry.rotateX( Math.PI/2 );
+					p.scale.set( 0.3, 0.3, 0.3 );
+					p.position.set( x, y, z );
+					p.lookAt( 10*nx, 10*ny, 10*nz );
+					
+					virus.add( p );
+			}
+			
+			// контурите на додекаедър, свързващ върховете на пилоните
+			// искосаедъра има 20 стени, т.е. 20 пилона, а додекаедъра
+			// има 20 върха - по един за всеки пилон, за да са щастливи
+			var lines = new THREE.LineSegments(
+							new THREE.EdgesGeometry( new THREE.DodecahedronBufferGeometry( 26 ) ),
+							new THREE.LineBasicMaterial( {color: 'white', transparent: true, opacity: 0.5, depthWrite: false} )
+						);
+				lines.rotation.y = 5*Math.PI/10;
+				virus.add( lines );
+			
+			scene.add( virus );
+			
+			
+			// въртене на вируса
+			function animate( t )
+			{
+				virus.rotation.set( t/3, t/5, t/4 );
+			}
+
+
+			// запис на вируса
+			function exportObject()
+			{
+				var exporter = new THREE.GLTFExporter();
+
+				exporter.parse( virus, function ( data )
+				{
+					link = document.getElementById( 'link' );
+					link.href = URL.createObjectURL( new Blob( [data], { type: 'application/octet-stream' } ) );
+					link.download = 'e1419.glb';
+					link.click();
+				}, {binary: true} );			
+			}
+			
+		</script>	
+	</body>
+</html>
+
+

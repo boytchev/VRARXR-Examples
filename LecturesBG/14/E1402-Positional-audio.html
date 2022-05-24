@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1402: Позиционно аудио</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="FirstPersonControls.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<div id="button" style="z-index:100000; position:absolute; text-align:center; width:100%; height:100%; padding-top: 20%; backdrop-filter: blur(0.5em) brightness(60%);">
+			<button onclick="startMusic()" style="font-family: Calibri; font-size:2em; border-radius:0.25em; padding:0.1em 1em; cursor:pointer;">Старт</button>
+		</div>
+		
+		<script>
+			vaxSceneInit();
+
+			// навигация
+			var control = new THREE.FirstPersonControls( camera, renderer.domElement );
+				control.lookSpeed = 0.1;
+				control.movementSpeed = 10;
+				
+			// аудио куб
+			var texture = new THREE.TextureLoader().load( 'cube.png' );
+			var geometry = new THREE.BoxBufferGeometry( 4, 4, 4 ),
+				material = new THREE.MeshBasicMaterial( {map: texture} ),
+				cube = new THREE.Mesh( geometry, material );
+				cube.receiveShadow = true;
+				cube.castShadow = true;
+				cube.position.set( 0, 3, 0 );
+				scene.add( cube );
+				
+			// създаване на глобална музика
+			var listener = new THREE.AudioListener(),
+				audio = new THREE.PositionalAudio( listener ),
+				loader = new THREE.AudioLoader().load( 'Audio/DoKashiteru_-_And_Then_We_Take_Them_Down_Again.mp3', onLoaded );
+
+			// слушателя се добавя към камерата, а аудио обекта към 3D обекта, който излъчва музиката
+			camera.add( listener );
+			cube.add( audio );
+			
+			function onLoaded( audioData )
+			{
+				// при зареждане на данните от файла те се прехвърлят в аудио обекта
+				audio.setBuffer( audioData );
+			}
+					
+			function startMusic()
+			{
+				// при кликване на бутона се скрива бутона и се пуска музиката
+				document.getElementById( 'button' ).style.display = 'none';
+				audio.play();
+			}			
+			
+			function animate( t, dT )
+			{
+				if( audio.isPlaying ) control.update( dT );
+				
+				camera.position.x = THREE.Math.clamp( camera.position.x, -200, 200 );
+				camera.position.y = THREE.Math.clamp( camera.position.y, 2, 100 );
+				camera.position.z = THREE.Math.clamp( camera.position.z, -200, 200 );
+				
+				cube.rotation.set( Math.cos(t)/5, t, Math.cos(2*t)/5 );
+				
+				cube.position.y = 3+0.5*Math.sin(t);
+			}
+		</script>	
+	</body>
+</html>
+
+

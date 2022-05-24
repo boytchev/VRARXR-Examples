@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1416: Слон</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="FirstPersonControls.js"></script>
+		<script src="GLTFLoader.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxSceneInit( );
+				
+			scene.background = new THREE.Color( 'lightgray' );
+			
+			ambientLight.color = new THREE.Color( 'white' );
+			spotLight.position.set( 0, 60, 20 );
+			spotLight.intensity = 1;
+
+			const path = 'Models/sketchfab/elephant/';
+			
+			// навигация
+			var control = new THREE.FirstPersonControls( camera, renderer.domElement );
+				control.lookSpeed = 0.1;
+				control.movementSpeed = 10;
+				
+			// зареждане на феникса
+			new THREE.GLTFLoader().load( path+'scene.gltf', objectLoaded );
+				
+			var animator, phoenix;
+
+			function objectLoaded( object )
+			{
+				phoenix = object.scene;
+
+				// заменяме материала с наш и добавяме сянка
+				object.scene.traverse( function ( child )
+				{
+					if( child.isMesh )
+					{
+						child.material = new THREE.MeshPhongMaterial({
+							map: new THREE.TextureLoader().load(path+'textures/CH_NPC_MOB_Elephant_A01_MI_GRN_baseColor.png'),
+							normalMap: new THREE.TextureLoader().load(path+'textures/CH_NPC_MOB_Elephant_A01_MI_GRN_normal.png'),
+							transparent: true,
+						});
+
+						//мистерия - докато правех примера, трябваше да има
+						//долните два реда, а седмица по-късно - не трябваше
+						
+						//child.material.map.flipY = false;
+						//child.material.normalMap.flipY = false;
+						
+						child.castShadow = true;
+						child.receiveShadow = true;
+					}
+				} );				
+				
+				// нагласяване
+				phoenix.scale.set( 0.5, 0.5, 0.5 );
+				scene.add( phoenix );
+
+				// анимация
+				animator = new THREE.AnimationMixer( phoenix );
+				animator.clipAction( object.animations[0] ).play();
+			}
+
+			function animate( t, dT )
+			{
+				if( animator ) animator.update( dT );
+				control.update( dT );
+				
+				camera.position.x = THREE.Math.clamp( camera.position.x, -200, 200 );
+				camera.position.y = THREE.Math.clamp( camera.position.y, 2, 100 );
+				camera.position.z = THREE.Math.clamp( camera.position.z, -200, 200 );
+			}
+			
+		</script>	
+	</body>
+</html>
+
+

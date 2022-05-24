@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1410: Бос-2 (FBX формат)</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="three.min.js"></script>
+		<script src="FirstPersonControls.js"></script>
+		<script src="FBXLoader.js"></script>
+		<script src="fflate.min.js"></script>
+		<script src="vax.js"></script>
+	</head>
+	
+	<body>
+		<script>
+			vaxSceneInit( );
+				
+			scene.background = new THREE.Color( 'lightgray' );
+			
+			ambientLight.color = new THREE.Color( 'white' );
+			spotLight.position.set( 0, 30, 20 );
+			spotLight.intensity = 1;
+
+			renderer.gammaFactor = 0.8;
+			//renderer.outputEncoding = THREE.GammaEncoding;
+				
+			// навигация
+			var control = new THREE.FirstPersonControls( camera, renderer.domElement );
+				control.lookSpeed = 0.1;
+				control.movementSpeed = 10;
+				
+			// създаване на поза
+			var loader = new THREE.FBXLoader( );
+				loader.load( 'Models/mixamo/BossOffensiveIdle.fbx', objectLoaded );
+				
+			var animator;
+
+			function objectLoaded( object )
+			{
+				// маха лъскавината, слага сенки, включва гама корекция
+				object.traverse( function ( child )
+				{
+					if( child.material )
+					{
+						child.material.shininess = 0;
+						child.material.map.encoding = THREE.GammaEncoding;
+						child.castShadow = true;
+						child.receiveShadow = true;
+					}
+				} );				
+				
+				object.scale.set( 0.05, 0.05, 0.05 );
+				scene.add( object );
+				
+				// анимация
+				animator = new THREE.AnimationMixer( object );
+				animator.clipAction( object.animations[0] ).play();
+			}
+
+			function animate( t, dT )
+			{
+				if( animator ) animator.update( dT );
+				control.update( dT );
+				
+				camera.position.x = THREE.Math.clamp( camera.position.x, -200, 200 );
+				camera.position.y = THREE.Math.clamp( camera.position.y, 2, 100 );
+				camera.position.z = THREE.Math.clamp( camera.position.z, -200, 200 );
+			}
+			
+		</script>	
+	</body>
+</html>
+
+
