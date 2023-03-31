@@ -21,9 +21,9 @@
 			var distance = 150;
 			
 			// Прехващане на мишката
-			window.addEventListener( 'mousedown', onMouseDown, false );
-			window.addEventListener( 'mousemove', onMouseMove, false );
-			window.addEventListener( 'mouseup', onMouseUp, false );
+			window.addEventListener( 'pointerdown', onPointerDown, false );
+			window.addEventListener( 'pointermove', onPointerMove, false );
+			window.addEventListener( 'pointerup',   onPointerUp, false );
 			window.addEventListener( 'contextmenu', onContextMenu, false );
 			
 			// помощни променливи за работа с мишката
@@ -32,7 +32,7 @@
 			var mouseY = 0; // ...позиция на мишката
 			
 			// обработване на натискане на миши бутон
-			function onMouseDown(event)
+			function onPointerDown(event)
 			{
 				mouseButton = event.which;
 				mouseX = event.clientX;
@@ -40,13 +40,13 @@
 			}
 
 			// обработване на пускане на миши бутон
-			function onMouseUp(event)
+			function onPointerUp(event)
 			{
 				mouseButton = false;
 			}
 
 			// обработване на местене на мишката
-			function onMouseMove(event)
+			function onPointerMove(event)
 			{
 				if (!mouseButton) return; // ако не е натиснат бутон
 
@@ -58,13 +58,13 @@
 				if (mouseButton==1)
 				{
 					alpha = alpha-dX/100;
-					beta = THREE.Math.clamp( beta-dY/100, 0.1, 1.4 );
+					beta = THREE.MathUtils.clamp( beta-dY/100, 0.1, 1.4 );
 				}
 				
 				// натиснат е десен бутон
 				if (mouseButton==3)
 				{
-					distance = THREE.Math.clamp( distance+dY, 50, 300 );
+					distance = THREE.MathUtils.clamp( distance+dY, 50, 300 );
 				}
 				
 				// запомняме къде е мишката
