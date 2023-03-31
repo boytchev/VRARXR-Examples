@@ -42,7 +42,7 @@
 			for( var i=0; i<20; i++ )
 			{
 				var cube = new Physijs.BoxMesh( geometry, material );
-					cube.position.set( THREE.Math.randFloat(-50,50), 30+20*i, THREE.Math.randFloat(-50,50) );
+					cube.position.set( THREE.MathUtils.randFloat(-50,50), 30+20*i, THREE.MathUtils.randFloat(-50,50) );
 					cube.receiveShadow = true;
 					cube.castShadow = true;
 					
@@ -62,16 +62,16 @@
 				{
 					// случайна скорост на скок нагоре
 					var v = new THREE.Vector3(
-						THREE.Math.randFloat( -5, 5 ),
-						THREE.Math.randFloat( 30, 80 ),
-						THREE.Math.randFloat( -5, 5 ) );
+						THREE.MathUtils.randFloat( -5, 5 ),
+						THREE.MathUtils.randFloat( 30, 80 ),
+						THREE.MathUtils.randFloat( -5, 5 ) );
 					cubes[idx].setLinearVelocity( v );
 					
 					// случайна скорост на завъртане
 					var v = new THREE.Vector3(
-						THREE.Math.randFloat( -2, 2 ),
-						THREE.Math.randFloat( -2, 2 ),
-						THREE.Math.randFloat( -2, 2 ) );
+						THREE.MathUtils.randFloat( -2, 2 ),
+						THREE.MathUtils.randFloat( -2, 2 ),
+						THREE.MathUtils.randFloat( -2, 2 ) );
 					cubes[idx].setAngularVelocity( v );
 					
 					oldT = t;

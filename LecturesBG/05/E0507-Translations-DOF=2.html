@@ -29,7 +29,7 @@
 			
 			// връзка p-q
 			var wire = new THREE.Mesh(
-				new THREE.CylinderBufferGeometry( 1, 1, 100 ),
+				new THREE.CylinderGeometry( 1, 1, 100 ),
 				ground.material
 			);
 			wire.position.set( 0, 50, -50 );
@@ -53,14 +53,14 @@
 			function animate( t )
 			{
 				// движение на подвижната връзка
-				wire.position.x = THREE.Math.lerp( -50, 50, 0.5+0.45*Math.sin(t) );
+				wire.position.x = THREE.MathUtils.lerp( -50, 50, 0.5+0.45*Math.sin(t) );
 				
 				
 				// движение DOF=1
 				object.position.set(
 					wire.position.x,
 					50,
-					THREE.Math.lerp( -50, 50, 0.5+0.45*Math.cos(8*t) )
+					THREE.MathUtils.lerp( -50, 50, 0.5+0.45*Math.cos(8*t) )
 				);
 				
 				scene.rotation.y = t/10;

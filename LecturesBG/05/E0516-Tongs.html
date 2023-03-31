@@ -44,7 +44,7 @@
 			// клас за елемент на робот
 			function robotElement( sizeX, sizeY, sizeZ, parent )
 			{
-				var robotGeometry = new THREE.BoxBufferGeometry( sizeX, sizeY, sizeZ );
+				var robotGeometry = new THREE.BoxGeometry( sizeX, sizeY, sizeZ );
 				robotGeometry.translate( 0, sizeY/2, 0 );
 				
 				var object = new THREE.Mesh( robotGeometry, robotMaterial );
@@ -85,31 +85,31 @@
 				var k = 0.1;
 				
 				a.rotation.set(
-					THREE.Math.lerp( a.rotation.x, THREE.Math.degToRad(pose.ax), k ),
-					THREE.Math.lerp( a.rotation.y, THREE.Math.degToRad(pose.ay), k ),
+					THREE.MathUtils.lerp( a.rotation.x, THREE.MathUtils.degToRad(pose.ax), k ),
+					THREE.MathUtils.lerp( a.rotation.y, THREE.MathUtils.degToRad(pose.ay), k ),
 					0,
 					'YXZ'
 				);
-				b.rotation.x = THREE.Math.lerp( b.rotation.x, THREE.Math.degToRad(pose.bx), k );
-				c.rotation.x = THREE.Math.lerp( c.rotation.x, THREE.Math.degToRad(pose.cx), k );
+				b.rotation.x = THREE.MathUtils.lerp( b.rotation.x, THREE.MathUtils.degToRad(pose.bx), k );
+				c.rotation.x = THREE.MathUtils.lerp( c.rotation.x, THREE.MathUtils.degToRad(pose.cx), k );
 				
 				// разпереност
 				d1.rotation.set(
-					THREE.Math.lerp( d1.rotation.x, +THREE.Math.degToRad(pose.t2/2), k ),
-					THREE.Math.lerp( d1.rotation.y, THREE.Math.degToRad(pose.t1), k ),
+					THREE.MathUtils.lerp( d1.rotation.x, +THREE.MathUtils.degToRad(pose.t2/2), k ),
+					THREE.MathUtils.lerp( d1.rotation.y, THREE.MathUtils.degToRad(pose.t1), k ),
 					0,
 					'YXZ'
 				);
 				d2.rotation.set(
-					THREE.Math.lerp( d2.rotation.x, -THREE.Math.degToRad(pose.t2/2), k ),
-					THREE.Math.lerp( d2.rotation.y, THREE.Math.degToRad(pose.t1), k ),
+					THREE.MathUtils.lerp( d2.rotation.x, -THREE.MathUtils.degToRad(pose.t2/2), k ),
+					THREE.MathUtils.lerp( d2.rotation.y, THREE.MathUtils.degToRad(pose.t1), k ),
 					0,
 					'YXZ'
 				);
 				
 				// отвореност
-				e1.rotation.x = THREE.Math.lerp( e1.rotation.x, -THREE.Math.degToRad(180-pose.t3), k );
-				e2.rotation.x = THREE.Math.lerp( e2.rotation.x, +THREE.Math.degToRad(180-pose.t3), k );
+				e1.rotation.x = THREE.MathUtils.lerp( e1.rotation.x, -THREE.MathUtils.degToRad(180-pose.t3), k );
+				e2.rotation.x = THREE.MathUtils.lerp( e2.rotation.x, +THREE.MathUtils.degToRad(180-pose.t3), k );
 			}
 		</script>
 	</body>

@@ -41,7 +41,7 @@
 			// функция за елемент на робот
 			function robotElement( sizeX, sizeY, sizeZ, parent )
 			{
-				var robotGeometry = new THREE.BoxBufferGeometry( sizeX, sizeY, sizeZ );
+				var robotGeometry = new THREE.BoxGeometry( sizeX, sizeY, sizeZ );
 				robotGeometry.translate( 0, sizeY/2, 0 );
 				
 				var object = new THREE.Mesh( robotGeometry, robotMaterial );
@@ -75,14 +75,14 @@
 			function animate()
 			{
 				a.rotation.set(
-					THREE.Math.degToRad(pose.ax),
-					THREE.Math.degToRad(pose.ay),
+					THREE.MathUtils.degToRad(pose.ax),
+					THREE.MathUtils.degToRad(pose.ay),
 					0,
 					'YXZ' // сменяме реда на въртене около X и Y
 				);
-				b.rotation.x = THREE.Math.degToRad(pose.bx);
-				c.rotation.x = THREE.Math.degToRad(pose.cx);
-				d.rotation.x = THREE.Math.degToRad(pose.dx);
+				b.rotation.x = THREE.MathUtils.degToRad(pose.bx);
+				c.rotation.x = THREE.MathUtils.degToRad(pose.cx);
+				d.rotation.x = THREE.MathUtils.degToRad(pose.dx);
 			}
 		</script>
 	</body>

@@ -40,7 +40,7 @@
 			// клас за елемент на робот
 			function robotElement( sizeX, sizeY, sizeZ, parent )
 			{
-				var robotGeometry = new THREE.BoxBufferGeometry( sizeX, sizeY, sizeZ );
+				var robotGeometry = new THREE.BoxGeometry( sizeX, sizeY, sizeZ );
 				robotGeometry.translate( 0, sizeY/2, 0 );
 				
 				var object = new THREE.Mesh( robotGeometry, robotMaterial );
@@ -76,14 +76,14 @@
 				var k = 0.02;
 				
 				a.rotation.set(
-					THREE.Math.lerp( a.rotation.x, THREE.Math.degToRad(pose.ax), k ),
-					THREE.Math.lerp( a.rotation.y, THREE.Math.degToRad(pose.ay), k ),
+					THREE.MathUtils.lerp( a.rotation.x, THREE.MathUtils.degToRad(pose.ax), k ),
+					THREE.MathUtils.lerp( a.rotation.y, THREE.MathUtils.degToRad(pose.ay), k ),
 					0,
 					'YXZ'
 				);
-				b.rotation.x = THREE.Math.lerp( b.rotation.x, THREE.Math.degToRad(pose.bx), k );
-				c.rotation.x = THREE.Math.lerp( c.rotation.x, THREE.Math.degToRad(pose.cx), k );
-				d.rotation.x = THREE.Math.lerp( d.rotation.x, THREE.Math.degToRad(pose.dx), k );
+				b.rotation.x = THREE.MathUtils.lerp( b.rotation.x, THREE.MathUtils.degToRad(pose.bx), k );
+				c.rotation.x = THREE.MathUtils.lerp( c.rotation.x, THREE.MathUtils.degToRad(pose.cx), k );
+				d.rotation.x = THREE.MathUtils.lerp( d.rotation.x, THREE.MathUtils.degToRad(pose.dx), k );
 			}
 		</script>
 	</body>

@@ -33,7 +33,7 @@
 			
 			
 			// геометрия и материал на елемент на робот
-			var robotGeometry = new THREE.BoxBufferGeometry( 1, 1, 1 ),
+			var robotGeometry = new THREE.BoxGeometry( 1, 1, 1 ),
 				robotMaterial = new THREE.MeshPhongMaterial( {color: 'tomato', shininess: 100} );
 				
 			// нагласяваме елемента да е с център (0,0,0) в долния край
@@ -67,12 +67,12 @@
 			function animate()
 			{
 				a.rotation.set(
-					THREE.Math.degToRad(pose.ax),
-					THREE.Math.degToRad(pose.ay),
+					THREE.MathUtils.degToRad(pose.ax),
+					THREE.MathUtils.degToRad(pose.ay),
 					0
 				);
 				b.rotation.set(
-					THREE.Math.degToRad(pose.bx),
+					THREE.MathUtils.degToRad(pose.bx),
 					0,
 					0
 				);

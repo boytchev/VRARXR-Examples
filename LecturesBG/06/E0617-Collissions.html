@@ -72,7 +72,7 @@
 			{
 				var material = Physijs.createMaterial( new THREE.MeshPhongMaterial({color:'white', shininess:100}), 0, 1 );
 				var ball = new Physijs.SphereMesh( geometry, material, 10 );
-					ball.position.set( THREE.Math.randFloat(-30,30), 10+30*i, THREE.Math.randFloat(-30,30) );
+					ball.position.set( THREE.MathUtils.randFloat(-30,30), 10+30*i, THREE.MathUtils.randFloat(-30,30) );
 					ball.receiveShadow = true;
 					ball.castShadow = true;
 				scene.add( ball );

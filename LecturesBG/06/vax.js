@@ -114,7 +114,7 @@ function vaxSceneInit()
 
 	// земя
 	ground = new THREE.Mesh(
-		new THREE.BoxBufferGeometry(300,4,300),
+		new THREE.BoxGeometry(300,4,300),
 		new THREE.MeshPhongMaterial({color:'lightgreen'})
 	);
 	ground.position.set( 0, -2, 0 );
@@ -123,7 +123,7 @@ function vaxSceneInit()
 
 	// обект за движене
 	object = new THREE.Mesh(
-		new THREE.BoxBufferGeometry(8,8,8),
+		new THREE.BoxGeometry(8,8,8),
 		new THREE.MeshLambertMaterial({color:'red'})
 	);
 	object.castShadow = true;
@@ -162,7 +162,7 @@ function pillar( center, material )
 	}
 
 	var pillar = new THREE.Mesh(
-		new THREE.LatheBufferGeometry( points, 20 ),
+		new THREE.LatheGeometry( points, 20 ),
 		material
 	);
 	pillar.castShadow = true;

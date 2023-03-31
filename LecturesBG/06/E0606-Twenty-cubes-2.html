@@ -41,7 +41,7 @@
 			for( var i=0; i<20; i++ )
 			{
 				var cube = new Physijs.BoxMesh( geometry, material );
-					cube.position.set( THREE.Math.randFloat(-20,20), 30+40*i, THREE.Math.randFloat(-20,20) );
+					cube.position.set( THREE.MathUtils.randFloat(-20,20), 30+40*i, THREE.MathUtils.randFloat(-20,20) );
 					cube.receiveShadow = true;
 					cube.castShadow = true;
 				scene.add( cube );

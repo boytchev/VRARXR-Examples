@@ -41,7 +41,7 @@
 			for( var i=0; i<20; i++ )
 			{
 				var ball = new Physijs.SphereMesh( geometry, material );
-					ball.position.set( THREE.Math.randFloat(-10,10), 30+20*i, THREE.Math.randFloat(-10,10) );
+					ball.position.set( THREE.MathUtils.randFloat(-10,10), 30+20*i, THREE.MathUtils.randFloat(-10,10) );
 					ball.receiveShadow = true;
 					ball.castShadow = true;
 				scene.add( ball );

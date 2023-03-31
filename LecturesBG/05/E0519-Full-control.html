@@ -56,7 +56,7 @@
 			// клас за елемент на робот
 			function robotElement( sizeX, sizeY, sizeZ, parent )
 			{
-				var robotGeometry = new THREE.BoxBufferGeometry( sizeX, sizeY, sizeZ );
+				var robotGeometry = new THREE.BoxGeometry( sizeX, sizeY, sizeZ );
 				robotGeometry.translate( 0, sizeY/2, 0 );
 				
 				var object = new THREE.Mesh( robotGeometry, robotMaterial );
@@ -100,7 +100,7 @@
 			
 			function animate( t )
 			{
-				scene.rotation.y = THREE.Math.degToRad(cmd.s);
+				scene.rotation.y = THREE.MathUtils.degToRad(cmd.s);
 
 				// дали сме във фаза на избор на ново движение?
 				if( toTime <= t )
@@ -110,10 +110,10 @@
 					fromIndex = toIndex;
 					
 					// край на движение след 2 до 3 секунди
-					toTime = t + THREE.Math.randFloat( 2, 3 );
+					toTime = t + THREE.MathUtils.randFloat( 2, 3 );
 					
 					// следващ индекс на поза
-					toIndex += THREE.Math.randInt( 1, 3 );
+					toIndex += THREE.MathUtils.randInt( 1, 3 );
 					toIndex = toIndex%4;
 				}
 				
@@ -129,38 +129,38 @@
 					
 					k = k*k;
 					for( var i=0; i<7; i++)	
-						pose[i] = THREE.Math.lerp( pose[i], poses[toIndex][i], k );
+						pose[i] = THREE.MathUtils.lerp( pose[i], poses[toIndex][i], k );
 					
 					for( var i=1; i<7; i++)	
-						pose[i] = THREE.Math.lerp( pose[i], pose0[i], k2 );
+						pose[i] = THREE.MathUtils.lerp( pose[i], pose0[i], k2 );
 					
 					a.rotation.set(
-						THREE.Math.degToRad(pose[1]),
-						THREE.Math.degToRad(pose[0]),
+						THREE.MathUtils.degToRad(pose[1]),
+						THREE.MathUtils.degToRad(pose[0]),
 						0,
 						'YXZ'
 					);
 					
-					b.rotation.x = THREE.Math.degToRad(pose[2]);
-					c.rotation.x = THREE.Math.degToRad(pose[3]);
+					b.rotation.x = THREE.MathUtils.degToRad(pose[2]);
+					c.rotation.x = THREE.MathUtils.degToRad(pose[3]);
 					
 					// разпереност
 					d1.rotation.set(
-						THREE.Math.degToRad(pose[5]/2),
-						THREE.Math.degToRad(pose[4]),
+						THREE.MathUtils.degToRad(pose[5]/2),
+						THREE.MathUtils.degToRad(pose[4]),
 						0,
 						'YXZ'
 					);
 					d2.rotation.set(
-						-THREE.Math.degToRad(pose[5]/2),
-						THREE.Math.degToRad(pose[4]),
+						-THREE.MathUtils.degToRad(pose[5]/2),
+						THREE.MathUtils.degToRad(pose[4]),
 						0,
 						'YXZ'
 					);
 					
 					// отвореност
-					e1.rotation.x = -THREE.Math.degToRad(180-pose[6]);
-					e2.rotation.x = +THREE.Math.degToRad(180-pose[6]);
+					e1.rotation.x = -THREE.MathUtils.degToRad(180-pose[6]);
+					e2.rotation.x = +THREE.MathUtils.degToRad(180-pose[6]);
 				}
 			}
 		</script>

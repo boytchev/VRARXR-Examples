@@ -50,8 +50,8 @@
 
 				// тяло на пешката
 				var pawn = new Physijs.ConeMesh( geometryCon, material );
-					pawn.position.set( THREE.Math.randFloat(-80,80), THREE.Math.randFloat(50,150) , THREE.Math.randFloat(-80,80) );
-					pawn.rotation.set( THREE.Math.randFloat(-1,1), THREE.Math.randFloat(-1,1) , THREE.Math.randFloat(-1,1) );
+					pawn.position.set( THREE.MathUtils.randFloat(-80,80), THREE.MathUtils.randFloat(50,150) , THREE.MathUtils.randFloat(-80,80) );
+					pawn.rotation.set( THREE.MathUtils.randFloat(-1,1), THREE.MathUtils.randFloat(-1,1) , THREE.MathUtils.randFloat(-1,1) );
 					pawn.receiveShadow = true;
 					pawn.castShadow = true;
 					

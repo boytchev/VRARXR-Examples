@@ -49,7 +49,7 @@
 
 				// цилиндричната част на капсулата
 				var capsule = new Physijs.CylinderMesh( geometryCyl, material );
-					capsule.position.set( THREE.Math.randFloat(-80,80), THREE.Math.randFloat(50,150) , THREE.Math.randFloat(-80,80) );
+					capsule.position.set( THREE.MathUtils.randFloat(-80,80), THREE.MathUtils.randFloat(50,150) , THREE.MathUtils.randFloat(-80,80) );
 					capsule.receiveShadow = true;
 					capsule.castShadow = true;
 					
