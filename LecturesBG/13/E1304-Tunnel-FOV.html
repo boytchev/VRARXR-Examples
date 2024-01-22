@@ -31,7 +31,7 @@
 
 			var user = new THREE.Group();
 				user.add( camera );
-				user.add( leftPanel );
+				camera.add( leftPanel );
 				scene.add( user );
 			
 			function animate( t )
