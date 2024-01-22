@@ -22,12 +22,12 @@
 				cube.position.y = 1.5; // основата на тунела е на ниво 0
 				scene.add( cube );
 
-			geometry = new THREE.RingGeometry( 3, 15, 4 ).rotateZ(Math.PI/4),
-			material = new THREE.MeshBasicMaterial( {color: 'red'} );
+			geometry = new THREE.RingGeometry( 3, 30, 4 ).rotateZ(Math.PI/4),
+			material = new THREE.MeshBasicMaterial( {color: 'black'} );
 			
 			var leftPanel = new THREE.Mesh( geometry, material );
 
-			leftPanel.position.set( 0, 1.5, -4 );
+			leftPanel.position.set( 0, 0, -4 );
 
 			var user = new THREE.Group();
 				user.add( camera );
