@@ -29,12 +29,12 @@
 
 
 			// create a black mask just in front of the user
-			var zorroMark = new THREE.Mesh( 
+			var zorroMask = new THREE.Mesh( 
 							new THREE.RingGeometry( 3, 30, 4 ).rotateZ(Math.PI/4),
 							new THREE.MeshBasicMaterial( {color: 'black'} )
 						);
-				zorroMark.position.set( 0, 0, -4 );
-				camera.add( zorroMark );
+				zorroMask.position.set( 0, 0, -4 );
+				camera.add( zorroMask );
 
 
 			// attach the camera to the user, so that
