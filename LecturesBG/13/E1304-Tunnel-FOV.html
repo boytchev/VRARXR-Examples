@@ -28,7 +28,7 @@
 				scene.add( tunnel );
 
 
-			// create a black mask just in front of the user
+			// create a black mask just in front of the camera (i.e. the user's eyes)
 			var zorroMask = new THREE.Mesh( 
 							new THREE.RingGeometry( 3, 30, 4 ).rotateZ(Math.PI/4),
 							new THREE.MeshBasicMaterial( {color: 'black'} )
