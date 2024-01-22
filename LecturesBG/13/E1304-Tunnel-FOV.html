@@ -16,22 +16,23 @@
 		<script>
 			vaxInitVR();
 			
-			var geometry = new THREE.BoxGeometry( 3, 3, 30, 10, 10, 100 ),
-				material = new THREE.MeshBasicMaterial( {color: 'black', wireframe: true} ),
-				cube = new THREE.Mesh( geometry, material );
-				cube.position.y = 1.5; // основата на тунела е на ниво 0
-				scene.add( cube );
+			var tunnel = new THREE.Mesh(
+							new THREE.BoxGeometry( 3, 3, 30, 10, 10, 100 ),
+							new THREE.MeshBasicMaterial( {color: 'black', wireframe: true} )
+						);
+				tunnel.position.y = 1.5; // основата на тунела е на ниво 0
+				scene.add( tunnel );
 
-			geometry = new THREE.RingGeometry( 3, 30, 4 ).rotateZ(Math.PI/4),
-			material = new THREE.MeshBasicMaterial( {color: 'black'} );
-			
-			var leftPanel = new THREE.Mesh( geometry, material );
 
-			leftPanel.position.set( 0, 0, -4 );
+			var blackFrame = new THREE.Mesh( 
+							new THREE.RingGeometry( 3, 30, 4 ).rotateZ(Math.PI/4),
+							new THREE.MeshBasicMaterial( {color: 'black'} )
+						);
+				blackFrame.position.set( 0, 0, -4 );
+				camera.add( blackFrame );
 
 			var user = new THREE.Group();
 				user.add( camera );
-				camera.add( leftPanel );
 				scene.add( user );
 			
 			function animate( t )
