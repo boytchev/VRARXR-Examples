@@ -1,87 +1,81 @@
 ﻿<!DOCTYPE html>
 
 <html>
-
-
-<head>
-	<title>E0106: Мобилна учтивост</title>
-	<meta charset="utf-8">
-	
-	<!-- удобство за смартфони -->
-	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	
-	<script type="importmap">
-	  {
-		"imports": {
-		  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-		  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/"
-		}
-	  }
-	</script>
-</head>
-
-
-<body>
-	<script type="module">
-	
-		import * as THREE from "three";
-
-		var renderer = new THREE.WebGLRenderer( {antialias: true} );
+	<head>
+		<title>E0106: Мобилна учтивост</title>
+		<meta charset="utf-8">
 		
-		document.body.appendChild( renderer.domElement );
-		document.body.style.margin = 0;
-		document.body.style.overflow = 'hidden';
+		<!-- удобство за смартфони -->
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/"
+			}
+		  }
+		</script>
+	</head>
 
-		var scene = new THREE.Scene();
-			scene.background = new THREE.Color( 'white' );
-		
-		// аспектът тук е грешен, но по-надолу се извиква
-		// ръчно onWindowResize, който слага правилния аспект
-		var camera = new THREE.PerspectiveCamera( 60, 1, 1, 100 );
-			camera.position.set( 1, 1, 2 );
-			camera.lookAt( new THREE.Vector3(0,0,0) );
-		
-		var light = new THREE.PointLight( 'white', 5000 );
-			light.position.set( 0, 20, 40 );
-			scene.add( light );
 
-		var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-		var material = new THREE.MeshLambertMaterial( );
-		var cube = new THREE.Mesh( geometry, material );
-		scene.add( cube );
-
-		renderer.setAnimationLoop( frame );
+	<body>
+		<script type="module">
 		
-		// улавя се промяна на размера на прозореца
-		// и се вика функцията onWindowResize
-		window.addEventListener( 'resize', onWindowResize, false );
-		onWindowResize();
-		
-		function frame( time )
-		{
-			cube.rotation.y = time/1000;
+			import * as THREE from "three";
 			
-			renderer.render( scene, camera );
-		}
-		
-		
-		// функция, която да поправи образа при
-		// промяна на размера на прозореца или
-		// завъртане на смартфона / таблета
-		function onWindowResize( event )
-		{
-			// създаването на камера и оразмеряване на
-			// рендера са пренесени тук
-			camera.aspect = window.innerWidth/window.innerHeight;
-			camera.updateProjectionMatrix();
+			var renderer = new THREE.WebGLRenderer({antialias: true});
+			renderer.setAnimationLoop(frame);
+			
+			document.body.appendChild(renderer.domElement);
+			document.body.style.margin = 0;
+			document.body.style.overflow = 'hidden';
 
-			renderer.setSize( window.innerWidth, window.innerHeight, true );
-		}		
-		
-	</script>
-</body>
+			var scene = new THREE.Scene();
+			scene.background = new THREE.Color('white');
 
+			// аспектът тук е грешен, но по-надолу се извиква
+			// ръчно onWindowResize, който слага правилния аспект
+			var camera = new THREE.PerspectiveCamera(60, 1, 1, 100);
+			camera.position.set(1, 1, 2);
+			camera.lookAt(new THREE.Vector3(0, 0, 0));
 
+			var light = new THREE.PointLight('white', 5000);
+			light.position.set(0, 20, 40);
+			scene.add(light);
+
+			var geometry = new THREE.BoxGeometry(1, 1, 1);
+			var material = new THREE.MeshLambertMaterial();
+			var cube = new THREE.Mesh(geometry, material);
+			scene.add(cube);
+
+			// улавя се промяна на размера на прозореца
+			// и се вика функцията onWindowResize
+			window.addEventListener('resize', onWindowResize, false);
+			onWindowResize();
+
+			// функция, която да поправи образа при
+			// промяна на размера на прозореца или
+			// завъртане на смартфона / таблета
+			function onWindowResize(event)
+			{
+				// създаването на камера и оразмеряване на
+				// рендера са пренесени тук
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize(window.innerWidth, window.innerHeight, true);
+			}
+			
+			function frame(time)
+			{
+				cube.rotation.y = time / 1000;
+
+				renderer.render(scene, camera);
+			}
+
+		</script>
+	</body>
 </html>
 
 

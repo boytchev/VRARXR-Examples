@@ -2,10 +2,9 @@
 
 <html>
 	<head>
-		<title>E0105: Въртящ се куб</title>
-		
+		<title>S0105: Въртене</title>
 		<meta charset="utf-8">
-		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<script type="importmap">
 		  {
 			"imports": {
@@ -22,11 +21,8 @@
 		
 			import * as THREE from "three";
 
-			// добавяме изглаждане на контурите на обектите с antialias
-			var renderer = new THREE.WebGLRenderer({antialias: true});
+			var renderer = new THREE.WebGLRenderer( {antialias:true} );
 			renderer.setSize(window.innerWidth, window.innerHeight, true);
-
-			// казваме коя функция да се изпълни за генерирането на кадър
 			renderer.setAnimationLoop(frame);
 
 			document.body.appendChild(renderer.domElement);
@@ -41,8 +37,8 @@
 			camera.position.set(1, 1, 2);
 			camera.lookAt(new THREE.Vector3(0, 0, 0));
 
-			var light = new THREE.PointLight('white', 5000);
-			light.position.set(0, 20, 40);
+			var light = new THREE.PointLight('white', 20);
+			light.position.set(1, 2, 3);
 			scene.add(light);
 
 			var geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -50,22 +46,14 @@
 			var cube = new THREE.Mesh(geometry, material);
 			scene.add(cube);
 
-			// тази наша функция генерира един кадър, като параметърът
-			// time е времето от инициализирането на кода (в милисекунди)
 			function frame(time)
 			{
-				// време в секунди
-				var t = time / 1000;
+				cube.rotation.y = time / 2000;
 
-				// кубът е завъртян на t радиана около ос Y,
-				// която по подразбиране е вертикалната ос
-				cube.rotation.y = t;
-
-				// рисуваме текущия кадър
 				renderer.render(scene, camera);
 			}
 			
-		</script>		
+		</script>
 	</body>
 </html>
 
