@@ -1,24 +1,42 @@
 ﻿<!DOCTYPE html>
 <html>
-	<head>
-		<title>E0103: Включване на Three.js</title>
-		<meta charset="utf-8">
-		
-		<!-- JS библиотеки също се включват със <script>,
-			 но вместо код се подава име на файл в src. -->
-		<script src="three.min.js"></script>
-		<script src="WebGL.js"></script>
-	</head>
+
+
+<head>
+	<title>E0103: Включване на Three.js</title>
+	<meta charset="utf-8">
 	
-	<body>
-		<script>
-			// Проверяваме дали браузърът ни поддържа WebGL
-			if ( !THREE.WEBGL.isWebGLAvailable() )
-				alert( THREE.WEBGL.getWebGLErrorMessage() );
-			else
-				alert( 'Има WebGL' );
-		</script>
-	</body>
+	<script type="importmap">
+	  {
+		"imports": {
+		  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+		  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/"
+		}
+	  }
+	</script>
+</head>
+	
+	
+<body>
+	<script type="module">
+		import * as THREE from "three";
+		import WebGL from "three/addons/capabilities/WebGL.js";
+
+		// Проверяваме дали браузърът ни поддържа WebGL 1
+		if ( !WebGL.isWebGLAvailable() )
+			alert( WebGL.getWebGLErrorMessage() );
+		else
+			alert( 'Има WebGL 1' );
+
+		// Проверяваме дали браузърът ни поддържа WebGL 2
+		if ( !WebGL.isWebGL2Available() )
+			alert( WebGL.getWebGLErrorMessage() );
+		else
+			alert( 'Има WebGL 2' );
+	</script>
+</body>
+
+
 </html>
 
 

@@ -1,62 +1,75 @@
 ﻿<!DOCTYPE html>
 
 <html>
-	<head>
-		<title>E0105: Въртящ се куб</title>
-		<meta charset="utf-8">
-		<script src="three.min.js"></script>
-		<script src="WebGL.js"></script>
-	</head>
+
+
+<head>
+	<title>E0105: Въртящ се куб</title>
+	<meta charset="utf-8">
+	<script type="importmap">
+	  {
+		"imports": {
+		  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+		  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/"
+		}
+	  }
+	</script>
+</head>
+
+
+<body>
+	<script type="module">
 	
-	<body>
-		<script>
-			if ( !THREE.WEBGL.isWebGLAvailable() )
-				alert( THREE.WEBGL.getWebGLErrorMessage() );
+		import * as THREE from "three";
 
-			// добавяме изглаждане на контурите на обектите с antialias
-			var renderer = new THREE.WebGLRenderer( {antialias:true} );
-			renderer.setSize( window.innerWidth, window.innerHeight, true );
-			
-			document.body.appendChild( renderer.domElement );
-			document.body.style.margin = 0;
-			document.body.style.overflow = 'hidden';
+		// добавяме изглаждане на контурите на обектите с antialias
+		var renderer = new THREE.WebGLRenderer( {antialias: true} );
+		renderer.setSize( window.innerWidth, window.innerHeight, true );
+		
+		document.body.appendChild( renderer.domElement );
+		document.body.style.margin = 0;
+		document.body.style.overflow = 'hidden';
 
-			var scene = new THREE.Scene();
-			scene.background = new THREE.Color('white');
-			
-			var aspect = window.innerWidth/window.innerHeight;
-			var camera = new THREE.PerspectiveCamera( 60, aspect, 1, 100 );
-			camera.position.set(1,1,2);
-			camera.lookAt(new THREE.Vector3(0,0,0));
-			
-			var light = new THREE.PointLight();
-			light.position.set(0,20,40);
+		var scene = new THREE.Scene();
+			scene.background = new THREE.Color( 'white' );
+		
+		var aspect = window.innerWidth/window.innerHeight;
+		var camera = new THREE.PerspectiveCamera( 60, aspect, 1, 100 );
+			camera.position.set( 1, 1, 2 );
+			camera.lookAt( new THREE.Vector3(0,0,0) );
+		
+		var light = new THREE.PointLight( 'white', 5000 );
+			light.position.set( 0, 20, 40 );
 			scene.add( light );
 
-			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-			var material = new THREE.MeshLambertMaterial();
-			var cube = new THREE.Mesh( geometry, material );
-			scene.add( cube );
+		var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+		var material = new THREE.MeshLambertMaterial( );
+		var cube = new THREE.Mesh( geometry, material );
+		scene.add( cube );
+		
+		// казваме коя функция да се изпълни за генерирането на кадър
+		renderer.setAnimationLoop( frame );
+		
+		// тази наша функция генерира един кадър, като параметърът
+		// time е времето от инициализирането на кода (в милисекунди)
+		function frame( time )
+		{
+			// време в секунди
+			var t = time/1000;
 			
-			// казваме коя функция да се изпълни за генерирането на кадър
-			renderer.setAnimationLoop( frame );
+			// кубът е завъртян на t радиана около ос Y,
+			// която по подразбиране е вертикалната ос
+			cube.rotation.y = t;
 			
-			// тази наша функция генерира един кадър, като параметърът
-			// time е времето от инициализирането на кода (в милисекунди)
-			function frame( time )
-			{
-				// време в секунди
-				var t = time/1000;
-				
-				// кубът е завъртян на t радиана около ос Y,
-				// която по подразбиране е вертикалната ос
-				cube.rotation.set( 0, t, 0 );
-				
-				// рисуваме текущия кадър
-				renderer.render( scene, camera );
-			}
-		</script>
-	</body>
+			// рисуваме текущия кадър
+			renderer.render( scene, camera );
+		}
+		
+	</script>
+	
+</body>
+
+
 </html>
 
 
