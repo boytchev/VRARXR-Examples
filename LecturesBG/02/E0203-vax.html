@@ -7,27 +7,37 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="stats.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxInit, scene} from "vax";
+			
 			// инциализираме моно режим през нашата библиотека
-			vaxInit();
-
+			vaxInit(animate);
+			
 			var material = new THREE.MeshLambertMaterial();
-			var geometry = new THREE.BoxGeometry( 20, 30, 80 );
-			var brick = new THREE.Mesh( geometry, material );
+			var geometry = new THREE.BoxGeometry(20, 30, 80);
+			var brick = new THREE.Mesh(geometry, material);
 
-			scene.add( brick );			
+			scene.add(brick);
 
 			// тази функция се вика автоматично за всеки кадър
 			// името "animate" е фиксирано във vax.js
-			function animate( t )
+			function animate(t)
 			{
-				brick.rotation.set( t/3, t/4, t/5 );
+				brick.rotation.set(t / 3, t / 4, t / 5);
 			}
 		</script>
 	</body>

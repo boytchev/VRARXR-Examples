@@ -7,43 +7,54 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="stats.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxInit, scene} from "vax";
+			
+			vaxInit(animate);
 
 			var material = new THREE.MeshLambertMaterial();
-			
+
 			// капсула
 			var capsule = new THREE.Group();
-			scene.add( capsule );
-			
-			var geometry = new THREE.SphereGeometry( 20, 32, 16 );
+			scene.add(capsule);
+
+			var geometry = new THREE.SphereGeometry(20, 60, 30);
 
 			// сфера в единия край
-			var sphereA = new THREE.Mesh( geometry, material );
-			sphereA.position.set( 0, -20, 0 );
-			capsule.add( sphereA );
-			
+			var sphereA = new THREE.Mesh(geometry, material);
+			sphereA.position.set(0, -20, 0);
+			capsule.add(sphereA);
+
 			// сфера в другия край
-			var sphereB = new THREE.Mesh( geometry, material );
-			sphereB.position.set( 0, 20, 0 );
-			capsule.add( sphereB );
+			var sphereB = new THREE.Mesh(geometry, material);
+			sphereB.position.set(0, 20, 0);
+			capsule.add(sphereB);
 
 			// цилиндрично тяло между тях
 			var body = new THREE.Mesh(
-				new THREE.CylinderGeometry( 20, 20, 40, 32 ),
-				material );
-			capsule.add( body );
+					new THREE.CylinderGeometry(20, 20, 40, 60),
+					material);
+			capsule.add(body);
 
-			function animate( t )
+			function animate(t)
 			{
-				capsule.rotation.set( t/2, t/3, t/4 );
+				capsule.rotation.set(t/2, t/3, t/4);
 			}
+			
 		</script>
 	</body>
 </html>

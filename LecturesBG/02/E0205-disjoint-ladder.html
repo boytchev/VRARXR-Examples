@@ -7,16 +7,25 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="stats.min.js"></script>
-		<script src="WebGL.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInit();
-
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxInit, scene} from "vax";
+			
+			vaxInit(animate);
+			
 			var material = new THREE.MeshLambertMaterial();
 			var geometryA = new THREE.CylinderGeometry( 4, 4, 80 );
 			var geometryB = new THREE.CylinderGeometry( 1, 1, 30 );
@@ -38,15 +47,16 @@
 				scene.add( steps[i] );
 			}
 			
-			function animate( t )
+			function animate(t)
 			{
 				// въртене на всички части на стълбата
 				// с един и същ комплект от три ъгъла
-				left.rotation.set( t/2, t/3, t/4 );
-				right.rotation.set( t/2, t/3, t/4 );
-				for (var i=0; i<5; i++)
-					steps[i].rotation.set( t/2, t/3, t/4+Math.PI/2 );
+				left.rotation.set(t/2, t/3, t/4);
+				right.rotation.set(t/2, t/3, t/4);
+				for (var i = 0; i < 5; i++)
+					steps[i].rotation.set(t/2, t/3, t/4 + Math.PI/2);
 			}
+			
 		</script>
 	</body>
 </html>

@@ -2,9 +2,9 @@
 
 ## Лекции
 - [Лекция №1 &ndash; Запознаване](#лекция-1--запознаване)
+- [Лекция №2 &ndash; Обекти](#лекция-2--обекти)
 
 <!--
-- [Лекция №2 &ndash; Обекти](#лекция-2--обекти)
 - [Лекция №3 &ndash; Материали](#лекция-3--материали)
 - [Лекция №4 &ndash; Анимация](#лекция-4--анимация)
 - [Лекция №5 &ndash; Роботи](#лекция-5--роботи)
@@ -51,7 +51,6 @@
 [<kbd><img src="LecturesBG/01/E0106-mobile-politeness.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/01/E0106-mobile-politeness.html)
 
 
-<!--
 ## Лекция №2 &ndash; Обекти
 
 **E0201**. Показване на скоростта на работа с библиотеката Stats.
@@ -107,6 +106,7 @@
 [<kbd><img src="LecturesBG/02/E0213-cone-with-hole.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/02/E0213-cone-with-hole.html)
 
 
+<!--
 ## Лекция №3 &ndash; Материали
 
 **E0301**. Основен материал &ndash; без полутонове.

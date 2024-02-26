@@ -7,42 +7,53 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="stats.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxInit, scene} from "vax";
+			
+			vaxInit(animate);
 
 			var material = new THREE.MeshLambertMaterial();
-			
+
 			// верига
 			var chain = new THREE.Group();
-			scene.add( chain );
-			
-			var geometry = new THREE.TorusGeometry( 21, 7, 24, 48 );
+			scene.add(chain);
+
+			var geometry = new THREE.TorusGeometry(21, 7, 24, 48);
 
 			// първа халка
-			var node1 = new THREE.Mesh( geometry, material );
-			node1.position.set( -28, 0, 0 );
-			chain.add( node1 );
-			
+			var node1 = new THREE.Mesh(geometry, material);
+			node1.position.set(-28, 0, 0);
+			chain.add(node1);
+
 			// втора халка (в средата)
-			var node2 = new THREE.Mesh( geometry, material );
-			node2.rotation.set( Math.PI/2, 0, 0 );
-			chain.add( node2 );
+			var node2 = new THREE.Mesh(geometry, material);
+			node2.rotation.set(Math.PI/2, 0, 0);
+			chain.add(node2);
 
 			// трета халка
-			var node3 = new THREE.Mesh( geometry, material );
-			node3.position.set( 28, 0, 0 );
-			chain.add( node3 );
+			var node3 = new THREE.Mesh(geometry, material);
+			node3.position.set(28, 0, 0);
+			chain.add(node3);
 
-			function animate( t )
+			function animate(t)
 			{
-				chain.rotation.set( t/2, t/3, t/4 );
+				chain.rotation.set(t/2, t/3, t/4);
 			}
+			
 		</script>
 	</body>
 </html>
