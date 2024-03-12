@@ -7,30 +7,42 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxSceneInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import * as lil from "three/addons/libs/lil-gui.module.min.js";
+			import {vaxSceneInit, Pillar, object, scene, camera} from "vax";
+
+			vaxSceneInit(animate);
 
 			// Ъгли и разстояние на гледната точка
 			var alpha = 0.1;
 			var beta = 1.1;
 			var distance = 150;
-			
+
 			// Прехващане на мишката
-			window.addEventListener( 'pointerdown', onPointerDown, false );
-			window.addEventListener( 'pointermove', onPointerMove, false );
-			window.addEventListener( 'pointerup',   onPointerUp, false );
-			window.addEventListener( 'contextmenu', onContextMenu, false );
-			
+			window.addEventListener('pointerdown', onPointerDown, false);
+			window.addEventListener('pointermove', onPointerMove, false);
+			window.addEventListener('pointerup', onPointerUp, false);
+			window.addEventListener('contextmenu', onContextMenu, false);
+
 			// помощни променливи за работа с мишката
 			var mouseButton = 0; // кой клавиш е натиснат
 			var mouseX = 0; // координати на последна
 			var mouseY = 0; // ...позиция на мишката
-			
+
 			// обработване на натискане на миши бутон
 			function onPointerDown(event)
 			{
@@ -48,60 +60,61 @@
 			// обработване на местене на мишката
 			function onPointerMove(event)
 			{
-				if (!mouseButton) return; // ако не е натиснат бутон
+				if (!mouseButton)
+					return; // ако не е натиснат бутон
 
 				// изчисляване колко се е преместила мишката
-				var dX = event.clientX-mouseX;
-				var dY = event.clientY-mouseY;
+				var dX = event.clientX - mouseX;
+				var dY = event.clientY - mouseY;
 
 				// натиснат е ляв бутон
-				if (mouseButton==1)
+				if (mouseButton == 1)
 				{
-					alpha = alpha-dX/100;
-					beta = THREE.MathUtils.clamp( beta-dY/100, 0.1, 1.4 );
+					alpha = alpha - dX / 100;
+					beta = THREE.MathUtils.clamp(beta-dY/100, 0.1, 1.4);
 				}
-				
+
 				// натиснат е десен бутон
-				if (mouseButton==3)
+				if (mouseButton == 3)
 				{
-					distance = THREE.MathUtils.clamp( distance+dY, 50, 300 );
+					distance = THREE.MathUtils.clamp(distance+dY, 50, 300);
 				}
-				
+
 				// запомняме къде е мишката
 				mouseX = event.clientX;
 				mouseY = event.clientY;
 			}
-
 
 			// обработване на контекстно меню с десен бутон
 			function onContextMenu(event)
 			{
 				event.preventDefault();
 			}
-			
+
 			// координати на началната точка на движението
-			var p = new THREE.Vector3( -50, 10+50*Math.random(), 0 );
-			
+			var p = new THREE.Vector3(-50, 10+50*Math.random(), 0);
+
 			// координати на крайната точка на движението
-			var q = new THREE.Vector3( 50, 10+50*Math.random(), 0 );
-			
-			// два пилона 
-			scene.add( pillar(p,ground.material) );
-			scene.add( pillar(q,ground.material) );
-	
-			function animate( t )
+			var q = new THREE.Vector3(50, 10+50*Math.random(), 0);
+
+			// два пилона
+			scene.add(new Pillar(p));
+			scene.add(new Pillar(q));
+
+			function animate(t)
 			{
 				// движение по k
-				var k = 0.5+0.5*Math.sin(3*t);
-				object.position.lerpVectors(p,q,k);
+				var k = 0.5 + 0.5*Math.sin(3*t);
+				object.position.lerpVectors(p, q, k);
 
 				// въртене на обекта
 				object.rotation.y -= 5*t;
-				
+
 				// движение на гледната точка
-				camera.position.setFromSphericalCoords( distance, beta, alpha );
-				camera.lookAt( new THREE.Vector3(0,20*distance/150,0) );
+				camera.position.setFromSphericalCoords(distance, beta, alpha);
+				camera.lookAt(new THREE.Vector3(0, 20*distance/150, 0));
 			}
+			
 		</script>
 	</body>
 </html>

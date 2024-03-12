@@ -7,48 +7,60 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="OrbitControls.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxSceneInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {OrbitControls} from "three/addons/controls/OrbitControls.js";
+			import {vaxSceneInit, Pillar, renderer, object, scene, camera} from "vax";
+
+			vaxSceneInit(animate);
 
 			// орбитална навигация
-			var control = new THREE.OrbitControls( camera, renderer.domElement );
+			var control = new OrbitControls(camera, renderer.domElement);
 			control.minDistance = 50;		// разстояние
 			control.maxDistance = 500;
-			control.minPolarAngle = 0.1; 	// вертикален ъгъл
-			control.maxPolarAngle = 1.4; 
+			control.minPolarAngle = 0.1;	// вертикален ъгъл
+			control.maxPolarAngle = 1.4;
 			control.rotateSpeed = 0.3;		// скорост на въртене
 			control.enableDamping = true;	// с инерция
 			control.dampingFactor = 0.1;
 			control.enablePan = false;		// без плъзгане
-	
+
 			// координати на началната точка на движението
-			var p = new THREE.Vector3( -50, 10+50*Math.random(), 0 );
-			
+			var p = new THREE.Vector3(-50, 10+50*Math.random(), 0);
+
 			// координати на крайната точка на движението
-			var q = new THREE.Vector3( 50, 10+50*Math.random(), 0 );
-			
-			// два пилона 
-			scene.add( pillar(p,ground.material) );
-			scene.add( pillar(q,ground.material) );
-	
-			function animate( t )
+			var q = new THREE.Vector3(50, 10+50*Math.random(), 0);
+
+			// два пилона
+			scene.add(new Pillar(p));
+			scene.add(new Pillar(q));
+
+			function animate(t)
 			{
 				// движение по k
-				var k = 0.5+0.5*Math.sin(3*t);
-				object.position.lerpVectors( p, q, k );
+				var k = 0.5 + 0.5*Math.sin(3*t);
+				object.position.lerpVectors(p, q, k);
 
 				// въртене на обекта
 				object.rotation.y = -5*t;
-				
+
 				// движение на гледната точка (заради инерцията)
 				control.update();
 			}
+			
 		</script>
 	</body>
 </html>

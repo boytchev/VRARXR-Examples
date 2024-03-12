@@ -7,38 +7,51 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxSceneInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxSceneInit, Pillar, object, scene} from "vax";
+
+			vaxSceneInit(animate);
 			
 			// координати на началната крайната точка на движението
-			var p = new THREE.Vector3( 60, 10+50*Math.random(), 0 );
-			var q = new THREE.Vector3( -60, 10+50*Math.random(), 0 );
+			var p = new THREE.Vector3(60, 10 + 50 * Math.random(), 0);
+			var q = new THREE.Vector3(-60, 10 + 50 * Math.random(), 0);
 
-			// два пилона 
-			scene.add( pillarP = pillar(p,ground.material) );
-			scene.add( pillarQ = pillar(q,ground.material) );
-	
-			function animate( t )
+			// два пилона
+			var pillarP = new Pillar(p);
+			var pillarQ = new Pillar(q);
+			scene.add(pillarP, pillarQ);
+
+			function animate(t)
 			{
 				// k = [0..1]
-				var k = 0.5+0.5*Math.sin(t); 
+				var k = 0.5 + 0.5 * Math.sin(t);
 
 				// смяна на позицията на пилоните
-				pillarP.position.z = p.z = 50*Math.sin(1+2.3*t);
-				pillarQ.position.z = q.z = 50*Math.sin(3-1.9*t);
+				pillarP.position.z = p.z = 50 * Math.sin(1 + 2.3 * t);
+				pillarQ.position.z = q.z = 50 * Math.sin(3 - 1.9 * t);
 
 				// движение между p и q според коефициент k
-				object.position.lerpVectors( p, q, k );
-				
+				object.position.lerpVectors(p, q, k);
+
 				// въртене на сцената и на обекта
 				object.rotation.y = -5*t;
 				scene.rotation.y = t/5;
 			}
+			
 		</script>
 	</body>
 </html>

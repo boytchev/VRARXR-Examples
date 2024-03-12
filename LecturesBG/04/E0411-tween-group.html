@@ -7,57 +7,70 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
-		<script src="tween.umd.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxSceneInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import * as TWEEN from "three/addons/libs/tween.module.js";
+			import {vaxSceneInit, Pillar, object, scene} from "vax";
+
+			vaxSceneInit(animate);
 
 			// k пилона в кръг
 			var k = 8; // брой пилони
 			var positions = [];
 			var pillars = [];
-			for( var i=0; i<k; i++)
+			for (var i = 0; i < k; i++)
 			{
-				positions[i] = new THREE.Vector3().setFromSphericalCoords( 80, Math.PI/2, 2*Math.PI*i/k );
-				positions[i].y = 10+40*Math.random();
+				positions[i] = new THREE.Vector3().setFromSphericalCoords(80, Math.PI/2, 2*Math.PI*i/k);
+				positions[i].y = 10 + 40*Math.random();
 
-				pillars[i] = pillar( positions[i], ground.material );
-				scene.add( pillars[i] );
+				pillars[i] = new Pillar(positions[i]);
+				scene.add(pillars[i]);
 			}
 
 			// създаване на още k-1 обекта
 			var objects = [];
 			objects[0] = object;
-			for( var i=1; i<k; i++)
+			for (var i=1; i<k; i++)
 			{
 				objects[i] = object.clone();
-				scene.add( objects[i] );
+				scene.add(objects[i]);
 			}
-			
+
 			// инициализиране на началните положения
 			for (var i=0; i<k; i++)
 			{
-				objects[i].position.copy( positions[i] );
-				new TWEEN.Tween( objects[i].position )
-					.to( positions[(i+3)%k], 2000+4000*Math.random() )
-					.delay( 2000+3000*Math.random() )
-					.start();
+				objects[i].position.copy(positions[i]);
+				new TWEEN.Tween(objects[i].position)
+						.to(positions[(i + 3) % k], 2000 + 4000*Math.random())
+						.delay(2000 + 3000*Math.random())
+						.start();
 			}
-				
-			function animate( t )
+
+			function animate(t)
 			{
 				// актуализиране на обекта
 				TWEEN.update();
-				
+
 				// въртене на сцената и на обекта
 				for (var i=0; i<k; i++)
 					objects[i].rotation.y = -5*t;
+					
 				scene.rotation.y = t/5;
 			}
+			
 		</script>
 	</body>
 </html>

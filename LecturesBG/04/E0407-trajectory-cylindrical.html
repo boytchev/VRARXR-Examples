@@ -7,74 +7,97 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxSceneInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {TeapotGeometry} from "three/addons/geometries/TeapotGeometry.js";
+			import {vaxSceneInit, Pillar, object, scene, light, ambientLight, spotLight} from "vax";
+
+			vaxSceneInit(animate);
 			
 			// изключваме няколко светлини
-			scene.background = new THREE.Color( 'black' );
+			scene.background = new THREE.Color('black');
 			light.intensity = 0;
 			ambientLight.intensity = 0;
 
 			// правим втора прожекторна светлина, която не прави сянка
-			secondSpotLight = spotLight.clone();
+			var secondSpotLight = spotLight.clone();
+			secondSpotLight.intensity = 1;
 			secondSpotLight.castShadow = false;
-			scene.add( secondSpotLight );
+			scene.add(secondSpotLight);
 
 			// главната прожекторна светлина е слаба, за да са
 			// сенките достатъчно бледи
 			spotLight.shadow.radius = 4;
-			spotLight.intensity = 0.1;
-			
+			spotLight.intensity = 1;
+
 			// лампа
 			var lamp = new THREE.Mesh(
-				new THREE.IcosahedronBufferGeometry( 5, 2 ),
-				new THREE.MeshLambertMaterial( {color: 'yellow', emissive: 'lightyellow', emissiveIntensity: 0.5} )
-			);
-			lamp.position.set( 0, 60, 0 );
-			scene.add( lamp );
+					new THREE.IcosahedronGeometry(5, 2),
+					new THREE.MeshLambertMaterial({
+						color: 'yellow',
+						emissive: 'lightyellow',
+						emissiveIntensity: 0.5
+					})
+				);
+			lamp.position.set(0, 60, 0);
+			scene.add(lamp);
 
 			// стълб на лампата
-			var lampPillar = pillar( lamp.position, ground.material );
-			lampPillar.scale.set( 0.5, 1, 0.5 );
+			var lampPillar = new Pillar(lamp.position);
+			lampPillar.scale.set(0.5, 1, 0.5);
 			lampPillar.castShadow = false;
-			scene.add( lampPillar );
-			
+			scene.add(lampPillar);
+
 			// мухи
-			scene.remove( object );
+			scene.remove(object);
 			var n = 50; // брой мухи
 			var flies = [];
-			
+
 			// създаване на n мухи
-			var flyGeometry = new THREE.IcosahedronBufferGeometry( 0.5, 0 );
-			var flyMaterial = new THREE.MeshLambertMaterial( {color: 'yellow', emissive: 'white', emissiveIntensity: 0.5} );
+			var flyGeometry = new THREE.IcosahedronGeometry(0.4);
+			var flyMaterial = new THREE.MeshLambertMaterial({
+				color: 'yellow',
+				emissive: 'white',
+				emissiveIntensity: 0.5
+			});
+			
 			for (var i=0; i<n; i++)
 			{
-				var fly = new THREE.Mesh( flyGeometry, flyMaterial );
+				var fly = new THREE.Mesh(flyGeometry, flyMaterial);
 				fly.castShadow = true;
-				fly.offset = 2*Math.PI*Math.random();
-				flies.push( fly );
-				scene.add( fly );
+				fly.offset = 2 * Math.PI * Math.random();
+				flies.push(fly);
+				scene.add(fly);
 			}
-			
+
 			// Изчисляване на движението
-			function animate( t )
+			function animate(t)
 			{
 				for (var i=0; i<n; i++)
 				{
 					fly = flies[i];
-					
-					var radius = 20+10*Math.sin( 0.8*t+i*i );
-					var height = 60+10*Math.sin( 2.1*t-i );
-					
-					fly.position.setFromSphericalCoords( radius, Math.PI/2, 2*t+fly.offset );
+
+					var radius = 20 + 10 * Math.sin(0.8*t + i*i);
+					var height = 60 + 10 * Math.sin(2.1*t - i);
+
+					fly.position.setFromSphericalCoords(radius, Math.PI/2, 2*t+fly.offset);
 					fly.position.y = height;
 				}
 			}
+			
 		</script>
 	</body>
 </html>

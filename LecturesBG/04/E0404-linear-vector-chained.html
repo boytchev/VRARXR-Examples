@@ -7,55 +7,67 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxSceneInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxSceneInit, Pillar, object, scene} from "vax";
+
+			vaxSceneInit(animate);
 
 			// k пилона в кръг
 			var k = 8; // брой пилони
 			var positions = [];
 			var pillars = [];
-			for( var i=0; i<k; i++)
+			for (var i = 0; i < k; i++)
 			{
-				positions[i] = new THREE.Vector3().setFromSphericalCoords( 80, Math.PI/2, 2*Math.PI*i/k );
-				positions[i].y = 10+40*Math.random();
+				positions[i] = new THREE.Vector3().setFromSphericalCoords(80, Math.PI / 2, 2 * Math.PI * i / k);
+				positions[i].y = 10 + 40 * Math.random();
 
-				pillars[i] = pillar( positions[i], ground.material );
-				scene.add( pillars[i] );
+				pillars[i] = new Pillar(positions[i]);
+				scene.add(pillars[i]);
 			}
 
 			// Изчисляване на движението
 			var n = 40; // брой стъпки
 			var v = new THREE.Vector3(); // вектор на движението
 			var frame = 0; // номер на кадър
-			
-			function animate( t )
+
+			function animate(t)
 			{
 				// на всеки n кадъра започва движение от нов към следващ
-				if ( frame%n == 0)
+				if (frame % n == 0)
 				{
 					// новото движение е от пилон i към пилон j
 					var i = Math.floor(frame/n) % k;
-					var j = (i+1) % k;
-					
+					var j = (i + 1) % k;
+
 					// нова позиция на обекта и нов вектор на движението
-					object.position.copy( positions[i] );
-					v.subVectors( positions[j], positions[i] ).divideScalar( n );
+					object.position.copy(positions[i]);
+					v.subVectors(positions[j], positions[i]).divideScalar(n);
 				}
 				else
 					// движение на обекта
-					object.position.add( v );
-					
+					object.position.add(v);
+
 				frame++;
-				
+
 				// въртене на сцената и на обекта
 				object.rotation.y = -5*t;
 				scene.rotation.y = t/5;
 			}
+			
 		</script>
 	</body>
 </html>
