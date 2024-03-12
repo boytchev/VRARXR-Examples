@@ -7,38 +7,51 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="stats.min.js"></script>
-		<script src="TeapotGeometry.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {TeapotGeometry} from "three/addons/geometries/TeapotGeometry.js";
+			import {vaxInit, scene, light} from "vax";
+
+			vaxInit(animate);
 
 			// параметърът 3 генерира груба, ръбеста форма на чайник
-			var geometry = new THREE.TeapotGeometry( 25, 3 );
+			var geometry = new TeapotGeometry(25, 3);
 
 			// материали за двата чайника
-			var materialA = new THREE.MeshLambertMaterial( {color: 'cornflowerblue'} );
-			var materialB = new THREE.MeshPhongMaterial( {color: 'cornflowerblue'} );
+			var materialA = new THREE.MeshLambertMaterial({color: 'cornflowerblue'});
+			var materialB = new THREE.MeshPhongMaterial({
+				color: 'cornflowerblue',
+				shininess: 500
+			});
 
-			var teapotA = new THREE.Mesh( geometry, materialA );
-			var teapotB = new THREE.Mesh( geometry, materialB );
-			
-			teapotA.position.set( -40, 0, 0);
-			teapotB.position.set( 40, 0, 0);
-			
-			scene.add( teapotA, teapotB );
+			var teapotA = new THREE.Mesh(geometry, materialA);
+			var teapotB = new THREE.Mesh(geometry, materialB);
+
+			teapotA.position.set(-40, 0, 0);
+			teapotB.position.set(40, 0, 0);
+
+			scene.add(teapotA, teapotB);
 
 			// усилена е светлината
-			light.intensity = 1.6;
-			
-			function animate( t )
+			light.intensity = 5;
+
+			function animate(t)
 			{
-				teapotA.rotation.set( Math.sin(2*t)/2, t, Math.cos(3*t)/2 );
-				teapotB.rotation.set( Math.sin(2*t)/2, t, Math.cos(3*t)/2 );
+				teapotA.rotation.set(Math.sin(2*t)/2, t, Math.cos(3*t)/2);
+				teapotB.rotation.set(Math.sin(2*t)/2, t, Math.cos(3*t)/2);
 			}
 		</script>
 	</body>
