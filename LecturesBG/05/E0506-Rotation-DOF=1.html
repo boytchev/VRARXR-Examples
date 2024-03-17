@@ -7,48 +7,58 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxSceneInit();
-			
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxSceneInit, Pillar, scene, ground, object} from "vax";
+
+			vaxSceneInit(animate);
+
 			// позиция
-			var p = new THREE.Vector3( 0, 50, 0 );
-			
+			var p = new THREE.Vector3(0, 50, 0);
+
 			// пилон
-			scene.add( pillar(p,ground.material) );
-			
+			scene.add(new Pillar(p));
+
 			// въртящ се обект
 			var group = new THREE.Group();
 			group.position.y = 50;
-			scene.add( group );
-			
+			scene.add(group);
+
 			// връзка до пилона
 			var wire = new THREE.Mesh(
-				new THREE.CylinderBufferGeometry( 1, 1, 50 ),
-				ground.material
-			);
+					new THREE.CylinderGeometry(1, 1, 50),
+					ground.material);
 			wire.position.x = 25;
-			wire.rotation.z = Math.PI/2;
-			
+			wire.rotation.z = Math.PI / 2;
+
 			// позиция на обекта в групата (в края на връзката)
 			object.position.x = 50;
-			
+
 			// добавяме връзката и обекта към въртящия се обект
-			scene.remove( object );
-			group.add( wire, object );
-			
-	
-			function animate( t )
+			scene.remove(object);
+			group.add(wire, object);
+
+			function animate(t)
 			{
 				// движение DOF=1
-				group.rotation.y = -3*t;
-				
-				scene.rotation.y = t/10;
+				group.rotation.y = -3 * t;
+
+				scene.rotation.y = t / 10;
 			}
+			
 		</script>
 	</body>
 </html>

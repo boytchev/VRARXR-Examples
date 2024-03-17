@@ -7,34 +7,45 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="lil-gui.umd.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxSceneInit();
-			scene.remove( object );
-			
-			scene.background = new THREE.Color( 'beige' );
-			
+		<script type="module">
+		
+			import * as THREE from "three";
+			import * as lil from "three/addons/libs/lil-gui.module.min.js";
+			import {vaxSceneInit, object, scene, Pillar} from "vax";
+
+			vaxSceneInit(animate);
+			scene.remove(object);
+
+			scene.background = new THREE.Color('beige');
+
 			// пилони
-			var p = pillar( new THREE.Vector3(0,30,50), new THREE.MeshPhongMaterial({color:'white'}) );
+			var p = new Pillar(new THREE.Vector3(0, 30, 50), new THREE.MeshPhongMaterial({color: 'white'}));
 			p.scale.y = 0.75;
-			scene.add( p );
+			scene.add(p);
 			
-			var p = pillar( new THREE.Vector3(0,30,-50), new THREE.MeshPhongMaterial({color:'gold'}) );
+			p = new Pillar(new THREE.Vector3(0, 30, -50), new THREE.MeshPhongMaterial({color: 'gold'}));
 			p.scale.y = 1;
-			scene.add( p );
+			scene.add(p);
 			
-			var p = pillar( new THREE.Vector3(50,30,0), new THREE.MeshPhongMaterial({color:'cornflowerblue'}) );
+			p = new Pillar(new THREE.Vector3(50, 30, 0), new THREE.MeshPhongMaterial({color: 'cornflowerblue'}));
 			p.scale.y = 1.25;
-			scene.add( p );
+			scene.add(p);
 			
-			var p = pillar( new THREE.Vector3(-50,30,0), new THREE.MeshPhongMaterial({color:'hotpink'}) );
+			p = new Pillar(new THREE.Vector3(-50, 30, 0), new THREE.MeshPhongMaterial({color: 'hotpink'}));
 			p.scale.y = 0.5;
-			scene.add( p );
+			scene.add(p);
 				
 			
 			// интерактивно контролиране на ъглите
@@ -60,81 +71,80 @@
 			
 			
 			// елемент на робот
-			var robotMaterial = new THREE.MeshPhongMaterial( {color: 'tomato', shininess: 100} );
-				
+			var robotMaterial = new THREE.MeshPhongMaterial({
+				color: 'tomato',
+				shininess: 100
+			});
+
 			// клас за елемент на робот
-			function robotElement( sizeX, sizeY, sizeZ, parent )
+			function robotElement(sizeX, sizeY, sizeZ, parent)
 			{
-				var robotGeometry = new THREE.BoxGeometry( sizeX, sizeY, sizeZ );
-				robotGeometry.translate( 0, sizeY/2, 0 );
-				
-				var object = new THREE.Mesh( robotGeometry, robotMaterial );
+				var robotGeometry = new THREE.BoxGeometry(sizeX, sizeY, sizeZ);
+				robotGeometry.translate(0, sizeY/2, 0);
+
+				var object = new THREE.Mesh(robotGeometry, robotMaterial);
 				object.castShadow = true;
-					
+
 				// ако има родител, регистрира елемента като негов подобект
-				if( parent )
+				if (parent)
 				{
-					object.position.set( 0, parent.geometry.parameters.height, 0 );
-					parent.add( object );
+					object.position.set(0, parent.geometry.parameters.height, 0);
+					parent.add(object);
 				}
-				
+
 				return object;
 			}
 
-
 			// първи елемент на робот
-			var a = robotElement( 10, 25, 5 );
+			var a = robotElement(10, 25, 5);
 			a.position.y = 0;
-			scene.add( a );
+			scene.add(a);
 
 			// втори елемент
-			var b = robotElement( 8, 20, 5, a );
+			var b = robotElement(8, 20, 5, a);
 
 			// трети елемент
-			var c = robotElement( 7, 17, 4, b );
+			var c = robotElement(7, 17, 4, b);
 
 			// единия клон на щипците
-			var d1 = robotElement( 6, 13, 3, c );
-			var e1 = robotElement( 6, 8, 2, d1 );
-			
+			var d1 = robotElement(6, 13, 3, c);
+			var e1 = robotElement(6, 8, 2, d1);
+
 			// другия клон на щипците
-			var d2 = robotElement( 6, 13, 3, c );
-			var e2 = robotElement( 6, 8, 2, d2 );
-			
-			
+			var d2 = robotElement(6, 13, 3, c);
+			var e2 = robotElement(6, 8, 2, d2);
+
 			function animate()
 			{
-				var k = 0.1;
-				
-				scene.rotation.y = THREE.MathUtils.lerp( scene.rotation.y, THREE.MathUtils.degToRad(pose.s), k );
-				
+				var k = 0.2;
+
+				scene.rotation.y = THREE.MathUtils.lerp(scene.rotation.y, THREE.MathUtils.degToRad(pose.s), k);
+
 				a.rotation.set(
-					THREE.MathUtils.lerp( a.rotation.x, THREE.MathUtils.degToRad(pose.ax), k ),
-					THREE.MathUtils.lerp( a.rotation.y, THREE.MathUtils.degToRad(pose.ay), k ),
+					THREE.MathUtils.lerp(a.rotation.x, THREE.MathUtils.degToRad(pose.ax), k),
+					THREE.MathUtils.lerp(a.rotation.y, THREE.MathUtils.degToRad(pose.ay), k),
 					0,
-					'YXZ'
-				);
-				b.rotation.x = THREE.MathUtils.lerp( b.rotation.x, THREE.MathUtils.degToRad(pose.bx), k );
-				c.rotation.x = THREE.MathUtils.lerp( c.rotation.x, THREE.MathUtils.degToRad(pose.cx), k );
-				
+					'YXZ');
+				b.rotation.x = THREE.MathUtils.lerp(b.rotation.x, THREE.MathUtils.degToRad(pose.bx), k);
+				c.rotation.x = THREE.MathUtils.lerp(c.rotation.x, THREE.MathUtils.degToRad(pose.cx), k);
+
 				// разпереност
 				d1.rotation.set(
-					THREE.MathUtils.lerp( d1.rotation.x, +THREE.MathUtils.degToRad(pose.t2/2), k ),
-					THREE.MathUtils.lerp( d1.rotation.y, THREE.MathUtils.degToRad(pose.t1), k ),
+					THREE.MathUtils.lerp(d1.rotation.x, +THREE.MathUtils.degToRad(pose.t2/2), k),
+					THREE.MathUtils.lerp(d1.rotation.y, THREE.MathUtils.degToRad(pose.t1), k),
 					0,
-					'YXZ'
-				);
+					'YXZ');
 				d2.rotation.set(
-					THREE.MathUtils.lerp( d2.rotation.x, -THREE.MathUtils.degToRad(pose.t2/2), k ),
-					THREE.MathUtils.lerp( d2.rotation.y, THREE.MathUtils.degToRad(pose.t1), k ),
+					THREE.MathUtils.lerp(d2.rotation.x, -THREE.MathUtils.degToRad(pose.t2/2), k),
+					THREE.MathUtils.lerp(d2.rotation.y, THREE.MathUtils.degToRad(pose.t1), k),
 					0,
-					'YXZ'
-				);
-				
+					'YXZ');
+
 				// отвореност
-				e1.rotation.x = THREE.MathUtils.lerp( e1.rotation.x, -THREE.MathUtils.degToRad(180-pose.t3), k );
-				e2.rotation.x = THREE.MathUtils.lerp( e2.rotation.x, +THREE.MathUtils.degToRad(180-pose.t3), k );
+				e1.rotation.x = THREE.MathUtils.lerp(e1.rotation.x, -THREE.MathUtils.degToRad(180-pose.t3), k);
+				e2.rotation.x = THREE.MathUtils.lerp(e2.rotation.x, +THREE.MathUtils.degToRad(180-pose.t3), k);
 			}
+			
 		</script>
 	</body>
 </html>

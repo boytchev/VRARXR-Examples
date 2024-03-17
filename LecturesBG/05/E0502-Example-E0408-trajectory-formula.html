@@ -7,52 +7,66 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxSceneInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxSceneInit, Pillar, object, scene} from "vax";
+
+			vaxSceneInit(animate);
 			
 			// крива - собствен клас, наследник на THREE.Curve
 			class CustomCurve extends THREE.Curve
 			{
-				getPoint ( t )
+				getPoint(t)
 				{
 					var alpha = 2*Math.PI*t;
-					var radius = 60+12*Math.sin(2*alpha);
-					var p = new THREE.Vector3().setFromSphericalCoords(radius,Math.PI/2,alpha);
-					p.y = 30+20*Math.sin(alpha+Math.PI/4);
-					
+					var radius = 60 + 12*Math.sin(2*alpha);
+					var p = new THREE.Vector3().setFromSphericalCoords(radius, Math.PI/2, alpha);
+					p.y = 30 + 20*Math.sin(alpha + Math.PI/4);
+
 					return p;
 				};
 			}
 
 			// траектория
-			var path = new CustomCurve( );
+			var path = new CustomCurve();
 
 			// пилони
-			scene.add( pillar( path.getPoint(0/3), ground.material ) );
-			scene.add( pillar( path.getPoint(1/3), ground.material ) );
-			scene.add( pillar( path.getPoint(2/3), ground.material ) );
-	
-			// рисуване на траектория
-			var geometry = new THREE.TubeGeometry( path, 100, 1, 3, false );
-			var material = new THREE.MeshPhongMaterial( { emissive: 0x606070 } );
-			var mesh = new THREE.Mesh( geometry, material );
-			mesh.castShadow = true;
-			scene.add( mesh );
+			scene.add(new Pillar(path.getPoint(0/3)));
+			scene.add(new Pillar(path.getPoint(1/3)));
+			scene.add(new Pillar(path.getPoint(2/3)));
 
-			function animate( t )
+			// рисуване на траектория
+			var geometry = new THREE.TubeGeometry(path, 100, 1, 3, false);
+			var material = new THREE.MeshPhongMaterial({emissive: 0x606070});
+			var mesh = new THREE.Mesh(geometry, material);
+			mesh.castShadow = true;
+			scene.add(mesh);
+
+			function animate(t)
 			{
 				// движение по траекторията
-				object.position.copy( path.getPoint(t/4) ); 
+				object.position.copy(path.getPoint(t/4));
 
 				// въртене на сцената и на обекта
 				object.rotation.y = -5*t;
 				scene.rotation.y = t/5;
 			}
+			
 		</script>
 	</body>
 </html>
+
+

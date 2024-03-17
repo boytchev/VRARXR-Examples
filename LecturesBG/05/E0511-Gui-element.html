@@ -7,67 +7,78 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="lil-gui.umd.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInit();
-			
-			scene.background = new THREE.Color( 'beige' );
-			
+		<script type="module">
+		
+			import * as THREE from "three";
+			import * as lil from "three/addons/libs/lil-gui.module.min.js";
+			import {vaxInit, scene} from "vax";
+
+			vaxInit(animate);
+
+			scene.background = new THREE.Color('beige');
+
 			// интерактивно контролиране на ъглите
 			var gui = new lil.GUI();
 			var pose = {
-				ax: 0,
-				ay: 0,
-				az: 0
-			};
+					ax: 0,
+					ay: 0,
+					az: 0
+				};
 			var guip = gui.addFolder('Елемент A');
-			guip.add( pose, 'ax', -90, 90 ).name('Ротация около X').step(1);
-			guip.add( pose, 'ay', -360, 360 ).name('Ротация около Y').step(1);
-			guip.add( pose, 'az', -90, 90 ).name('Ротация около Z').step(1);
-			
-			
+			guip.add(pose, 'ax', -90, 90).name('Ротация около X').step(1);
+			guip.add(pose, 'ay', -360, 360).name('Ротация около Y').step(1);
+			guip.add(pose, 'az', -90, 90).name('Ротация около Z').step(1);
+
 			// геометрия и материал на елемент на робот
-			var robotGeometry = new THREE.BoxGeometry( 1, 1, 1 ),
-				robotMaterial = new THREE.MeshPhongMaterial( {color: 'tomato', shininess: 100} );
-				
+			var robotGeometry = new THREE.BoxGeometry(1, 1, 1),
+			robotMaterial = new THREE.MeshPhongMaterial({
+				color: 'tomato',
+				shininess: 100
+			});
+
 			// нагласяваме елемента да е с център (0,0,0) в долния край
-			robotGeometry.translate( 0, 0.5, 0 );
-			
+			robotGeometry.translate(0, 0.5, 0);
+
 			// функция за елемент на робот
-			function robotElement( sizeX, sizeY, sizeZ, parent )
+			function robotElement(sizeX, sizeY, sizeZ, parent)
 			{
-				var object = new THREE.Mesh( robotGeometry, robotMaterial );
-				object.scale.set( sizeX, sizeY, sizeZ );
-					
+				var object = new THREE.Mesh(robotGeometry, robotMaterial);
+				object.scale.set(sizeX, sizeY, sizeZ);
+
 				// ако има родител, регистрира елемента като негов подобект
-				if( parent )
+				if (parent)
 				{
-					parent.add( object );
+					parent.add(object);
 				}
-				
+
 				return object;
 			}
 
-
 			// първи елемент на робот
-			var a = robotElement( 10, 25, 5 );
+			var a = robotElement(10, 25, 5);
 			a.position.y = -40;
-			scene.add( a );
-			
-			
+			scene.add(a);
+
 			function animate()
 			{
 				a.rotation.set(
-					THREE.MathUtils.degToRad( pose.ax ),
-					THREE.MathUtils.degToRad( pose.ay ),
-					THREE.MathUtils.degToRad( pose.az ),
-				);
+					THREE.MathUtils.degToRad(pose.ax),
+					THREE.MathUtils.degToRad(pose.ay),
+					THREE.MathUtils.degToRad(pose.az), );
 			}
+			
 		</script>
 	</body>
 </html>
