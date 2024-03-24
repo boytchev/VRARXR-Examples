@@ -1,3 +1,6 @@
+
+import * as THREE from "three";
+
 window.Physijs = (function() {
 	'use strict';
 
