@@ -21,25 +21,24 @@
 	
 	<body>
 		<script type="module">
-/*		
-			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
-			  */
+
 			import * as THREE from "three";
 			import "physijs";
-			import {vaxInit, object, scene, Pillar} from "vax";
+			import {vaxInit, scene} from "vax";
 
 			vaxInit(animate);
 
 			// топка
-			var geometry = new THREE.SphereGeometry( 8 );
-			var material = Physijs.createMaterial( new THREE.MeshPhongMaterial({color:'hotpink'}) );
-			var ball = new Physijs.SphereMesh( geometry, material );
-			scene.add( ball );
+			var geometry = new THREE.SphereGeometry(8);
+			var material = Physijs.createMaterial(new THREE.MeshPhongMaterial({color: 'hotpink'}));
+			var ball = new Physijs.SphereMesh(geometry, material);
+			scene.add(ball);
 
-			function animate( )
+			function animate()
 			{
 				scene.simulate();
 			}
+			
 		</script>
 	</body>
 </html>
