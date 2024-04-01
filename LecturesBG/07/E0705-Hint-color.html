@@ -7,36 +7,48 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			perspective = false;
-			vaxInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxInit, scene, camera, orthogonal} from "vax";
 
-			camera.position.set( 0, 0, 400 );
+			orthogonal();
+			vaxInit(animate);
+
+			camera.position.set(0, 0, 400);
 
 			// мъгла
-			scene.fog = new THREE.Fog( 'white', 100, 800 );
-			
+			scene.fog = new THREE.Fog('white', 100, 800);
+
 			// обекти
-			var geometry = new THREE.SphereGeometry( 30 ),
-				material = new THREE.MeshBasicMaterial( {color: 'black'} );
-				
-			var object = new THREE.Mesh( geometry, material );
-			object.position.set( 250, 0, 0 );
-			scene.add( object );
+			var geometry = new THREE.SphereGeometry(30),
+			material = new THREE.MeshBasicMaterial({color: 'black'});
+
+			var object = new THREE.Mesh(geometry, material);
+			object.position.set(250, 0, 0);
+			scene.add(object);
 
 			object = object.clone();
-			object.position.set( -250, 0, 0 );
-			scene.add( object );
-			
-			function animate( t )
+			object.position.set(-250, 0, 0);
+			scene.add(object);
+
+			function animate(t)
 			{
 				scene.rotation.y = t;
 			}
+			
 		</script>
 	</body>
 </html>

@@ -7,104 +7,129 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="lil-gui.umd.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import * as lil from "three/addons/libs/lil-gui.module.min.js";
+			import {vaxInit, scene, light} from "vax";
 
-			light.intensity = 0.4;
-			
-			light = light.clone();
-			light.position.x = 500;
-			scene.add( light );
-			
-			light = light.clone();
-			light.position.x = 300;
-			light.position.y = 300;
-			scene.add( light );
-			
+			vaxInit(animate);
+
+
+			light.intensity = 1;
+
+			var light2 = light.clone();
+			light2.position.x = 500;
+			scene.add(light2);
+
+			var light3 = light.clone();
+			light3.position.x = 300;
+			light3.position.y = 300;
+			scene.add(light3);
+
+			scene.add(new THREE.AmbientLight('white', 1));
+
 			// създаване на панел
 			var gui = new lil.GUI();
-			
+
 			var data = {
 				eyes: 1,
 				fly_z: 70
 			};
-			gui.add( data, 'eyes', [1, 2, 3] ).name('Брой очи');
-			gui.add( data, 'fly_z', {'далече':70, 'близо':0, 'много близо':-40, 'напред-назад':-100} ).name('Брой очи');
+			gui.add(data, 'eyes', [1, 2, 3]).name('Брой очи');
+			gui.add(data, 'fly_z', {
+				'далече': 70,
+				'близо': 0,
+				'много близо': -40,
+				'напред-назад': -100
+			}).name('Разстояние');
 
-			
 			// модел на око
-			var geometry = new THREE.SphereGeometry( 30, 50 );
-				geometry.rotateX( Math.PI/2 );
-			eye = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({color:'linen', shininess:100}) );
-			eye.position.set( -75, 0, -100 );
-			scene.add( eye );
+			var geometry = new THREE.SphereGeometry(30, 50);
+			geometry.rotateX(Math.PI/2);
+			var eye = new THREE.Mesh(geometry, new THREE.MeshPhysicalMaterial({
+						color: 'linen',
+						roughness: 0.2
+					}));
+			eye.position.set(-75, 0, -100);
+			scene.add(eye);
 
-			iris = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({color:'brown', shininess:600}) );
-			iris.scale.set( 0.65, 0.65, 0.5 );
+			var iris = new THREE.Mesh(geometry, new THREE.MeshPhysicalMaterial({
+						color: 'brown',
+						roughness: 0.2
+					}));
+			iris.scale.set(0.65, 0.65, 0.5);
 			iris.position.z = 15.7;
-			eye.add( iris );
-			
-			pupil = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({color:'black', shininess:1200}) );
-			pupil.scale.set( 0.5, 0.5, 0.4 );
+			eye.add(iris);
+
+			var pupil = new THREE.Mesh(geometry, new THREE.MeshPhysicalMaterial({
+						color: 'black',
+						roughness: 0.2
+					}));
+			pupil.scale.set(0.5, 0.5, 0.4);
 			pupil.position.z = 18.8;
-			eye.add( pupil );
-			
+			eye.add(pupil);
 
 			// второ око
 			var eye2 = eye.clone();
-			eye2.position.set( 75, 0, -100 );
-			scene.add( eye2 );
-			
+			eye2.position.set(75, 0, -100);
+			scene.add(eye2);
 
 			// трето око
 			var eye3 = eye.clone();
-			eye3.position.set( 0, 50, -100 );
-			scene.add( eye3 );
-			
-			
+			eye3.position.set(0, 50, -100);
+			scene.add(eye3);
+
 			// муха
-			var geometry = new THREE.SphereGeometry( 1, 16, 12 );
-			fly = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial({color:'black'}) );
-			scene.add( fly );
+			var geometry = new THREE.SphereGeometry(1);
+			var fly = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({color: 'black'}));
+			scene.add(fly);
 			//fly.scale.set( 5, 5, 5 );
 
-			
-			function animate( t )
+
+			function animate(t)
 			{
 				var k = 0.8;
-				if ( data.fly_z < 40 ) k = 2;
-				if ( data.fly_z < -10 ) k = 3;
-				
-				if( data.fly_z > -100 )
+				if (data.fly_z < 40)
+					k = 2;
+				if (data.fly_z < -10)
+					k = 3;
+
+				if (data.fly_z > -100)
 				{
 					fly.position.set(
-						k*30*Math.sin( 4*t ),
-						k*20*Math.cos( Math.PI*t+1 ),
-						data.fly_z
-					);
+						k*30*Math.sin(4*t),
+						k*20*Math.cos(Math.PI*t+1),
+						data.fly_z);
 				}
 				else
 				{
 					fly.position.set(
 						0,
 						-20,
-						30+50*Math.sin(4*t)
-					);
+						30+50*Math.sin(4*t));
 				}
-				
-				eye.lookAt( fly.position );
-				eye2.lookAt( fly.position );
-				eye3.lookAt( fly.position );
-				
-				eye2.visible = data.eyes>=2;
-				eye3.visible = data.eyes>=3;
+
+				eye.lookAt(fly.position);
+				eye2.lookAt(fly.position);
+				eye3.lookAt(fly.position);
+
+				eye2.visible = data.eyes >= 2;
+				eye3.visible = data.eyes >= 3;
 			}
+			
 		</script>
 	</body>
 </html>

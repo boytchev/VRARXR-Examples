@@ -7,41 +7,54 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxInit, scene, camera, light} from "vax";
 
-			var geometry = new THREE.SphereGeometry( 30, 50, 50 ),
-				materialA = new THREE.MeshPhongMaterial( {color: 'cornflowerblue'} ),
-				materialB = new THREE.MeshPhongMaterial( {color: 'crimson'} );
+			vaxInit(animate);
 			
+			light.intensity = 4.5;
+
+			var geometry = new THREE.SphereGeometry(30, 50, 50),
+			materialA = new THREE.MeshPhongMaterial({color: 'cornflowerblue'}),
+			materialB = new THREE.MeshPhongMaterial({color: 'crimson'});
+
 			// обекти
-			object = new THREE.Mesh( geometry, materialB );
-			object.position.set( -80, 0, -80 );
-			scene.add( object );
-			
-			object = new THREE.Mesh( geometry, materialB );
-			object.position.set( 80, 0, -80 );
-			scene.add( object );
-				
-			var object = new THREE.Mesh( geometry, materialA );
-			scene.add( object );
-			
+			var object = new THREE.Mesh(geometry, materialB);
+			object.position.set(-80, 0, -80);
+			scene.add(object);
 
-			function animate( t )
+			object = new THREE.Mesh(geometry, materialB);
+			object.position.set(80, 0, -80);
+			scene.add(object);
+
+			object = new THREE.Mesh(geometry, materialA);
+			scene.add(object);
+
+			function animate(t)
 			{
 				// симулирано гледане с редуване на очите
-				if( Math.round(t*2)%2 )
-					camera.position.set( 20, 0, 100 ); // дясно око
+				if (Math.round(t * 2) % 2)
+					camera.position.set(20, 0, 100); // дясно око
 				else
-					camera.position.set( -20, 0, 100 ); // ляво око
-					
-				camera.lookAt( object.position );
+					camera.position.set(-20, 0, 100); // ляво око
+
+				camera.lookAt(object.position);
 			}
+			
 		</script>
 	</body>
 </html>
