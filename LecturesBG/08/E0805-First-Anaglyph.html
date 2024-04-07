@@ -7,27 +7,39 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="AnaglyphEffect.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			// инициализираме в режим на анаглифна графика
-			vaxInitAnaglyph();
-			
-			var cube = new THREE.Mesh(
-				new THREE.BoxGeometry( 30, 30, 30 ),
-				new THREE.MeshStandardMaterial( {color:'yellow'} )
-			);
-			scene.add( cube );
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxInitAnaglyph, scene, light} from "vax";
 
-	
-			function animate( t )
+			// инициализираме в режим на анаглифна графика
+			vaxInitAnaglyph(animate);
+
+			light.intensity = 3;
+
+			var cube = new THREE.Mesh(
+					new THREE.BoxGeometry(30, 30, 30),
+					new THREE.MeshStandardMaterial({color: 'yellow'})
+				);
+			scene.add(cube);
+
+			function animate(t)
 			{
-				cube.rotation.set( t, t/2, 0);
+				cube.rotation.set(t, t/2, 0);
 			}
+			
 		</script>
 	</body>
 </html>

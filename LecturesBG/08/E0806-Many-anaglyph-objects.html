@@ -7,33 +7,51 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="AnaglyphEffect.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInitAnaglyph();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxInitAnaglyph, scene, light} from "vax";
+
+			// инициализираме в режим на анаглифна графика
+			vaxInitAnaglyph(animate);
 			
+			light.intensity = 3;
+
 			var cubes = [];
 			var n = 30;
-			for (var i=0; i<n; i++)
+			for (var i = 0; i < n; i++)
 			{
 				cubes[i] = new THREE.Mesh(
-					new THREE.IcosahedronGeometry( 10 ),
-					new THREE.MeshStandardMaterial( {color:'yellow'} )
+						new THREE.IcosahedronGeometry(10),
+						new THREE.MeshStandardMaterial({color: 'yellow'})
+					);
+				cubes[i].position.set(
+					THREE.MathUtils.randFloat(-50, 50),
+					THREE.MathUtils.randFloat(-50, 50),
+					THREE.MathUtils.randFloat(-100, 100)
 				);
-				cubes[i].position.set( THREE.Math.randFloat(-50,50),THREE.Math.randFloat(-50,50),THREE.Math.randFloat(-100,100) );
-				scene.add( cubes[i] );
+				scene.add(cubes[i]);
 			}
-	
-			function animate( t )
+
+			function animate(t)
 			{
 				// въртене на обектите
-				for (var i=0; i<n; i++)
-					cubes[i].rotation.set( t+i, t/2-i, i );
+				for (var i = 0; i < n; i++)
+					cubes[i].rotation.set(t+i, t/2-i, i);
 			}
+			
 		</script>
 	</body>
 </html>
