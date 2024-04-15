@@ -14,28 +14,30 @@
 		<h3>acc + gravity <span id="acceleration2"></span></h3>
 
 		<script>
+		
 			// слушаме за събитието на ориентацията на устройство
-			window.addEventListener( "devicemotion", deviceMotion, true);
+			window.addEventListener("devicemotion", deviceMotion, true);
 
-			function format( x )
+			function format(x)
 			{
-				if( x === null ) return 'null';
+				if (x === null) return 'null';
 				return x.toFixed(1);
 			}
-			
-			function xyz( v )
+
+			function xyz(v)
 			{
-				return 'X='+format(v.x)+' Y='+format(v.y)+' Z='+format(v.z);
+				return 'X=' + format(v.x) + ' Y=' + format(v.y) + ' Z=' + format(v.z);
 			}
-			
+
 			// функция, която показва данните на движението
-			function deviceMotion( event )
+			function deviceMotion(event)
 			{
-				console.log( event );
-	
-				document.getElementById('acceleration1').innerHTML = xyz( event.acceleration );
-				document.getElementById('acceleration2').innerHTML = xyz( event.accelerationIncludingGravity );
+				console.log(event);
+
+				document.getElementById('acceleration1').innerHTML = xyz(event.acceleration);
+				document.getElementById('acceleration2').innerHTML = xyz(event.accelerationIncludingGravity);
 			}
+			
 		</script>
 	</body>
 </html>

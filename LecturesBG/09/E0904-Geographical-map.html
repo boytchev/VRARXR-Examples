@@ -20,21 +20,20 @@
 
 		<script>
 			var coordinates = [
-				[35.6719, 139.7440], // Токио
-				[48.1976,  16.3693], // Виена 
-				[43.6888, -79.4593], // Торонто
-				[-32.9927, 27.9032], // Източен Лондон 
+				[ 35.6719, 139.7440], // Токио
+				[ 48.1976,  16.3693], // Виена
+				[ 43.6888, -79.4593], // Торонто
+				[-32.9927,  27.9032], // Източен Лондон
 			]
-				
-			function showLocation( townIndex )
+
+			function showLocation(townIndex)
 			{
-				var latitude  = coordinates[townIndex][0],
-					longitude = coordinates[townIndex][1]
-					
-				window.open( 'https://www.openstreetmap.org/#map=12/' + latitude + '/' + longitude );
+				var latitude = coordinates[townIndex][0],
+					longitude = coordinates[townIndex][1];
+
+				window.open('https://www.openstreetmap.org/#map=12/' + latitude + '/' + longitude);
 			}
+			
 		</script>
 	</body>
 </html>
-
-

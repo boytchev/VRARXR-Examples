@@ -7,57 +7,71 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxInit, scene, camera} from "vax";
+
 			vaxInit();
 			
-			var O = new THREE.Vector3( 0, 0, 0 );
-			
-			camera.position.set( 50, 40, 150 );
-			camera.lookAt( O );
-			
+			var O = new THREE.Vector3(0, 0, 0);
+
+			camera.position.set(50, 40, 150);
+			camera.lookAt(O);
+
 			// координатна система
-			scene.add( new THREE.ArrowHelper( new THREE.Vector3( 1,0,0), O, 80, 'red' ) );
-			scene.add( new THREE.ArrowHelper( new THREE.Vector3(-1,0,0), O, 80, 'red' ) );
-			scene.add( new THREE.ArrowHelper( new THREE.Vector3(0, 1,0), O, 80, 'green' ) );
-			scene.add( new THREE.ArrowHelper( new THREE.Vector3(0,-1,0), O, 80, 'green' ) );
-			scene.add( new THREE.ArrowHelper( new THREE.Vector3(0,0, 1), O, 80, 'blue' ) );
-			scene.add( new THREE.ArrowHelper( new THREE.Vector3(0,0,-1), O, 80, 'blue' ) );
-			
+			scene.add(new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), O, 80, 'red'));
+			scene.add(new THREE.ArrowHelper(new THREE.Vector3(-1, 0, 0), O, 80, 'red'));
+			scene.add(new THREE.ArrowHelper(new THREE.Vector3(0, 1, 0), O, 80, 'green'));
+			scene.add(new THREE.ArrowHelper(new THREE.Vector3(0, -1, 0), O, 80, 'green'));
+			scene.add(new THREE.ArrowHelper(new THREE.Vector3(0, 0, 1), O, 80, 'blue'));
+			scene.add(new THREE.ArrowHelper(new THREE.Vector3(0, 0, -1), O, 80, 'blue'));
+
 			// слушаме за събитието на ориентацията на устройство
-			setTimeout( function() {window.addEventListener( "devicemotion", deviceMotion, true)}, 2000 );
-			
+			setTimeout(function ()
+						{
+							window.addEventListener("devicemotion", deviceMotion, true)
+						}, 2000);
+
 			// точки
 			var n = 100,
 				k = 80, // мащаб
 				data = [];
-			
+
 			// функция, която показва данните на движението
-			function deviceMotion( event )
+			function deviceMotion(event)
 			{
-				if( n>0 )
+				if (n > 0)
 				{
-					data.push( k*event.acceleration.x, k*event.acceleration.y, k*event.acceleration.z );
+					data.push(k*event.acceleration.x, k*event.acceleration.y, k*event.acceleration.z);
 					n--;
 				}
 				else
 				{
 					var geometry = new THREE.BufferGeometry();
-					geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( data, 3 ) );
-					
-					var material = new THREE.PointsMaterial( { color:'black', size:3 } );
-					var points = new THREE.Points( geometry, material );
-					scene.add( points );
-					
+					geometry.setAttribute('position', new THREE.Float32BufferAttribute(data, 3));
+
+					var material = new THREE.PointsMaterial({color: 'black', size: 3});
+					var points = new THREE.Points(geometry, material);
+					scene.add(points);
+
 					n--;
 				}
 			}
-			
-			function animate( t )
+
+			function animate(t)
 			{
 				scene.rotation.y = t/2;
 			}

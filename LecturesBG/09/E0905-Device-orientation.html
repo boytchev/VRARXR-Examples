@@ -16,17 +16,19 @@
 		<h3>absolute = <span id="absolute"></span></h3>
 
 		<script>
+		
 			// слушаме за събитието на ориентацията на устройство
-			window.addEventListener( "deviceorientation", deviceOrientation, true);
+			window.addEventListener("deviceorientation", deviceOrientation, true);
 
 			// функция, която показва данните на ориентацията
-			function deviceOrientation( event )
+			function deviceOrientation(event)
 			{
 				document.getElementById('alpha').innerHTML = event.alpha.toFixed(1);
 				document.getElementById('beta').innerHTML = event.beta.toFixed(1);
 				document.getElementById('gamma').innerHTML = event.gamma.toFixed(1);
 				document.getElementById('absolute').innerHTML = event.absolute.toFixed(1);
 			}
+			
 		</script>
 	</body>
 </html>
