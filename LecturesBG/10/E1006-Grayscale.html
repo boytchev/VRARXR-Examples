@@ -17,40 +17,40 @@
 	<body onload="convert()">
 		<script>
 
-		function convert()
-		{
-			var img = document.getElementsByTagName('img')[0],
-				canvas = document.getElementsByTagName('canvas')[0],
-				context = canvas.getContext('2d');
-			
-			// оразмеряване на снимката
-			canvas.width = img.clientWidth;
-			canvas.height = img.clientHeight;
-			
-			context.drawImage( img, 0, 0 );
-			
-			// извличане на цветовете
-			var image = context.getImageData( 0, 0, img.clientWidth, img.clientHeight ),
-				data = image.data;
-				
-			// преобразуване в черно-бяло
-			for( var i=0; i<data.length; i+=4 )
+			function convert()
 			{
-				var r = data[i+0],
-					g = data[i+1],
-					b = data[i+2];
-					
-				var bw = Math.round(0.3*r+0.6*g+0.1*b);
-				
-				data[i+0] = bw;
-				data[i+1] = bw;
-				data[i+2] = bw;
-			}
+				var img = document.getElementsByTagName('img')[0],
+					canvas = document.getElementsByTagName('canvas')[0],
+					context = canvas.getContext('2d');
 
-			// рисуване
-			context.putImageData( image, 0, 0 );
-		}
-		
+				// оразмеряване на снимката
+				canvas.width = img.clientWidth;
+				canvas.height = img.clientHeight;
+
+				context.drawImage(img, 0, 0);
+
+				// извличане на цветовете
+				var image = context.getImageData(0, 0, img.clientWidth, img.clientHeight),
+					data = image.data;
+
+				// преобразуване в черно-бяло
+				for (var i = 0; i < data.length; i += 4)
+				{
+					var r = data[i+0],
+						g = data[i+1],
+						b = data[i+2];
+
+					var bw = Math.round(0.3*r + 0.6*g + 0.1*b);
+
+					data[i+0] = bw;
+					data[i+1] = bw;
+					data[i+2] = bw;
+				}
+
+				// рисуване
+				context.putImageData(image, 0, 0);
+			}
+			
 		</script>
 		
 		Оригинално изображение:<br>

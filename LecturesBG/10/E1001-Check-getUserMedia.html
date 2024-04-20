@@ -10,24 +10,24 @@
 	<body>
 		<script>
 
-		function hasCamera()
-		{
-			if( navigator.mediaDevices )
-				if( navigator.mediaDevices.getUserMedia )
-					return true;
-					
-			return false;
-		}
+			function hasCamera()
+			{
+				if (navigator.mediaDevices)
+					if (navigator.mediaDevices.getUserMedia)
+						return true;
 
-		function test()
-		{
-			var elem = document.getElementById('camera');
-			
-			if( hasCamera() )
-				elem.innerHTML = 'Има getUserMedia! &#x1F600;';
-			else
-				elem.innerHTML = 'Няма getUserMedia! &#x1F62D;';
-		}
+				return false;
+			}
+
+			function test()
+			{
+				var elem = document.getElementById('camera');
+
+				if (hasCamera())
+					elem.innerHTML = 'Има getUserMedia! &#x1F600;';
+				else
+					elem.innerHTML = 'Няма getUserMedia! &#x1F62D;';
+			}
 		</script>
 		
 		<button onclick="test()">Проверка</button>

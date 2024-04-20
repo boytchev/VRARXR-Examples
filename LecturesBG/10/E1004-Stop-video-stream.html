@@ -10,24 +10,23 @@
 	<body>
 		<script>
 
-		function getVideo()
-		{
-			navigator.mediaDevices.getUserMedia({video:true}).then(showVideo);
-		}
-		
-		function showVideo( stream )
-		{
-			document.getElementById('video').srcObject = stream;
-		}
-		
-		function stopVideo( )
-		{
-			var tracks = document.getElementById('video').srcObject.getVideoTracks();
+			function getVideo()
+			{
+				navigator.mediaDevices.getUserMedia({video: true}).then(showVideo);
+			}
 
-			for( var i=0; i<tracks.length; i++ )
-				tracks[i].stop();
-		}
-		
+			function showVideo(stream)
+			{
+				document.getElementById('video').srcObject = stream;
+			}
+
+			function stopVideo()
+			{
+				var tracks = document.getElementById('video').srcObject.getVideoTracks();
+
+				for (var i = 0; i < tracks.length; i++)
+					tracks[i].stop();
+			}
 		</script>
 		
 		<button onclick="getVideo()">Видео</button>

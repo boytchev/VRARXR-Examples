@@ -18,40 +18,40 @@
 	<body>
 		<script>
 
-		function getVideo()
-		{
-			navigator.mediaDevices.getUserMedia({video:true}).then(showVideo);
-		}
+			function getVideo()
+			{
+				navigator.mediaDevices.getUserMedia({video:true}).then(showVideo);
+			}
 		
-		function showVideo( stream )
-		{
-			document.getElementById('video').srcObject = stream;
-		}
-		
-		function stopVideo( )
-		{
-			var tracks = document.getElementById('video').srcObject.getVideoTracks();
+			function showVideo(stream)
+			{
+				document.getElementById('video').srcObject = stream;
+			}
 
-			for( var i=0; i<tracks.length; i++ )
-				tracks[i].stop();
-		}
-		
-		function getSnapshot()
-		{
-			var video = document.getElementById('video'),
+			function stopVideo()
+			{
+				var tracks = document.getElementById('video').srcObject.getVideoTracks();
+
+				for (var i = 0; i < tracks.length; i++)
+					tracks[i].stop();
+			}
+
+			function getSnapshot()
+			{
+				var video = document.getElementById('video'),
 				settings = video.srcObject.getVideoTracks()[0].getSettings(),
 				snapshot = document.getElementById('snapshot');
+
+				// оразмеряване на снимката
+				snapshot.width = settings.width;
+				snapshot.height = settings.height;
+				snapshot.style.width = '40%';
+				snapshot.style.height = 'auto';
+
+				// копиране на кадър от видеото към снимката
+				snapshot.getContext('2d').drawImage(video, 0, 0);
+			}
 			
-			// оразмеряване на снимката
-			snapshot.width = settings.width;
-			snapshot.height = settings.height;
-			snapshot.style.width = '40%';
-			snapshot.style.height = 'auto';
-			
-			// копиране на кадър от видеото към снимката
-			snapshot.getContext('2d').drawImage( video, 0, 0 );
-		}
-		
 		</script>
 		
 		<button onclick="getVideo()">Видео</button>

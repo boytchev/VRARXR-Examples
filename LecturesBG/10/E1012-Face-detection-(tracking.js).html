@@ -19,38 +19,40 @@
 
 		
 		<script>
+		
 			function detectFaces()
 			{
 				var img = document.getElementById('image');
-				
+
 				var canvas = document.getElementById('canvas');
-					canvas.width = img.clientWidth;
-					canvas.height = img.clientHeight;
-				
+				canvas.width = img.clientWidth;
+				canvas.height = img.clientHeight;
+
 				var context = canvas.getContext('2d');
-					context.drawImage( img, 0, 0 );
-					context.lineWidth = 3;
-					context.strokeStyle = 'crimson';
-				
+				context.drawImage(img, 0, 0);
+				context.lineWidth = 3;
+				context.strokeStyle = 'crimson';
+
 				var objects = new tracking.ObjectTracker(['face', 'eye', 'mouth']);
-					objects.on( 'track', onTrack );
-			
-				function onTrack( event )
-				{	// настъпило е трасиращо събитие
-					event.data.forEach( foundObject );
+				objects.on('track', onTrack);
+
+				function onTrack(event)
+				{ // настъпило е трасиращо събитие
+					event.data.forEach(foundObject);
 				}
 
-				function foundObject( rect )
-				{	// намерен е трасиран обект
-					context.strokeRect( rect.x, rect.y, rect.width, rect.height );
+				function foundObject(rect)
+				{ // намерен е трасиран обект
+					context.strokeRect(rect.x, rect.y, rect.width, rect.height);
 				}
-				
+
 				tracking.track('#image', objects);
 
 				// скриваме картинката
 				img.style.display = 'none';
 				canvas.style.display = 'block';
 			}
+			
 		</script>
 	</body>
 </html>

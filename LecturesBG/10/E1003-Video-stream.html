@@ -10,15 +10,15 @@
 	<body>
 		<script>
 
-		function getVideo()
-		{
-			navigator.mediaDevices.getUserMedia({video:true}).then(showVideo);
-		}
-		
-		function showVideo( stream )
-		{
-			document.getElementById('video').srcObject = stream;
-		}
+			function getVideo()
+			{
+				navigator.mediaDevices.getUserMedia({video: true}).then(showVideo);
+			}
+
+			function showVideo(stream)
+			{
+				document.getElementById('video').srcObject = stream;
+			}
 		
 		</script>
 		

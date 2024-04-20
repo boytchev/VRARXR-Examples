@@ -7,43 +7,55 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
 		<img src="bird.jpg" style="position:fixed; left:0; top:0; z-index:-100; width: 100%;"></iframe>
+		<script type="module">
 		
-		<script>
-			vaxInit( {antialias:true, alpha:true} );
-			
-			light.position.set( 0, 0, 0 );
-			
-			camera = new THREE.PerspectiveCamera( 60, 1, 1, 3000 );
-			camera.position.set( 0, 0, 0 );
-			camera.lookAt( new THREE.Vector3( 0, 0, -1 ) );
-			
+			import * as THREE from "three";
+			import {vaxInit, scene, light, camera} from "vax";
+
+			vaxInit(animate,{antialias:true, alpha:true});	
+	
+			light.intensity = 6;
+			light.position.set(0, 0, 0);
+
+			camera.far = 3000;
+			camera.updateProjectionMatrix();
+			camera.position.set(0, 0, 0);
+			camera.lookAt(new THREE.Vector3(0, 0, -1));
+
 			// обекти
-			var geometry = new THREE.OctahedronGeometry( 1 );
+			var geometry = new THREE.OctahedronGeometry(1);
 
 			var n = 100;
 			var objects = [];
-			for( var i=0; i<n; i++)
+			for (var i = 0; i < n; i++)
 			{
-				var material = new THREE.MeshLambertMaterial( {color: THREE.Math.randInt(0, 0xFFFFFF)} ),
-					mesh = new THREE.Mesh( geometry, material );
-					
-				mesh.scale.set( 50, 150, 50 );
-				mesh.position.set( THREE.Math.randFloatSpread(6000), THREE.Math.randFloat(-800,800),THREE.Math.randFloatSpread(6000) );
-				
-				objects.push( mesh );
-				scene.add( mesh );
+				var material = new THREE.MeshLambertMaterial({color: THREE.MathUtils.randInt(0, 0xFFFFFF)}),
+				mesh = new THREE.Mesh(geometry, material);
+
+				mesh.scale.set(50, 100, 50);
+				mesh.position.set(THREE.MathUtils.randFloatSpread(6000), THREE.MathUtils.randFloat(-800, 800), THREE.MathUtils.randFloatSpread(6000));
+
+				objects.push(mesh);
+				scene.add(mesh);
 			}
 
-			function animate( t )
+			function animate(t)
 			{
-				for( var i=0; i<n; i++ )
-					objects[i].rotation.y = t+i;
+				for (var i = 0; i < n; i++)
+					objects[i].rotation.y = t + i;
 			}
 			
 		</script>
