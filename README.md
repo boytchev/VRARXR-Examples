@@ -969,6 +969,7 @@
 [<kbd><img src="ExercisesBG/09/S0910-Count-steps.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0910-Count-steps.html)
 
 
+-->
 
 
 ## Упражнение №10 &ndash; Камера
@@ -1019,6 +1020,7 @@
 
 
 
+<!--
 
 ## Упражнение №13 &ndash; VR шлемове
 
