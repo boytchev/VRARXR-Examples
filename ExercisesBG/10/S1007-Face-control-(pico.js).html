@@ -7,16 +7,30 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
+		
 		<script src="pico.js"></script>
 	</head>
 	
 	<body>
-		<button id="button" onclick="getVideo()" style="position:fixed; left:0; top:0; z-index:100; ">Видео</button>
+		<button id="button" style="position:fixed; left:0; top:0; z-index:100; ">Видео</button>
 		<video id="video" autoplay style="position:fixed; left:0; bottom:0; z-index:200; width:20em;"></video>
 		
-		<script>
+		<script type="module">
+			
+			import * as THREE from "three";
+			import {vaxInit, scene, light} from "vax";
+
+			document.getElementById('button').addEventListener('click',getVideo);
+			
 			var scale = 2; // коефициент на намаляване
 			var context, video, image, params, pixelsCount;
 			
@@ -95,8 +109,10 @@
 				
 			}
 			
-			vaxInit( {antialias:true, alpha:!true} );
+			vaxInit( animate, {antialias:true, alpha:!true} );
 						
+			light.intensity = 10;
+			
 
 			// обект
 			var geometry = new THREE.BoxGeometry( 50, 50, 5 ),
@@ -108,8 +124,8 @@
 			mainObject.y = 0;
 			scene.add( mainObject );
 
-			finalX = 0;
-			finalY = 0;
+			var finalX = 0;
+			var finalY = 0;
 			
 			function animate()
 			{
@@ -122,7 +138,7 @@
 					grayscale( image.pixels, data, pixelsCount );
 					
 					var analyzedData = pico.run_cascade( image, facefinder_classify_region, params );
-					foundFaces = pico.cluster_detections( analyzedData, 0.2 );
+					var foundFaces = pico.cluster_detections( analyzedData, 0.2 );
 					
 					for( var i=0; i<foundFaces.length; i++ )
 						if( foundFaces[i][3] > 10 )
@@ -139,8 +155,8 @@
 						}
 				}
 				
-				mainObject.x = THREE.Math.lerp( mainObject.x, finalX, 1 );
-				mainObject.y = THREE.Math.lerp( mainObject.y, finalY, 1 );
+				mainObject.x = THREE.MathUtils.lerp( mainObject.x, finalX, 1 );
+				mainObject.y = THREE.MathUtils.lerp( mainObject.y, finalY, 1 );
 				mainObject.rotation.set( mainObject.y, mainObject.x, 0, 'XYZ' );
 			}
 				
