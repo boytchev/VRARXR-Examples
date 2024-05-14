@@ -7,13 +7,24 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxInit, scene} from "vax";
+
+			vaxInit(animate);
 				
 			// кости на крак
 			var legA = new THREE.Bone(),
@@ -35,9 +46,9 @@
 			
 			function animate( t )
 			{
-				legA.rotation.z = THREE.Math.degToRad( 190 + 10*Math.sin(t) );
-				legB.rotation.z = THREE.Math.degToRad( -20 - 20*Math.sin(t) );
-				legC.rotation.z = THREE.Math.degToRad( 90 );
+				legA.rotation.z = THREE.MathUtils.degToRad( 190 + 10*Math.sin(t) );
+				legB.rotation.z = THREE.MathUtils.degToRad( -20 - 20*Math.sin(t) );
+				legC.rotation.z = THREE.MathUtils.degToRad( 90 );
 			}
 		</script>
 	</body>

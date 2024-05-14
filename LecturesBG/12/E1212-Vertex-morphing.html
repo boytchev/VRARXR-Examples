@@ -7,13 +7,24 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxInit, scene} from "vax";
+
+			vaxInit(animate);
 				
 			// създаване на куб с много междинни върхове
 			var cubeGeometry = new THREE.BoxGeometry( 50, 50, 50, 5, 5, 5 );
@@ -47,7 +58,7 @@
 			function animate( t )
 			{
 				// промяна на "силата" на морфинг върховете
-				mesh.morphTargetInfluences[ 0 ] = THREE.Math.clamp( 0.5+1.5*Math.sin(2*t), 0, 1 );
+				mesh.morphTargetInfluences[ 0 ] = THREE.MathUtils.clamp( 0.5+1.5*Math.sin(2*t), 0, 1 );
 				
 				mesh.rotation.x = t/4;
 				mesh.rotation.y = t/3;

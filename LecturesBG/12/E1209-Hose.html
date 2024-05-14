@@ -7,14 +7,27 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {vaxInit, scene, light} from "vax";
+
+			vaxInit(animate);
 				
+			light.intensity = 7;
+			
 			// създаване на скелет от N кости с дължина 10
 			var n = 20,
 				boneSize = 10,
@@ -28,7 +41,7 @@
 				bones[i].position.x = i ? boneSize : -size/2;
 			}
 			
-			skeleton = new THREE.Skeleton( bones );
+			var skeleton = new THREE.Skeleton( bones );
 				
 			// създаване на маркучна геометрия
 			var geometry = new THREE.CylinderGeometry(5,5,size,40,15*n,true).rotateZ(-Math.PI/2),
@@ -84,10 +97,10 @@
 			{
 				for( var i = 1; i<=n; i++ )
 				{
-					skeleton.bones[i].rotation.x = THREE.Math.degToRad( i*1*Math.cos(0.2*t+i*i) );
-					skeleton.bones[i].rotation.z = THREE.Math.degToRad( i*5*Math.sin(1.9*t-i) );
+					skeleton.bones[i].rotation.x = THREE.MathUtils.degToRad( i*1*Math.cos(0.2*t+i*i) );
+					skeleton.bones[i].rotation.z = THREE.MathUtils.degToRad( i*5*Math.sin(1.9*t-i) );
 				}
-				skeleton.bones[0].rotation.z = THREE.Math.degToRad( 20*Math.cos(1.9/2*t) );
+				skeleton.bones[0].rotation.z = THREE.MathUtils.degToRad( 20*Math.cos(1.9/2*t) );
 				skeleton.bones[1].rotation.z = -skeleton.bones[0].rotation.z/2;
 				skeleton.bones[2].rotation.z = -skeleton.bones[0].rotation.z/2;
 				
