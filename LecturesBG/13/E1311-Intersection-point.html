@@ -7,15 +7,26 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="VRButton.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInitVR();
-			camera = new THREE.PerspectiveCamera( 30, 1, 0.5, 600 );
+		<script type="module">
+			import * as THREE from "three";
+			import {vaxInitVR, scene, light, camera, renderer, Pillar} from "vax";
+
+			vaxInitVR( animate );
+			
+			camera.fov = 30;
+			camera.updateProjectionMatrix();
 				
 			// земя
 			var ground = new THREE.Mesh(
@@ -32,7 +43,7 @@
 			var pillars = [];
 			for( var i=0; i<60; i++)
 			{
-				var p = pillar( new THREE.Vector3(THREE.Math.randFloat(-100,100),THREE.Math.randFloat(10,100),THREE.Math.randFloat(-100,100)),ground.material);
+				var p = new Pillar( new THREE.Vector3(THREE.MathUtils.randFloat(-100,100),THREE.MathUtils.randFloat(10,100),THREE.MathUtils.randFloat(-100,100)),ground.material);
 					p.scale.set( 0.1, 0.1, 0.1 );
 					pillars.push( p );
 					scene.add( p );

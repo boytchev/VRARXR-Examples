@@ -7,14 +7,23 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="VRButton.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInitVR();
+		<script type="module">
+			import * as THREE from "three";
+			import {vaxInitVR, scene, camera, renderer} from "vax";
+			
+			vaxInitVR( animate );
 			
 			// създаване на тунел 
 			var geometry = new THREE.BoxGeometry( 3, 3, 30, 10, 10, 100 ),
