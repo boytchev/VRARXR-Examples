@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,16 +22,16 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene} from "vax";
+			import * as VAX from "vax";
 			
 			// инциализираме моно режим през нашата библиотека
-			vaxInit(animate);
+			VAX.init(animate, {stats:true});
 			
 			var material = new THREE.MeshLambertMaterial();
 			var geometry = new THREE.BoxGeometry(20, 30, 80);
 			var brick = new THREE.Mesh(geometry, material);
 
-			scene.add(brick);
+			VAX.scene.add(brick);
 
 			// тази функция се вика автоматично за всеки кадър
 			// името "animate" е фиксирано във vax.js
@@ -39,6 +39,7 @@
 			{
 				brick.rotation.set(t / 3, t / 4, t / 5);
 			}
+			
 		</script>
 	</body>
 </html>

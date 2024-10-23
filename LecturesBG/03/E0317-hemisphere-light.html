@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,24 +23,24 @@
 		
 			import * as THREE from "three";
 			import {TeapotGeometry} from "three/addons/geometries/TeapotGeometry.js";
-			import {vaxInit, renderer, camera, scene, light} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 			
 			var geometry = new TeapotGeometry(30);
-			var material = new THREE.MeshPhongMaterial({
+			var material = new THREE.MeshPhysicalMaterial({
 				color: 'white', // за да си личи цвета на светлината
-				shininess: 500,
+				roughness: 0.3,
 				side: THREE.DoubleSide
 			});
 			var teapot = new THREE.Mesh(geometry, material);
 
-			scene.add(teapot);
+			VAX.scene.add(teapot);
 
 			// премахваме точковата светлина, добавяме полусферична
-			scene.remove(light);
-			var newLight = new THREE.HemisphereLight('yellow', 'red', 3);
-			scene.add(newLight);
+			VAX.scene.remove(VAX.light);
+			var light = new THREE.HemisphereLight('yellow', 'red', 3);
+			VAX.scene.add(light);
 
 			function animate(t)
 			{

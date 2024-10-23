@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,9 +22,9 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene} from "vax";
+			import * as VAX from "vax";
 			
-			vaxInit(); // без анимация
+			VAX.init(null, {stats:true}); // без анимация
 
 			var material = new THREE.MeshLambertMaterial();
 			var geometryA = new THREE.CylinderGeometry(4, 4, 80);
@@ -33,12 +33,12 @@
 			// ляв цилиндър
 			var left = new THREE.Mesh(geometryA, material);
 			left.position.set(-15, 0, 0);
-			scene.add(left);
+			VAX.scene.add(left);
 
 			// десен цилиндър
 			var right = new THREE.Mesh(geometryA, material);
 			right.position.set(15, 0, 0);
-			scene.add(right);
+			VAX.scene.add(right);
 
 			// масив от стъпала
 			var steps = [];
@@ -49,7 +49,7 @@
 				steps[i] = new THREE.Mesh(geometryB, material);
 				steps[i].position.set(0, -30 + 15 * i, 0);
 				steps[i].rotation.set(0, 0, Math.PI / 2);
-				scene.add(steps[i]);
+				VAX.scene.add(steps[i]);
 			}
 
 		</script>

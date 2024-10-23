@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -24,9 +24,9 @@
 			import * as THREE from "three";
 			import {TeapotGeometry} from "three/addons/geometries/TeapotGeometry.js";
 			import {VertexNormalsHelper} from "three/addons/helpers/VertexNormalsHelper.js";
-			import {vaxInit, scene} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
 			var geometry = new TeapotGeometry(30, 7, true, false);
 			var material = new THREE.MeshPhongMaterial({
@@ -39,7 +39,7 @@
 
 			var helper = new VertexNormalsHelper(teapot, 5, 'fuchsia');
 
-			scene.add(teapot, helper);
+			VAX.scene.add(teapot, helper);
 
 			function animate(t)
 			{

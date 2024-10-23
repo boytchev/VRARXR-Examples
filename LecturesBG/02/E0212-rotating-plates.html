@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,9 +22,9 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene} from "vax";
+			import * as VAX from "vax";
 			
-			vaxInit(animate);
+			VAX.init(animate, {stats:true});
 
 			var material = new THREE.MeshLambertMaterial();
 			var geometry = new THREE.BoxGeometry(15, 15, 1);
@@ -37,7 +37,7 @@
 			for (var i = 0; i < n; i++)
 			{
 				planes[i] = new THREE.Mesh(geometry, material);
-				scene.add(planes[i]);
+				VAX.scene.add(planes[i]);
 			}
 
 			function animate(t)

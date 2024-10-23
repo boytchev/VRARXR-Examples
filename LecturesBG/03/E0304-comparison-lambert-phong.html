@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,9 +23,9 @@
 		
 			import * as THREE from "three";
 			import {TeapotGeometry} from "three/addons/geometries/TeapotGeometry.js";
-			import {vaxInit, scene, light} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
 			// параметърът 3 генерира груба, ръбеста форма на чайник
 			var geometry = new TeapotGeometry(25, 3);
@@ -43,16 +43,17 @@
 			teapotA.position.set(-40, 0, 0);
 			teapotB.position.set(40, 0, 0);
 
-			scene.add(teapotA, teapotB);
+			VAX.scene.add(teapotA, teapotB);
 
 			// усилена е светлината
-			light.intensity = 5;
+			VAX.light.intensity = 10;
 
 			function animate(t)
 			{
 				teapotA.rotation.set(Math.sin(2*t)/2, t, Math.cos(3*t)/2);
 				teapotB.rotation.set(Math.sin(2*t)/2, t, Math.cos(3*t)/2);
 			}
+			
 		</script>
 	</body>
 </html>

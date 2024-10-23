@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,17 +23,17 @@
 		
 			import * as THREE from "three";
 			import {TeapotGeometry} from "three/addons/geometries/TeapotGeometry.js";
-			import {vaxInit, renderer, camera, scene, light} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
 			// бял чайник
 			var geometry = new TeapotGeometry(7);
 			for (var i = 0; i < 16; i++)
 			{
-				var material = new THREE.MeshPhongMaterial({
+				var material = new THREE.MeshPhysicalMaterial({
 					color: 'white',
-					shininess: 500,
+					roughness: 0.3,
 					emissive: new THREE.Color().setHSL(3*i/16, 1, 0.5),
 					emissiveIntensity: 0.5
 				});
@@ -44,7 +44,7 @@
 
 				teapot.position.setFromSphericalCoords(60, Math.PI/2, alpha);
 				teapot.rotation.set(0, Math.PI/2+alpha, 0);
-				scene.add(teapot);
+				VAX.scene.add(teapot);
 			}
 
 			// земя
@@ -53,37 +53,37 @@
 			var ground = new THREE.Mesh(geometry, material);
 			ground.position.set(0, -8, 0);
 
-			scene.add(teapot, ground);
+			VAX.scene.add(teapot, ground);
 
-			renderer.shadowMap.enabled = true;
+			VAX.renderer.shadowMap.enabled = true;
 
-			camera.position.set(30, 50, 100);
-			camera.lookAt(scene.position);
+			VAX.camera.position.set(30, 50, 100);
+			VAX.camera.lookAt(VAX.scene.position);
 
 			// прожекторна светлина
-			scene.remove(light);
-			var newLight = new THREE.SpotLight('white', 20000);
-			newLight.angle = 0.8;
-			newLight.penumbra = 1;
-			newLight.position.set(0, 30, 0);
-			newLight.shadow.mapSize.width = 1024;
-			newLight.shadow.mapSize.height = 1024;
-			scene.add(newLight);
+			VAX.scene.remove(VAX.light);
+			var light = new THREE.SpotLight('white', 30000);
+			light.angle = 0.8;
+			light.penumbra = 1;
+			light.position.set(0, 30, 0);
+			light.shadow.mapSize.width = 1024;
+			light.shadow.mapSize.height = 1024;
+			VAX.scene.add(light);
 
 			// насоченост на светлината
-			newLight.target = new THREE.Object3D();
-			scene.add(newLight.target);
+			light.target = new THREE.Object3D();
+			VAX.scene.add(light.target);
 
-			newLight.castShadow = true;
+			light.castShadow = true;
 			ground.receiveShadow = true;
 
 			function animate(t)
 			{
-				newLight.position.setFromSphericalCoords(100, Math.PI/2, t);
-				newLight.position.y = 50;
+				light.position.setFromSphericalCoords(100, Math.PI/2, t);
+				light.position.y = 50;
 
-				newLight.target.position.setFromSphericalCoords(50, Math.PI/2, t);
-				newLight.target.position.y = 0;
+				light.target.position.setFromSphericalCoords(50, Math.PI/2, t);
+				light.target.position.y = 0;
 			}
 			
 		</script>

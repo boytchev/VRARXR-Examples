@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,9 +22,9 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene} from "vax";
+			import * as VAX from "vax";
 			
-			vaxInit(animate);
+			VAX.init(animate, {stats:true});
 
 			var material = new THREE.MeshLambertMaterial();
 			var geometryA = new THREE.CylinderGeometry(4, 4, 80);
@@ -32,7 +32,7 @@
 
 			// групов обект, добавен към сцената
 			var ladder = new THREE.Group();
-			scene.add(ladder);
+			VAX.scene.add(ladder);
 
 			var left = new THREE.Mesh(geometryA, material);
 			left.position.set(-15, 0, 0);
