@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,11 +23,11 @@
 		
 			import * as THREE from "three";
 			import * as lil from "three/addons/libs/lil-gui.module.min.js";
-			import {vaxInit, scene} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
-			scene.background = new THREE.Color('beige');
+			VAX.scene.background = new THREE.Color('beige');
 
 			// интерактивно контролиране на ъглите
 			var gui = new lil.GUI();
@@ -43,10 +43,7 @@
 
 			// геометрия и материал на елемент на робот
 			var robotGeometry = new THREE.BoxGeometry(1, 1, 1),
-			robotMaterial = new THREE.MeshPhongMaterial({
-				color: 'tomato',
-				shininess: 100
-			});
+			robotMaterial = new THREE.MeshPhysicalMaterial({color: 'tomato'});
 
 			// нагласяваме елемента да е с център (0,0,0) в долния край
 			robotGeometry.translate(0, 0.5, 0);
@@ -54,22 +51,22 @@
 			// функция за елемент на робот
 			function robotElement(sizeX, sizeY, sizeZ, parent)
 			{
-				var object = new THREE.Mesh(robotGeometry, robotMaterial);
-				object.scale.set(sizeX, sizeY, sizeZ);
+				var part = new THREE.Mesh(robotGeometry, robotMaterial);
+				part.scale.set(sizeX, sizeY, sizeZ);
 
 				// ако има родител, регистрира елемента като негов подобект
 				if (parent)
 				{
-					parent.add(object);
+					parent.add(part);
 				}
 
-				return object;
+				return part;
 			}
 
 			// първи елемент на робот
 			var a = robotElement(10, 25, 5);
 			a.position.y = -40;
-			scene.add(a);
+			VAX.scene.add(a);
 
 			function animate()
 			{

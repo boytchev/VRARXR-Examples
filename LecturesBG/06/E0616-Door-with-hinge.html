@@ -10,10 +10,10 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "physijs": "./physijs/physi.module.js",
-			  "vax": "./vax.js"
+			  "vax": "./vax-physi.js"
 			}
 		  }
 		</script>
@@ -24,42 +24,41 @@
 
 			import * as THREE from "three";
 			import "physijs";
-			import {vaxInit, renderer, scene, camera, light, Pillar} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
 			// светлина и сенки
-			renderer.shadowMap.enabled = true;
-			light.intensity = 3;
-			light.shadow.mapSize = new THREE.Vector2(1024 * 2, 1024 * 2);
-			light.position.set(0, 300, 150);
-			light.castShadow = true;
+			VAX.renderer.shadowMap.enabled = true;
+			VAX.light.shadow.mapSize = new THREE.Vector2(1024 * 2, 1024 * 2);
+			VAX.light.position.set(0, 300, 150);
+			VAX.light.castShadow = true;
 
 			// по-добра позиция на камерата
-			camera.position.set(100, 50, 100);
-			camera.lookAt(new THREE.Vector3(0, 20, 0));
+			VAX.camera.position.set(100, 50, 100);
+			VAX.camera.lookAt(new THREE.Vector3(0, 20, 0));
 
 			// земя
 			var geometry = new THREE.BoxGeometry(300, 4, 300),
-			material = Physijs.createMaterial(new THREE.MeshPhongMaterial({color: 'lightgreen'}));
+			material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial({color: 'lightgreen'}));
 			var ground = new Physijs.BoxMesh(geometry, material, 0);
 			ground.position.set(0, -2, 0);
 			ground.receiveShadow = true;
-			scene.add(ground);
+			VAX.scene.add(ground);
 
 			// пилон
-			var p = new Pillar(new THREE.Vector3(0, 50, 0), ground.material);
-			scene.add(p);
+			var p = new VAX.Pillar(new THREE.Vector3(0, 50, 0), ground.material);
+			VAX.scene.add(p);
 
 			// врата
 			var door = new Physijs.BoxMesh(
 					new THREE.BoxGeometry(60, 40, 3),
-					Physijs.createMaterial(new THREE.MeshPhongMaterial({color: 'tomato'})),
+					Physijs.createMaterial(new THREE.MeshPhysicalMaterial({color: 'tomato'})),
 					1);
 			door.castShadow = true;
 			door.receiveShadow = true;
 			door.position.set(30, 30, 0);
-			scene.add(door);
+			VAX.scene.add(door);
 
 			// пантово ограничение
 			var constraint = new Physijs.HingeConstraint(
@@ -67,24 +66,24 @@
 					null,
 					new THREE.Vector3(0, 30, 0),
 					new THREE.Vector3(0, 1, 0));
-			scene.addConstraint(constraint);
+			VAX.scene.addConstraint(constraint);
 
 			// зло ку(б)че
 			var cube = new Physijs.BoxMesh(
 					new THREE.BoxGeometry(15, 15, 15),
-					Physijs.createMaterial(new THREE.MeshPhongMaterial({color: 'gold'})),
+					Physijs.createMaterial(new THREE.MeshPhysicalMaterial({color: 'gold'})),
 					1);
 			cube.castShadow = true;
 			cube.receiveShadow = true;
 			cube.position.set(50, 50, 60);
-			scene.add(cube);
+			VAX.scene.add(cube);
 
 			// начален kickass
 			cube.applyForce(new THREE.Vector3(0, 0, -600), new THREE.Vector3(1, -1, 0));
 
 			function animate()
 			{
-				scene.simulate(1/20);
+				VAX.scene.simulate(1/20);
 			}
 			
 		</script>

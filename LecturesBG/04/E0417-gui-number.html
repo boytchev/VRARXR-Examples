@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,9 +23,9 @@
 		
 			import * as THREE from "three";
 			import * as lil from "three/addons/libs/lil-gui.module.min.js";
-			import {vaxSceneInit, Pillar, object, scene} from "vax";
+			import * as VAX from "vax";
 
-			vaxSceneInit(animate);
+			VAX.initScene(animate);
 			
 			// създаване на панел
 			var data = {k: 0.5}; // интерактивни данни
@@ -45,17 +45,17 @@
 					40 - 80 * Math.random());
 
 			// два пилона
-			scene.add(new Pillar(p));
-			scene.add(new Pillar(q));
+			VAX.scene.add(new VAX.Pillar(p));
+			VAX.scene.add(new VAX.Pillar(q));
 
 			function animate(t)
 			{
 				// движение по k
-				object.position.lerpVectors(p, q, data.k);
+				VAX.object.position.lerpVectors(p, q, data.k);
 
 				// въртене на сцената и на обекта
-				object.rotation.y = -5*t;
-				scene.rotation.y = t/5;
+				VAX.object.rotation.y = -5*t;
+				VAX.scene.rotation.y = t/5;
 			}
 			
 		</script>

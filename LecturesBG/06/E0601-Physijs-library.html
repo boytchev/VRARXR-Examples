@@ -10,10 +10,10 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "physijs": "./physijs/physi.module.js",
-			  "vax": "./vax.js"
+			  "vax": "./vax-physi.js"
 			}
 		  }
 		</script>
@@ -21,22 +21,21 @@
 	
 	<body>
 		<script type="module">
-
 			import * as THREE from "three";
 			import "physijs";
-			import {vaxInit, scene} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate,{physijs: true});
 
 			// топка
 			var geometry = new THREE.SphereGeometry(8);
-			var material = Physijs.createMaterial(new THREE.MeshPhongMaterial({color: 'hotpink'}));
+			var material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial({color: 'hotpink'}));
 			var ball = new Physijs.SphereMesh(geometry, material);
-			scene.add(ball);
+			VAX.scene.add(ball);
 
 			function animate()
 			{
-				scene.simulate();
+				VAX.scene.simulate();
 			}
 			
 		</script>

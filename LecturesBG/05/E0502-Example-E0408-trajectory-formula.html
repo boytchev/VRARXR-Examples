@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,9 +22,9 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxSceneInit, Pillar, object, scene} from "vax";
+			import * as VAX from "vax";
 
-			vaxSceneInit(animate);
+			VAX.initScene(animate);
 			
 			// крива - собствен клас, наследник на THREE.Curve
 			class CustomCurve extends THREE.Curve
@@ -44,25 +44,25 @@
 			var path = new CustomCurve();
 
 			// пилони
-			scene.add(new Pillar(path.getPoint(0/3)));
-			scene.add(new Pillar(path.getPoint(1/3)));
-			scene.add(new Pillar(path.getPoint(2/3)));
+			VAX.scene.add(new VAX.Pillar(path.getPoint(0/3)));
+			VAX.scene.add(new VAX.Pillar(path.getPoint(1/3)));
+			VAX.scene.add(new VAX.Pillar(path.getPoint(2/3)));
 
 			// рисуване на траектория
 			var geometry = new THREE.TubeGeometry(path, 100, 1, 3, false);
-			var material = new THREE.MeshPhongMaterial({emissive: 0x606070});
+			var material = new THREE.MeshPhysicalMaterial({emissive: 0x606070});
 			var mesh = new THREE.Mesh(geometry, material);
 			mesh.castShadow = true;
-			scene.add(mesh);
+			VAX.scene.add(mesh);
 
 			function animate(t)
 			{
 				// движение по траекторията
-				object.position.copy(path.getPoint(t/4));
+				VAX.object.position.copy(path.getPoint(t/4));
 
 				// въртене на сцената и на обекта
-				object.rotation.y = -5*t;
-				scene.rotation.y = t/5;
+				VAX.object.rotation.y = -5*t;
+				VAX.scene.rotation.y = t/5;
 			}
 			
 		</script>

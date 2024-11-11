@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,9 +23,9 @@
 		
 			import * as THREE from "three";
 			import * as lil from "three/addons/libs/lil-gui.module.min.js";
-			import {vaxSceneInit, Pillar, object, scene, camera} from "vax";
+			import * as VAX from "vax";
 
-			vaxSceneInit(animate);
+			VAX.initScene(animate);
 
 			// Ъгли и разстояние на гледната точка
 			var alpha = 0.1;
@@ -98,21 +98,21 @@
 			var q = new THREE.Vector3(50, 10+50*Math.random(), 0);
 
 			// два пилона
-			scene.add(new Pillar(p));
-			scene.add(new Pillar(q));
+			VAX.scene.add(new VAX.Pillar(p));
+			VAX.scene.add(new VAX.Pillar(q));
 
 			function animate(t)
 			{
 				// движение по k
 				var k = 0.5 + 0.5*Math.sin(3*t);
-				object.position.lerpVectors(p, q, k);
+				VAX.object.position.lerpVectors(p, q, k);
 
 				// въртене на обекта
-				object.rotation.y -= 5*t;
+				VAX.object.rotation.y -= 5*t;
 
 				// движение на гледната точка
-				camera.position.setFromSphericalCoords(distance, beta, alpha);
-				camera.lookAt(new THREE.Vector3(0, 20*distance/150, 0));
+				VAX.camera.position.setFromSphericalCoords(distance, beta, alpha);
+				VAX.camera.lookAt(new THREE.Vector3(0, 20*distance/150, 0));
 			}
 			
 		</script>

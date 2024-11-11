@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,9 +23,9 @@
 		
 			import * as THREE from "three";
 			import * as lil from "three/addons/libs/lil-gui.module.min.js";
-			import {vaxSceneInit, Pillar, object, scene} from "vax";
+			import * as VAX from "vax";
 
-			vaxSceneInit(animate);
+			VAX.initScene(animate);
 
 			// създаване на панел
 			var gui = new lil.GUI();
@@ -50,9 +50,9 @@
 			var q = new THREE.Vector3(50, 10 + 50 * Math.random(), 0);
 
 			// два пилона
-			var pillarP = new Pillar(p);
-			var pillarQ = new Pillar(q);
-			scene.add(pillarP, pillarQ);
+			var pillarP = new VAX.Pillar(p);
+			var pillarQ = new VAX.Pillar(q);
+			VAX.scene.add(pillarP, pillarQ);
 
 			function animate(t)
 			{
@@ -67,11 +67,11 @@
 				q.set(data.qx, q.y, data.qz);
 
 				// движение по k
-				object.position.lerpVectors(p, q, data.k);
+				VAX.object.position.lerpVectors(p, q, data.k);
 
 				// въртене на сцената и на обекта
-				object.rotation.y = -5*t;
-				scene.rotation.y = t/5;
+				VAX.object.rotation.y = -5*t;
+				VAX.scene.rotation.y = t/5;
 			}
 			
 		</script>

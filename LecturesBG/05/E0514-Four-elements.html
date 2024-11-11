@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,11 +23,11 @@
 		
 			import * as THREE from "three";
 			import * as lil from "three/addons/libs/lil-gui.module.min.js";
-			import {vaxInit, scene} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 			
-			scene.background = new THREE.Color('beige');
+			VAX.scene.background = new THREE.Color('beige');
 
 			// интерактивно контролиране на ъглите
 			var gui = new lil.GUI();
@@ -46,10 +46,7 @@
 			gui.open();
 
 			// елемент на робот
-			var robotMaterial = new THREE.MeshPhongMaterial({
-				color: 'tomato',
-				shininess: 100
-			});
+			var robotMaterial = new THREE.MeshPhysicalMaterial({color: 'tomato'});
 
 			// функция за елемент на робот
 			function robotElement(sizeX, sizeY, sizeZ, parent)
@@ -57,22 +54,22 @@
 				var robotGeometry = new THREE.BoxGeometry(sizeX, sizeY, sizeZ);
 				robotGeometry.translate(0, sizeY/2, 0);
 
-				var object = new THREE.Mesh(robotGeometry, robotMaterial);
+				var part = new THREE.Mesh(robotGeometry, robotMaterial);
 
 				// ако има родител, регистрира елемента като негов подобект
 				if (parent)
 				{
-					object.position.set(0, parent.geometry.parameters.height, 0);
-					parent.add(object);
+					part.position.set(0, parent.geometry.parameters.height, 0);
+					parent.add(part);
 				}
 
-				return object;
+				return part;
 			}
 
 			// първи елемент на робот
 			var a = robotElement(10, 25, 5);
 			a.position.y = -40;
-			scene.add(a);
+			VAX.scene.add(a);
 
 			// втори елемент
 			var b = robotElement(8, 20, 5, a);

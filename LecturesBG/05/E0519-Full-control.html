@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,29 +23,29 @@
 		
 			import * as THREE from "three";
 			import * as lil from "three/addons/libs/lil-gui.module.min.js";
-			import {vaxSceneInit, object, scene, Pillar} from "vax";
+			import * as VAX from "vax";
 
-			vaxSceneInit(animate);
-			scene.remove(object);
+			VAX.initScene(animate);
+			VAX.scene.remove(VAX.object);
 
-			scene.background = new THREE.Color('beige');
+			VAX.scene.background = new THREE.Color('beige');
 
 			// пилони
-			var p = new Pillar(new THREE.Vector3(0, 30, 50), new THREE.MeshPhongMaterial({color: 'white'}));
+			var p = new VAX.Pillar(new THREE.Vector3(0, 30, 50), new THREE.MeshPhysicalMaterial({color: 'white'}));
 			p.scale.y = 0.75;
-			scene.add(p);
+			VAX.scene.add(p);
 			
-			p = new Pillar(new THREE.Vector3(0, 30, -50), new THREE.MeshPhongMaterial({color: 'gold'}));
+			p = new VAX.Pillar(new THREE.Vector3(0, 30, -50), new THREE.MeshPhysicalMaterial({color: 'gold'}));
 			p.scale.y = 1;
-			scene.add(p);
+			VAX.scene.add(p);
 			
-			p = new Pillar(new THREE.Vector3(50, 30, 0), new THREE.MeshPhongMaterial({color: 'cornflowerblue'}));
+			p = new VAX.Pillar(new THREE.Vector3(50, 30, 0), new THREE.MeshPhysicalMaterial({color: 'cornflowerblue'}));
 			p.scale.y = 1.25;
-			scene.add(p);
+			VAX.scene.add(p);
 			
-			p = new Pillar(new THREE.Vector3(-50, 30, 0), new THREE.MeshPhongMaterial({color: 'hotpink'}));
+			p = new VAX.Pillar(new THREE.Vector3(-50, 30, 0), new THREE.MeshPhysicalMaterial({color: 'hotpink'}));
 			p.scale.y = 0.5;
-			scene.add(p);
+			VAX.scene.add(p);
 
 			// интерактивно контролиране на ъглите
 			var gui = new lil.GUI();
@@ -62,10 +62,7 @@
 						 ];
 			
 			// елемент на робот
-			var robotMaterial = new THREE.MeshPhongMaterial({
-				color: 'tomato',
-				shininess: 100
-			});
+			var robotMaterial = new THREE.MeshPhysicalMaterial({color: 'tomato'});
 
 			// клас за елемент на робот
 			function robotElement(sizeX, sizeY, sizeZ, parent)
@@ -73,23 +70,23 @@
 				var robotGeometry = new THREE.BoxGeometry(sizeX, sizeY, sizeZ);
 				robotGeometry.translate(0, sizeY/2, 0);
 
-				var object = new THREE.Mesh(robotGeometry, robotMaterial);
-				object.castShadow = true;
+				var part = new THREE.Mesh(robotGeometry, robotMaterial);
+				part.castShadow = true;
 
 				// ако има родител, регистрира елемента като негов подобект
 				if (parent)
 				{
-					object.position.set(0, parent.geometry.parameters.height, 0);
-					parent.add(object);
+					part.position.set(0, parent.geometry.parameters.height, 0);
+					parent.add(part);
 				}
 
-				return object;
+				return part;
 			}
 
 			// първи елемент на робот
 			var a = robotElement(10, 25, 5);
 			a.position.y = 0;
-			scene.add(a);
+			VAX.scene.add(a);
 
 			// втори елемент
 			var b = robotElement(8, 20, 5, a);
@@ -112,7 +109,7 @@
 
 			function animate(t)
 			{
-				scene.rotation.y = THREE.MathUtils.degToRad(cmd.s);
+				VAX.scene.rotation.y = THREE.MathUtils.degToRad(cmd.s);
 
 				// дали сме във фаза на избор на ново движение?
 				if (toTime <= t)

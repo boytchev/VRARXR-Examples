@@ -10,10 +10,10 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "physijs": "./physijs/physi.module.js",
-			  "vax": "./vax.js"
+			  "vax": "./vax-physi.js"
 			}
 		  }
 		</script>
@@ -24,25 +24,24 @@
 
 			import * as THREE from "three";
 			import "physijs";
-			import {vaxInit, renderer, scene, camera, light} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
-			light.intensity = 3;
-			camera.position.set(0, 0, 240);
+			VAX.camera.position.set(0, 0, 240);
 
 			// слънце
 			var geometry = new THREE.SphereGeometry(30, 32, 32),
-			material = Physijs.createMaterial(new THREE.MeshPhongMaterial({color: 'yellow', shininess: 200}));
+			material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial({color: 'yellow', roughness: 0.3}));
 			var sun = new Physijs.SphereMesh(geometry, material, 0);
-			scene.add(sun);
+			VAX.scene.add(sun);
 
 			// планета
 			var geometry = new THREE.SphereGeometry(10, 32, 16),
-			material = Physijs.createMaterial(new THREE.MeshPhongMaterial({color: 'gray', shininess: 200}));
+			material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial({color: 'gray', roughness: 0.3}));
 			var planet = new Physijs.SphereMesh(geometry, material, 10);
 			planet.position.set(150, 0, 0);
-			scene.add(planet);
+			VAX.scene.add(planet);
 
 			planet.setLinearVelocity(new THREE.Vector3(0, 70, 0));
 
@@ -52,8 +51,8 @@
 			{
 				g.subVectors(sun.position, planet.position);
 
-				scene.setGravity(g);
-				scene.simulate(1/30);
+				VAX.scene.setGravity(g);
+				VAX.scene.simulate(1/30);
 			}
 			
 		</script>

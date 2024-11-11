@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,45 +22,46 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxSceneInit, Pillar, scene, ground, object} from "vax";
+			import * as VAX from "vax";
 
-			vaxSceneInit(animate);
+			VAX.initScene(animate);
 
 			// позиция
 			var p = new THREE.Vector3(0, 50, 0);
 
 			// пилон
-			var q = new Pillar(p);
-			scene.add(q);
+			var q = new VAX.Pillar(p);
+			VAX.scene.add(q);
 
 			// въртящ се обект
 			var group = new THREE.Group();
 			group.position.y = 50;
-			scene.add(group);
+			VAX.scene.add(group);
 
 			// връзка до пилона
 			var wire = new THREE.Mesh(
 					new THREE.CylinderGeometry(1, 1, 50),
-					ground.material);
+					new THREE.MeshPhysicalMaterial({color:'darkgreen'}));
 			wire.position.x = 25;
 			wire.rotation.z = Math.PI/2;
+			wire.castShadow = true;
 
 			// позиция на обекта в групата (в края на връзката)
-			object.position.x = 50;
+			VAX.object.position.x = 50;
 
 			// добавяме връзката и обекта към въртящия се обект
-			scene.remove(object);
-			group.add(wire, object);
+			VAX.scene.remove(VAX.object);
+			group.add(wire, VAX.object);
 
 			function animate(t)
 			{
 				// движение DOF=1
-				group.rotation.y = -13*t;
+				group.rotation.y = -8*t;
 				group.position.y = 40+30*Math.sin(t);
 
 				q.scale.y = group.position.y/50;
 
-				scene.rotation.y = t/10;
+				VAX.scene.rotation.y = t/10;
 			}
 			
 		</script>

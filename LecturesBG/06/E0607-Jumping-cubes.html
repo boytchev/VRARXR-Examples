@@ -10,10 +10,10 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "physijs": "./physijs/physi.module.js",
-			  "vax": "./vax.js"
+			  "vax": "./vax-physi.js"
 			}
 		  }
 		</script>
@@ -24,32 +24,31 @@
 
 			import * as THREE from "three";
 			import "physijs";
-			import {vaxInit, renderer, light, scene, camera} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
 			// светлина и сенки
-			renderer.shadowMap.enabled = true;
-			light.intensity = 3;
-			light.shadow.mapSize = new THREE.Vector2(1024 * 2, 1024 * 2);
-			light.position.set(-150, 300, -50);
-			light.castShadow = true;
+			VAX.renderer.shadowMap.enabled = true;
+			VAX.light.shadow.mapSize = new THREE.Vector2(1024 * 2, 1024 * 2);
+			VAX.light.position.set(-150, 300, -50);
+			VAX.light.castShadow = true;
 
 			// по-добра позиция на камерата
-			camera.position.set(0, 80, 240);
-			camera.lookAt(new THREE.Vector3(0, 0, 0));
+			VAX.camera.position.set(0, 80, 240);
+			VAX.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 			// земя
 			var geometry = new THREE.BoxGeometry(300, 4, 300),
-			material = Physijs.createMaterial(new THREE.MeshPhongMaterial({color: 'lightgreen'}));
+			material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial({color: 'lightgreen'}));
 			var ground = new Physijs.BoxMesh(geometry, material, 0);
 			ground.position.set(0, -10, 0);
 			ground.receiveShadow = true;
-			scene.add(ground);
+			VAX.scene.add(ground);
 
 			// кубчета
 			var geometry = new THREE.BoxGeometry(20, 20, 20),
-			material = Physijs.createMaterial(new THREE.MeshPhongMaterial({color: 'hotpink'}));
+			material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial({color: 'hotpink'}));
 
 			var cubes = [];
 			for (var i = 0; i < 20; i++)
@@ -59,7 +58,7 @@
 				cube.receiveShadow = true;
 				cube.castShadow = true;
 
-				scene.add(cube);
+				VAX.scene.add(cube);
 
 				cubes.push(cube);
 			}
@@ -69,7 +68,7 @@
 
 			function animate(t)
 			{
-				scene.simulate(1/10);
+				VAX.scene.simulate(1/10);
 
 				if (t > oldT+0.5)
 				{
@@ -84,7 +83,7 @@
 					idx = (idx+1) % 20;
 				}
 
-				scene.rotation.y = t/10;
+				VAX.scene.rotation.y = t/10;
 			}
 			
 		</script>

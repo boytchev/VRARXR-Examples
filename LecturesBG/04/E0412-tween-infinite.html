@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,9 +23,9 @@
 		
 			import * as THREE from "three";
 			import * as TWEEN from "three/addons/libs/tween.module.js";
-			import {vaxSceneInit, Pillar, object, scene} from "vax";
+			import * as VAX from "vax";
 
-			vaxSceneInit(animate);
+			VAX.initScene(animate);
 			
 			// координати на една точка на движението
 			var p = new THREE.Vector3(
@@ -46,15 +46,15 @@
 					40 - 80 * Math.random());
 
 			// три пилона
-			scene.add(new Pillar(p));
-			scene.add(new Pillar(q));
-			scene.add(new Pillar(r));
-			object.position.copy(p);
+			VAX.scene.add(new VAX.Pillar(p));
+			VAX.scene.add(new VAX.Pillar(q));
+			VAX.scene.add(new VAX.Pillar(r));
+			VAX.object.position.copy(p);
 
 			// създаване на трите анимации
-			var tween1 = new TWEEN.Tween(object.position).to(q, 1000).delay(500);
-			var tween2 = new TWEEN.Tween(object.position).to(r, 1000).delay(500);
-			var tween3 = new TWEEN.Tween(object.position).to(p, 1000).delay(500);
+			var tween1 = new TWEEN.Tween(VAX.object.position).to(q, 1000).delay(500);
+			var tween2 = new TWEEN.Tween(VAX.object.position).to(r, 1000).delay(500);
+			var tween3 = new TWEEN.Tween(VAX.object.position).to(p, 1000).delay(500);
 
 			// свързване на трите анимации една за друга
 			tween1.chain(tween2); // втората почва след първата
@@ -70,8 +70,8 @@
 				TWEEN.update();
 
 				// въртене на сцената и на обекта
-				object.rotation.y = -5*t;
-				scene.rotation.y = t/5;
+				VAX.object.rotation.y = -5*t;
+				VAX.scene.rotation.y = t/5;
 			}
 			
 		</script>

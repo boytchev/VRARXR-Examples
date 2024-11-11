@@ -10,10 +10,10 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "physijs": "./physijs/physi.module.js",
-			  "vax": "./vax.js"
+			  "vax": "./vax-physi.js"
 			}
 		  }
 		</script>
@@ -24,34 +24,34 @@
 
 			import * as THREE from "three";
 			import "physijs";
-			import {vaxInit, renderer, scene, camera, light} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
 			// светлина и сенки
-			renderer.shadowMap.enabled = true;
-			light.intensity = 12;
-			light.shadow.mapSize = new THREE.Vector2(1024*2, 1024*2);
-			light.position.set(-150, 300, -50);
-			light.intensity = 0.8;
+			VAX.renderer.shadowMap.enabled = true;
+			VAX.light.intensity = 12;
+			VAX.light.shadow.mapSize = new THREE.Vector2(1024*2, 1024*2);
+			VAX.light.position.set(-150, 300, -50);
+			VAX.light.intensity = 0.8;
 
-			var light2 = light.clone();
+			var light2 = VAX.light.clone();
 			light2.intensity = 3;
 			light2.castShadow = true;
-			scene.add(light2);
+			VAX.scene.add(light2);
 
-			scene.add(new THREE.AmbientLight('yellow', 0.7));
+			VAX.scene.add(new THREE.AmbientLight('yellow', 0.7));
 
 			// по-добра позиция на камерата
-			camera.position.set(0, 80, 240);
-			camera.lookAt(new THREE.Vector3(0, 0, 0));
+			VAX.camera.position.set(0, 80, 240);
+			VAX.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 			// земя
 			var geometry = new THREE.BoxGeometry(300, 4, 300),
-			material = Physijs.createMaterial(new THREE.MeshPhongMaterial(
+			material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial(
 					{
 						color: 'gold',
-						shininess: 100
+						roughness: 0.3
 					}
 					));
 			var ground = new Physijs.BoxMesh(geometry, material, 0);
@@ -68,10 +68,10 @@
 
 			// ограничители
 			geometry = new THREE.BoxGeometry(13, 30, 3);
-			material = Physijs.createMaterial(new THREE.MeshPhongMaterial(
+			material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial(
 					{
 						color: 'white',
-						shininess: 500,
+						roughness: 0.3,
 						emissive: 'gold',
 						emissiveIntensity: 0.4
 					}
@@ -84,34 +84,34 @@
 				barrier.rotation.set(0, -angle, 0);
 				barrier.castShadow = true;
 				barrier.receiveShadow = true;
-				scene.add(barrier);
+				VAX.scene.add(barrier);
 
 				barrier.addEventListener('collision', hit);
 			}
 
-			scene.add(ground);
+			VAX.scene.add(ground);
 
 			var geometry = new THREE.SphereGeometry(12, 24, 12);
 
 			for (var i = 0; i < 20; i++)
 			{
-				var material = Physijs.createMaterial(new THREE.MeshPhongMaterial(
+				var material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial(
 						{
 							color: 'white',
-							shininess: 100
+							roughness: 0.3
 						}
 						), 0, 1);
 				var ball = new Physijs.SphereMesh(geometry, material, 10);
 				ball.position.set(THREE.MathUtils.randFloat(-30, 30), 10+30*i, THREE.MathUtils.randFloat(-30, 30));
 				ball.receiveShadow = true;
 				ball.castShadow = true;
-				scene.add(ball);
+				VAX.scene.add(ball);
 			}
 
 			function animate(t)
 			{
-				scene.simulate(1/20);
-				scene.rotation.y = t/10;
+				VAX.scene.simulate(1/20);
+				VAX.scene.rotation.y = t/10;
 			}
 		</script>
 	</body>

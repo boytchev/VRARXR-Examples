@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,32 +22,33 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxSceneInit, Pillar, scene, ground, object} from "vax";
+			import * as VAX from "vax";
 
-			vaxSceneInit(animate);
+			VAX.initScene(animate);
 
 			// позиции
 			var p = new THREE.Vector3(-50, 50, 0);
 			var q = new THREE.Vector3(+50, 50, 0);
 
 			// пилони
-			scene.add(new Pillar(p));
-			scene.add(new Pillar(q));
+			VAX.scene.add(new VAX.Pillar(p));
+			VAX.scene.add(new VAX.Pillar(q));
 
 			// връзка
 			var wire = new THREE.Mesh(
 					new THREE.CylinderGeometry(1, 1, 100),
-					ground.material);
+					new THREE.MeshPhysicalMaterial({color:'darkgreen'}));
 			wire.position.y = 50;
 			wire.rotation.z = Math.PI/2;
-			scene.add(wire);
+			wire.castShadow = true;
+			VAX.scene.add(wire);
 
 			function animate(t)
 			{
 				// движение DOF=1
-				object.position.lerpVectors(p, q, 0.5+0.5*Math.sin(t));
+				VAX.object.position.lerpVectors(p, q, 0.5+0.5*Math.sin(t));
 
-				scene.rotation.y = t/10;
+				VAX.scene.rotation.y = t/10;
 			}
 			
 		</script>

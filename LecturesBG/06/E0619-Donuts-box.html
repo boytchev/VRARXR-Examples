@@ -10,10 +10,10 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "physijs": "./physijs/physi.module.js",
-			  "vax": "./vax.js"
+			  "vax": "./vax-physi.js"
 			}
 		  }
 		</script>
@@ -24,29 +24,29 @@
 
 			import * as THREE from "three";
 			import "physijs";
-			import {vaxInit, renderer, scene, camera, light} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
 			// светлина и сенки
-			renderer.shadowMap.enabled = true;
-			light.shadow.mapSize = new THREE.Vector2(1024*2, 1024*2);
-			light.position.set(-150, 300, -50);
-			light.intensity = 4;
+			VAX.renderer.shadowMap.enabled = true;
+			VAX.light.shadow.mapSize = new THREE.Vector2(1024*2, 1024*2);
+			VAX.light.position.set(-150, 300, -50);
+			VAX.light.intensity = 4;
 
-			var light2 = light.clone();
+			var light2 = VAX.light.clone();
 			light2.intensity = 1;
 			light2.castShadow = true;
-			scene.add(light2);
+			VAX.scene.add(light2);
 
-			scene.add(new THREE.AmbientLight('orange', 1));
+			VAX.scene.add(new THREE.AmbientLight('orange', 1));
 
 			// увеличаваме гравитацията, че иначе падат твърде бавно
-			scene.setGravity(new THREE.Vector3(0, -50, 0));
+			VAX.scene.setGravity(new THREE.Vector3(0, -50, 0));
 
 			// по-добра позиция на камерата
-			camera.position.set(0, 200, 200);
-			camera.lookAt(new THREE.Vector3(0, 0, 0));
+			VAX.camera.position.set(0, 200, 200);
+			VAX.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 			// бонбониера
 			geometry = new THREE.PlaneGeometry(306, 306, 51, 51);
@@ -65,21 +65,21 @@
 			}
 			geometry.computeVertexNormals();
 
-			material = Physijs.createMaterial(new THREE.MeshPhongMaterial({
+			material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial({
 						color: 0x806060,
-						shininess: 300
+						roughness: 0
 					}), 1, 0);
 			var hill = new Physijs.HeightfieldMesh(geometry, material, 0, 51, 51);
 			hill.rotation.x = Math.PI/-2;
 			hill.receiveShadow = true;
-			scene.add(hill);
+			VAX.scene.add(hill);
 
 			// понички
 			var geometry = new THREE.TorusGeometry(13, 6, 13, 24);
 
 			for (var i = 0; i < 15; i++)
 			{
-				var material = new THREE.MeshLambertMaterial();
+				var material = new THREE.MeshPhysicalMaterial();
 				material.color = new THREE.Color(Math.random(), Math.random(), Math.random());
 				material.emissive = material.color;
 				material.emissiveIntensity = 0.2;
@@ -89,13 +89,13 @@
 				donut.rotation.set(THREE.MathUtils.randFloat(-3, 3), 0, THREE.MathUtils.randFloat(-3, 3));
 				donut.castShadow = true;
 				donut.receiveShadow = true;
-				scene.add(donut);
+				VAX.scene.add(donut);
 			}
 
 			function animate(t)
 			{
-				scene.simulate(1/20);
-				scene.rotation.y = t/10;
+				VAX.scene.simulate(1/20);
+				VAX.scene.rotation.y = t/10;
 			}
 			
 		</script>

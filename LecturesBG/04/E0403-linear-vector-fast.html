@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,9 +22,9 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxSceneInit, Pillar, object, scene} from "vax";
+			import * as VAX from "vax";
 
-			vaxSceneInit(animate);
+			VAX.initScene(animate);
 
 			// координати на началната точка на движението
 			var p = new THREE.Vector3(
@@ -39,9 +39,9 @@
 					40 - 80 * Math.random());
 
 			// два пилона
-			scene.add(new Pillar(p));
-			scene.add(new Pillar(q));
-			object.position.copy(p); // обектът е във върха на първия пилон
+			VAX.scene.add(new VAX.Pillar(p));
+			VAX.scene.add(new VAX.Pillar(q));
+			VAX.object.position.copy(p); // обектът е във върха на първия пилон
 
 			// изчисляване на движението
 			var n = 50 / 5; // пет пъти по-малко стъпки
@@ -52,13 +52,13 @@
 				// n стъпки след като минат 2 секунди
 				if (t>2 && n)
 				{
-					object.position.add(v); // движение с v
+					VAX.object.position.add(v); // движение с v
 					n--;
 				}
 
 				// въртене на сцената и на обекта
-				object.rotation.y = -5*t;
-				scene.rotation.y = t/5;
+				VAX.object.rotation.y = -5*t;
+				VAX.scene.rotation.y = t/5;
 			}
 			
 		</script>

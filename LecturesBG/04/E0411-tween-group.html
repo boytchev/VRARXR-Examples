@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,9 +23,9 @@
 		
 			import * as THREE from "three";
 			import * as TWEEN from "three/addons/libs/tween.module.js";
-			import {vaxSceneInit, Pillar, object, scene} from "vax";
+			import * as VAX from "vax";
 
-			vaxSceneInit(animate);
+			VAX.initScene(animate);
 
 			// k пилона в кръг
 			var k = 8; // брой пилони
@@ -36,17 +36,17 @@
 				positions[i] = new THREE.Vector3().setFromSphericalCoords(80, Math.PI/2, 2*Math.PI*i/k);
 				positions[i].y = 10 + 40*Math.random();
 
-				pillars[i] = new Pillar(positions[i]);
-				scene.add(pillars[i]);
+				pillars[i] = new VAX.Pillar(positions[i]);
+				VAX.scene.add(pillars[i]);
 			}
 
 			// създаване на още k-1 обекта
 			var objects = [];
-			objects[0] = object;
+			objects[0] = VAX.object;
 			for (var i=1; i<k; i++)
 			{
-				objects[i] = object.clone();
-				scene.add(objects[i]);
+				objects[i] = VAX.object.clone();
+				VAX.scene.add(objects[i]);
 			}
 
 			// инициализиране на началните положения
@@ -68,7 +68,7 @@
 				for (var i=0; i<k; i++)
 					objects[i].rotation.y = -5*t;
 					
-				scene.rotation.y = t/5;
+				VAX.scene.rotation.y = t/5;
 			}
 			
 		</script>

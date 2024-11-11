@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,35 +22,35 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxSceneInit, Pillar, scene, ground, object} from "vax";
+			import * as VAX from "vax";
 
-			vaxSceneInit(animate);
+			VAX.initScene(animate);
 
 			// позиция
 			var p = new THREE.Vector3(0, 50, 0);
 
 			// пилон
-			scene.add(new Pillar(p));
+			VAX.scene.add(new VAX.Pillar(p));
 
 			// връзка
 			var group = new THREE.Group();
 			var wire = new THREE.Mesh(
 					new THREE.CylinderGeometry(1, 1, 50),
-					ground.material);
+					new THREE.MeshPhysicalMaterial({color:'darkgreen'}));
 			wire.position.set(0, 25, 0);
 			wire.castShadow = true;
-			object.position.y = 50;
+			VAX.object.position.y = 50;
 
 			group.position.y = 50;
-			group.add(wire, object);
-			scene.add(group);
+			group.add(wire, VAX.object);
+			VAX.scene.add(group);
 
 			function animate(t)
 			{
 				// движение на подвижната връзка
 				group.rotation.set(1.2+1*Math.sin(7*t), t, 0, 'YXZ');
 
-				scene.rotation.y = t/10;
+				VAX.scene.rotation.y = t/10;
 			}
 			
 		</script>

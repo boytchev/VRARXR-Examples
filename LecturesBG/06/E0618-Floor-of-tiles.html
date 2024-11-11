@@ -10,10 +10,10 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "physijs": "./physijs/physi.module.js",
-			  "vax": "./vax.js"
+			  "vax": "./vax-physi.js"
 			}
 		  }
 		</script>
@@ -24,26 +24,26 @@
 
 			import * as THREE from "three";
 			import "physijs";
-			import {vaxInit, renderer, scene, camera, light} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
 			// светлина и сенки
-			renderer.shadowMap.enabled = true;
-			light.intensity = 2;
-			light.shadow.mapSize = new THREE.Vector2(1024 * 2, 1024 * 2);
-			light.position.set(-150, 300, -50);
+			VAX.renderer.shadowMap.enabled = true;
+			VAX.light.intensity = 2;
+			VAX.light.shadow.mapSize = new THREE.Vector2(1024 * 2, 1024 * 2);
+			VAX.light.position.set(-150, 300, -50);
 
-			var light2 = light.clone();
+			var light2 = VAX.light.clone();
 			light2.intensity = 2;
 			light2.castShadow = true;
-			scene.add(light2);
+			VAX.scene.add(light2);
 
-			scene.add(new THREE.AmbientLight('yellow', 0.3));
+			VAX.scene.add(new THREE.AmbientLight('yellow', 0.3));
 
 			// по-добра позиция на камерата
-			camera.position.set(0, 80, 240);
-			camera.lookAt(new THREE.Vector3(0, 0, 0));
+			VAX.camera.position.set(0, 80, 240);
+			VAX.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 			function hit(otherObject)
 			{
@@ -57,13 +57,13 @@
 			// под от плочки
 			geometry = new THREE.BoxGeometry(30, 4, 30);
 			material = [
-				Physijs.createMaterial(new THREE.MeshPhongMaterial({
+				Physijs.createMaterial(new THREE.MeshPhysicalMaterial({
 						color: 'white',
-						shininess: 500
+						roughness: 0.3
 					}), 0.5, 1),
-				Physijs.createMaterial(new THREE.MeshPhongMaterial({
+				Physijs.createMaterial(new THREE.MeshPhysicalMaterial({
 						color: 'gray',
-						shininess: 500
+						roughness: 0.3
 					}), 0.5, 1)
 			];
 			for (var i = -5; i <= 5; i++)
@@ -73,7 +73,7 @@
 					tile.position.set(30*i, 0, 30*j);
 					tile.castShadow = true;
 					tile.receiveShadow = true;
-					scene.add(tile);
+					VAX.scene.add(tile);
 
 					tile.addEventListener('collision', hit);
 				}
@@ -82,9 +82,9 @@
 
 			for (var i = 0; i < 40; i++)
 			{
-				var material = Physijs.createMaterial(new THREE.MeshPhongMaterial({
+				var material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial({
 							color: 'crimson',
-							shininess: 100,
+							roughness: 0.3,
 							flatShading: true
 						}), 0, 1);
 				var ball = new Physijs.BoxMesh(geometry, material, 1);
@@ -96,13 +96,13 @@
 
 				ball.receiveShadow = true;
 				ball.castShadow = true;
-				scene.add(ball);
+				VAX.scene.add(ball);
 			}
 
 			function animate(t)
 			{
-				scene.simulate(1/15);
-				scene.rotation.y = t/10;
+				VAX.scene.simulate(1/15);
+				VAX.scene.rotation.y = t/10;
 			}
 			
 		</script>

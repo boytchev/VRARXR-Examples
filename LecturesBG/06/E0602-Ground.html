@@ -10,10 +10,10 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "physijs": "./physijs/physi.module.js",
-			  "vax": "./vax.js"
+			  "vax": "./vax-physi.js"
 			}
 		  }
 		</script>
@@ -24,36 +24,35 @@
 
 			import * as THREE from "three";
 			import "physijs";
-			import {vaxInit, renderer, light, scene} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
 			// светлина и сенки
-			renderer.shadowMap.enabled = true;
-			light.intensity = 3;
-			light.shadow.mapSize = new THREE.Vector2(1024 * 2, 1024 * 2);
-			light.position.set(0, 300, 0);
-			light.castShadow = true;
+			VAX.renderer.shadowMap.enabled = true;
+			VAX.light.shadow.mapSize = new THREE.Vector2(1024 * 2, 1024 * 2);
+			VAX.light.position.set(0, 300, 0);
+			VAX.light.castShadow = true;
 
 			// земя
 			var geometry = new THREE.BoxGeometry(300, 4, 300),
-			material = Physijs.createMaterial(new THREE.MeshPhongMaterial({color: 'lightgreen'}));
+			material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial({color: 'lightgreen'}));
 			var ground = new Physijs.BoxMesh(geometry, material, 0);
 			ground.position.set(0, -10, 0);
 			ground.receiveShadow = true;
-			scene.add(ground);
+			VAX.scene.add(ground);
 
 			// топка
 			var geometry = new THREE.SphereGeometry(8),
-			material = Physijs.createMaterial(new THREE.MeshPhongMaterial({color: 'hotpink'}));
+			material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial({color: 'hotpink'}));
 			var ball = new Physijs.SphereMesh(geometry, material);
 			ball.position.set(0, 40, 0);
 			ball.castShadow = true;
-			scene.add(ball);
+			VAX.scene.add(ball);
 
 			function animate()
 			{
-				scene.simulate();
+				VAX.scene.simulate();
 			}
 			
 		</script>
