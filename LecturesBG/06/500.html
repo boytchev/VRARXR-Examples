@@ -38,7 +38,7 @@
 			VAX.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 			// земя
-			geometry = new THREE.PlaneGeometry(400, 400, 5, 5);
+			geometry = new THREE.PlaneGeometry(400, 400, 4, 4);
 
 			var pos = geometry.getAttribute('position');
 			for (var i = 0; i < pos.count; i++)
@@ -54,7 +54,7 @@
 						opacity: 0.3,
 						side: THREE.DoubleSide,
 					}), 1, 0);
-			var hill = new Physijs.HeightfieldMesh(geometry, material, 0, 5, 5);
+			var hill = new Physijs.HeightfieldMesh(geometry, material, 0, 4, 4);
 			hill.rotation.x = Math.PI/-2;
 			VAX.scene.add(hill);
 			
@@ -63,7 +63,7 @@
 			var geometry = new THREE.BoxGeometry(20, 20, 20),
 			material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial({color: 'hotpink'}));
 
-			for (var i = 0; i < 300; i++)
+			for (var i = 0; i < 500; i++)
 			{
 				var cube = new Physijs.BoxMesh(geometry, material);
 				cube.position.set(THREE.MathUtils.randFloat(-40, 40), 30+16*i, THREE.MathUtils.randFloat(-20, 20));
