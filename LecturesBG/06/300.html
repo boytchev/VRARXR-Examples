@@ -63,7 +63,7 @@
 			var geometry = new THREE.BoxGeometry(20, 20, 20),
 			material = Physijs.createMaterial(new THREE.MeshPhysicalMaterial({color: 'hotpink'}));
 
-			for (var i = 0; i < 500; i++)
+			for (var i = 0; i < 300; i++)
 			{
 				var cube = new Physijs.BoxMesh(geometry, material);
 				cube.position.set(THREE.MathUtils.randFloat(-40, 40), 30+16*i, THREE.MathUtils.randFloat(-20, 20));
@@ -72,7 +72,7 @@
 
 			function animate(t)
 			{
-				VAX.scene.simulate(1/15);
+				VAX.scene.simulate(1/25);
 				VAX.scene.rotation.y = t/10;
 			}
 			
