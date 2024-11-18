@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,11 +22,11 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene, camera} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
-			camera.position.set( 0, 0, 450 );
+			VAX.camera.position.set( 0, 0, 450 );
 
 			// обекти
 			var geometry = new THREE.SphereGeometry( 30, 60, 60 ),
@@ -34,15 +34,15 @@
 				
 			var object = new THREE.Mesh( geometry, material );
 			object.position.set( 250, 0, 0 );
-			scene.add( object );
+			VAX.scene.add( object );
 
 			object = object.clone();
 			object.position.set( -250, 0, 0 );
-			scene.add( object );
+			VAX.scene.add( object );
 			
 			function animate( t )
 			{
-				scene.rotation.y = t;
+				VAX.scene.rotation.y = t;
 			}
 			
 		</script>

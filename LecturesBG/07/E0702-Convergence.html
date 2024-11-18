@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,23 +23,23 @@
 		
 			import * as THREE from "three";
 			import * as lil from "three/addons/libs/lil-gui.module.min.js";
-			import {vaxInit, scene, light} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
 
-			light.intensity = 1;
+			VAX.light.intensity = 1;
 
-			var light2 = light.clone();
+			var light2 = VAX.light.clone();
 			light2.position.x = 500;
-			scene.add(light2);
+			VAX.scene.add(light2);
 
-			var light3 = light.clone();
+			var light3 = VAX.light.clone();
 			light3.position.x = 300;
 			light3.position.y = 300;
-			scene.add(light3);
+			VAX.scene.add(light3);
 
-			scene.add(new THREE.AmbientLight('white', 1));
+			VAX.scene.add(new THREE.AmbientLight('white', 1));
 
 			// създаване на панел
 			var gui = new lil.GUI();
@@ -64,7 +64,7 @@
 						roughness: 0.2
 					}));
 			eye.position.set(-75, 0, -100);
-			scene.add(eye);
+			VAX.scene.add(eye);
 
 			var iris = new THREE.Mesh(geometry, new THREE.MeshPhysicalMaterial({
 						color: 'brown',
@@ -85,18 +85,17 @@
 			// второ око
 			var eye2 = eye.clone();
 			eye2.position.set(75, 0, -100);
-			scene.add(eye2);
+			VAX.scene.add(eye2);
 
 			// трето око
 			var eye3 = eye.clone();
 			eye3.position.set(0, 50, -100);
-			scene.add(eye3);
+			VAX.scene.add(eye3);
 
 			// муха
 			var geometry = new THREE.SphereGeometry(1);
 			var fly = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({color: 'black'}));
-			scene.add(fly);
-			//fly.scale.set( 5, 5, 5 );
+			VAX.scene.add(fly);
 
 
 			function animate(t)

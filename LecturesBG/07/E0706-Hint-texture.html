@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,9 +23,9 @@
 		
 			import * as THREE from "three";
 			import * as lil from "three/addons/libs/lil-gui.module.min.js";
-			import {vaxInit, scene, camera} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
 			// създаване на панел
 			var gui = new lil.GUI();
@@ -38,11 +38,11 @@
 			var ground = new THREE.Mesh(
 					new THREE.BoxGeometry(2000, 0.1, 2000),
 					new THREE.MeshBasicMaterial({map: map}));
-			scene.add(ground);
+			VAX.scene.add(ground);
 
 			// гледна точка
-			camera.position.set(0, 200, 300);
-			camera.lookAt(ground.position);
+			VAX.camera.position.set(0, 200, 300);
+			VAX.camera.lookAt(ground.position);
 
 			// два обекта
 			var map = myTexture();
@@ -51,7 +51,7 @@
 					new THREE.BoxGeometry(100, 100, 100),
 					new THREE.MeshBasicMaterial({map: map}));
 			object.position.set(105, 50, 12);
-			scene.add(object);
+			VAX.scene.add(object);
 
 			var map = myTexture();
 			map.repeat.set(70, 35);
@@ -59,7 +59,7 @@
 					new THREE.SphereGeometry(80, 50, 50),
 					new THREE.MeshBasicMaterial({map: map}));
 			object.position.set(-160, 5, 50);
-			scene.add(object);
+			VAX.scene.add(object);
 
 			// създаване на текстура
 			function myTexture()
@@ -67,14 +67,14 @@
 				var canvas = document.createElement('canvas'),
 				ctx = canvas.getContext('2d');
 
-				canvas.width = 8;
-				canvas.height = 8;
+				canvas.width = 32;
+				canvas.height = 32;
 
 				ctx.fillStyle = 'white';
-				ctx.fillRect(0, 0, 8, 8);
+				ctx.fillRect(0, 0, 32, 32);
 
 				ctx.strokeStyle = 'black';
-				ctx.strokeRect(0, 0, 10, 10);
+				ctx.strokeRect(0, 0, 32, 32);
 
 				var texture = new THREE.CanvasTexture(canvas);
 				texture.wrapS = THREE.RepeatWrapping;
@@ -88,7 +88,7 @@
 			function animate(t, dT)
 			{
 				if (data.rotation)
-					scene.rotation.y += dT;
+					VAX.scene.rotation.y += dT;
 			}
 			
 		</script>

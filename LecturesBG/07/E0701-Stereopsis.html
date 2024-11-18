@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,37 +22,35 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene, camera, light} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 			
-			light.intensity = 4.5;
-
 			var geometry = new THREE.SphereGeometry(30, 50, 50),
-			materialA = new THREE.MeshPhongMaterial({color: 'cornflowerblue'}),
-			materialB = new THREE.MeshPhongMaterial({color: 'crimson'});
+			materialA = new THREE.MeshPhysicalMaterial({color: 'cornflowerblue', roughness: 0.4}),
+			materialB = new THREE.MeshPhysicalMaterial({color: 'crimson', roughness: 0.4});
 
 			// обекти
 			var object = new THREE.Mesh(geometry, materialB);
 			object.position.set(-80, 0, -80);
-			scene.add(object);
+			VAX.scene.add(object);
 
 			object = new THREE.Mesh(geometry, materialB);
 			object.position.set(80, 0, -80);
-			scene.add(object);
+			VAX.scene.add(object);
 
 			object = new THREE.Mesh(geometry, materialA);
-			scene.add(object);
+			VAX.scene.add(object);
 
 			function animate(t)
 			{
 				// симулирано гледане с редуване на очите
 				if (Math.round(t * 2) % 2)
-					camera.position.set(20, 0, 100); // дясно око
+					VAX.camera.position.set(20, 0, 100); // дясно око
 				else
-					camera.position.set(-20, 0, 100); // ляво око
+					VAX.camera.position.set(-20, 0, 100); // ляво око
 
-				camera.lookAt(object.position);
+				VAX.camera.lookAt(object.position);
 			}
 			
 		</script>

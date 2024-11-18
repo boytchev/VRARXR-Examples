@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,9 +23,9 @@
 		
 			import * as THREE from "three";
 			import * as lil from "three/addons/libs/lil-gui.module.min.js";
-			import {vaxInit, scene, camera} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
 			// създаване на панел
 			var gui = new lil.GUI();
@@ -38,11 +38,11 @@
 			var ground = new THREE.Mesh(
 					new THREE.BoxGeometry(2000, 0.1, 2000),
 					new THREE.MeshBasicMaterial({map: map}));
-			scene.add(ground);
+			VAX.scene.add(ground);
 
 			// гледна точка
-			camera.position.set(0, 250, 200);
-			camera.lookAt(ground.position);
+			VAX.camera.position.set(0, 250, 200);
+			VAX.camera.lookAt(ground.position);
 
 			// два обекта
 			var map = map.clone();
@@ -52,7 +52,7 @@
 					new THREE.MeshBasicMaterial({map: map}));
 			object.rotation.x = -Math.PI/2;
 			object.position.set(60, 100, 12);
-			scene.add(object);
+			VAX.scene.add(object);
 
 			var map = map.clone();
 			map.repeat.set(1/2, 1/2);
@@ -61,7 +61,7 @@
 					new THREE.MeshBasicMaterial({map: map}));
 			object.rotation.x = -Math.PI/2;
 			object.position.set(-100, 50, 50);
-			scene.add(object);
+			VAX.scene.add(object);
 
 			// създаване на текстура
 			function myTexture()
@@ -88,7 +88,7 @@
 			function animate(t, dT)
 			{
 				if (data.rotation)
-					scene.rotation.y += dT/2;
+					VAX.scene.rotation.y += dT/2;
 			}
 			
 		</script>
