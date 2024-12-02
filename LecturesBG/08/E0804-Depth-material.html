@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -23,13 +23,13 @@
 		
 			import * as THREE from "three";
 			import {OrbitControls} from "three/addons/controls/OrbitControls.js";
-			import {vaxSceneInit, renderer, object, ground, scene, camera, Pillar, orthogonal} from "vax";
+			import * as VAX from "vax";
 
-			orthogonal();
-			vaxSceneInit(animate);
+			VAX.orthogonal();
+			VAX.initScene(animate);
 
 			// орбитална навигация
-			var control = new OrbitControls(camera, renderer.domElement);
+			var control = new OrbitControls(VAX.camera, VAX.renderer.domElement);
 			control.minDistance = 50; // разстояние
 			control.maxDistance = 500;
 			control.minPolarAngle = 0.1; // вертикален ъгъл
@@ -48,21 +48,21 @@
 			var q = new THREE.Vector3(80, 20+80*Math.random(), 80);
 
 			// материал за дълбочина
-			ground.material = new THREE.MeshDepthMaterial();
-			object.material = ground.material;
+			VAX.ground.material = new THREE.MeshDepthMaterial();
+			VAX.object.material = VAX.ground.material;
 
 			// два пилона
-			scene.add(new Pillar(p));
-			scene.add(new Pillar(q));
+			VAX.scene.add(new VAX.Pillar(p));
+			VAX.scene.add(new VAX.Pillar(q));
 
 			function animate(t)
 			{
 				// движение по k
 				var k = 0.5 + 0.5*Math.sin(3*t);
-				object.position.lerpVectors(p, q, k);
+				VAX.object.position.lerpVectors(p, q, k);
 
 				// въртене на обекта
-				object.rotation.y = t / 2;
+				VAX.object.rotation.y = t / 2;
 
 				// движение на гледната точка
 				control.update();

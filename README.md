@@ -8,7 +8,7 @@
 - [Лекция №5 &ndash; Роботи](#лекция-5--роботи)
 - [Лекция №6 &ndash; Физика](#лекция-6--физика)
 - [Лекция №7 &ndash; Стерео-1](#лекция-7--стерео-1)
-
+- [Лекция №8 &ndash; Стерео-2](#лекция-8--стерео-2)
 
 
 ## Лекция №1 &ndash; Запознаване
@@ -477,4 +477,53 @@
 **E0708**. Сцена с тримерна подсказка от припокриване на обектите.
 
 [<kbd><img src="LecturesBG/07/E0708-Hint-overlap.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/07/E0708-Hint-overlap.html)
+
+
+
+## Лекция №8 &ndash; Стерео-2
+
+**E0801**. Ефект на Z-борба.
+
+[<kbd><img src="LecturesBG/08/E0801-Z-fighting-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/08/E0801-Z-fighting-1.html)
+
+**E0802**. Елиминиране на Z-борба чрез преместване в пространството.
+
+[<kbd><img src="LecturesBG/08/E0802-Z-fighting-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/08/E0802-Z-fighting-2.html)
+
+**E0803**. Елиминиране на Z-борба чрез преместване в дълбочина.
+
+[<kbd><img src="LecturesBG/08/E0803-Z-fighting-3.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/08/E0803-Z-fighting-3.html)
+
+**E0804**. Материал за дълбочина.
+
+[<kbd><img src="LecturesBG/08/E0804-Depth-material.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/08/E0804-Depth-material.html)
+
+**E0805**. Първи анаглифен модел.
+
+[<kbd><img src="LecturesBG/08/E0805-First-Anaglyph.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/08/E0805-First-Anaglyph.html)
+
+**E0806**. Анаглифен модел с много обекти.
+
+[<kbd><img src="LecturesBG/08/E0806-Many-anaglyph-objects.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/08/E0806-Many-anaglyph-objects.html)
+
+**E0807**. Скъсено фокусно разстояние.
+
+[<kbd><img src="LecturesBG/08/E0807-Focal-distance.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/08/E0807-Focal-distance.html)
+
+**E0808**. Топащи се топки в кутия.
+
+[<kbd><img src="LecturesBG/08/E0808-Balls-in-a-box.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/08/E0808-Balls-in-a-box.html)
+
+**E0809**. Първи паралаксен модел за право гледане.
+
+[<kbd><img src="LecturesBG/08/E0809-First-Parallax.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/08/E0809-First-Parallax.html)
+
+**E0810**. Паралаксен модел с много обекти за право гледане.
+
+[<kbd><img src="LecturesBG/08/E0810-Many-parallax-objects.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/08/E0810-Many-parallax-objects.html)
+
+**E0811**. Паралаксен модел с много обекти за кръстосано гледане.
+
+[<kbd><img src="LecturesBG/08/E0811-Many-crossed-parallax-objects.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/08/E0811-Many-crossed-parallax-objects.html)
+
 

@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -24,22 +24,22 @@
 			import * as THREE from "three";
 			import {OrbitControls} from "three/addons/controls/OrbitControls.js";
 			import {BoxLineGeometry} from "three/addons/geometries/BoxLineGeometry.js";
-			import {vaxInitAnaglyph, renderer, scene, light, camera} from "vax";
+			import * as VAX from "vax";
 
 			// инициализираме в режим на анаглифна графика
-			vaxInitAnaglyph(animate);
+			VAX.initAnaglyph(animate);
 
-			light.intensity = 15;
+			VAX.light.intensity = 15;
 
-			camera.focus = 3;
+			VAX.camera.focus = 3;
 
 			// орбитална навигация
-			var control = new OrbitControls(camera, renderer.domElement);
+			var control = new OrbitControls(VAX.camera, VAX.renderer.domElement);
 
 			// закопчаваме светлината към камерата, става като фенерче на
 			// миньорска каска, така където и да сме, от нас струи светлина
-			camera.add(light);
-			scene.add(camera);
+			VAX.camera.add(VAX.light);
+			VAX.scene.add(VAX.camera);
 
 			var balls = [];
 			var n = 60;
@@ -62,14 +62,14 @@
 				balls[i].offset = THREE.MathUtils.randFloat(0, 10);
 				balls[i].speed = THREE.MathUtils.randFloat(0.7, 1.3);
 				balls[i].height = THREE.MathUtils.randFloat(50, 100);
-				scene.add(balls[i]);
+				VAX.scene.add(balls[i]);
 			}
 
 			var box = new THREE.LineSegments(
 					new BoxLineGeometry(101, 101, 101, 10, 10, 10),
 					new THREE.LineBasicMaterial({color: 'black'})
 				);
-			scene.add(box);
+			VAX.scene.add(box);
 
 			function animate(t)
 			{

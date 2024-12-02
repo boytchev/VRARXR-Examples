@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,13 +22,11 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInitAnaglyph, scene, light} from "vax";
+			import * as VAX from "vax";
 
 			// инициализираме в режим на анаглифна графика
-			vaxInitAnaglyph(animate);
+			VAX.initAnaglyph(animate);
 			
-			light.intensity = 3;
-
 			var cubes = [];
 			var n = 30;
 			for (var i = 0; i < n; i++)
@@ -42,7 +40,7 @@
 					THREE.MathUtils.randFloat(-50, 50),
 					THREE.MathUtils.randFloat(-100, 100)
 				);
-				scene.add(cubes[i]);
+				VAX.scene.add(cubes[i]);
 			}
 
 			function animate(t)

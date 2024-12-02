@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,12 +22,10 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInitParallax, scene, light, camera} from "vax";
+			import * as VAX from "vax";
 
 			// инициализираме в режим на паралаксна графика
-			vaxInitParallax(animate);
-
-			light.intensity = 3;
+			VAX.initParallax(animate);
 
 			var cube = new THREE.Mesh(
 					new THREE.BoxGeometry(20, 20, 20),
@@ -35,7 +33,7 @@
 				);
 			cube.position.z = 40;
 			cube.rotation.y = 0.2;
-			scene.add(cube);
+			VAX.scene.add(cube);
 
 			function animate(t)
 			{

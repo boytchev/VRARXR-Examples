@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,11 +22,11 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInitParallax, scene, light, camera} from "vax";
+			import * as VAX from "vax";
 
-			vaxInitParallax(animate);
+			VAX.initParallax(animate);
 
-			light.intensity = 8;
+			VAX.light.intensity = 8;
 
 			var dodecs = [];
 			var n = 30;
@@ -41,7 +41,7 @@
 					THREE.MathUtils.randFloat(-50, 50),
 					THREE.MathUtils.randFloat(-100, 100)
 				);
-				scene.add(dodecs[i]);
+				VAX.scene.add(dodecs[i]);
 			}
 
 			function animate(t)

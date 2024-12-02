@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,9 +22,9 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene, camera} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
 			var geometry = new THREE.BoxGeometry(60, 10, 60),
 			materialA = new THREE.MeshBasicMaterial({color: 'cornflowerblue'}),
@@ -34,18 +34,18 @@
 			// обекти
 			var objectA = new THREE.Mesh(geometry, materialA);
 			objectA.position.set(15, 0.2, 0); // отместено нагоре
-			scene.add(objectA);
+			VAX.scene.add(objectA);
 
 			var objectB = new THREE.Mesh(geometry, materialB);
 			objectB.position.set(-15, 0, 0);
-			scene.add(objectB);
+			VAX.scene.add(objectB);
 
 			var objectC = new THREE.Mesh(geometry, materialC);
 			objectC.position.set(0, 0.1, 0); // отместено нагоре, но по-малко
-			scene.add(objectC);
+			VAX.scene.add(objectC);
 
-			camera.position.set(0, 100, 0);
-			camera.lookAt(objectC.position);
+			VAX.camera.position.set(0, 100, 0);
+			VAX.camera.lookAt(objectC.position);
 
 			function animate(t)
 			{
