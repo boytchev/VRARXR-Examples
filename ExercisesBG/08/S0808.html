@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>S0808: Смартфон</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
+	</head>
+	
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {OrbitControls} from "three/addons/controls/OrbitControls.js";
+			import * as VAX from "vax";
+
+			VAX.initParallax(animate, 1);
+
+			VAX.light.intensity = 6;
+			VAX.light.position.set(0, 100, 0);
+				
+			// черен фон и мъгла, която да затъмнява основите на сградите
+			VAX.scene.background = new THREE.Color('black');
+			VAX.scene.fog = new THREE.Fog('black', 0, 100);
+
+			// квадратна мрежа от NxN небостъргача
+			var n = 20;
+			var geometry = new THREE.BoxGeometry(2, 1, 2),
+			material = new THREE.MeshLambertMaterial({color: 'cornflowerblue'});
+
+			geometry.translate(0, 0.5, 0);
+
+			// градът е групов обект от всички сгради
+			var city = new THREE.Group();
+			VAX.scene.add(city);
+
+			for (var x = 0; x < n; x++)
+				for (var z = 0; z < n; z++)
+				{
+					var building = new THREE.Mesh(geometry, material);
+					building.scale.y = THREE.MathUtils.randFloat(10, 100);
+					building.position.set(2*x-(n-1), 0, 2*z-(n-1));
+
+					city.add(building);
+				}
+
+			var target = new THREE.Vector3();
+
+			function animate(t)
+			{
+				// движение на дрона
+				target.set(5*Math.sin(0.67*t+2.74), 0, 5*Math.cos(0.71*t-1.59));
+				VAX.camera.position.set(target.x, 110, target.z);
+				VAX.camera.lookAt(target);
+			}
+			
+		</script>
+	</body>
+</html>
+
+
