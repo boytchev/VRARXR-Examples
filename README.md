@@ -9,9 +9,14 @@
 - [Лекция №6 &ndash; Физика](#лекция-6--физика)
 - [Лекция №7 &ndash; Стерео-1](#лекция-7--стерео-1)
 - [Лекция №8 &ndash; Стерео-2](#лекция-8--стерео-2)
+- [Лекция №9 &ndash; Позициониране](#лекция-9--позициониране)
 
 ## Упражнения
 [**S0808**](https://boytchev.github.io/CourseVAX/ExercisesBG/08/S0808.html)
+
+- [Упражнение №9 &ndash; Позициониране](#упражнение-9--позициониране)
+
+
 
 
 ## Лекция №1 &ndash; Запознаване
@@ -528,5 +533,78 @@
 **E0811**. Паралаксен модел с много обекти за кръстосано гледане.
 
 [<kbd><img src="LecturesBG/08/E0811-Many-crossed-parallax-objects.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/08/E0811-Many-crossed-parallax-objects.html)
+
+
+
+
+## Лекция №9 &ndash; Позициониране
+
+**E0901**. Извличане на GPS координати.
+
+[<kbd><img src="LecturesBG/09/E0901-GPS-Coordinates.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/09/E0901-GPS-Coordinates.html)
+
+**E0902**. Извличане на GPS координати и тяхната точност.
+
+[<kbd><img src="LecturesBG/09/E0902-GPS-Coordinates-accuracy.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/09/E0902-GPS-Coordinates-accuracy.html)
+
+**E0903**. Проба с отказ на предоставяне на геолокационни данни.
+
+[<kbd><img src="LecturesBG/09/E0903-GPS-Coordinates-error.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/09/E0903-GPS-Coordinates-error.html)
+
+**E0904**. Позициониране върху географска карта.
+
+[<kbd><img src="LecturesBG/09/E0904-Geographical-map.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/09/E0904-Geographical-map.html)
+
+**E0905**. Извличане на ориентацията на мобилно устройство.
+
+[<kbd><img src="LecturesBG/09/E0905-Device-orientation.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/09/E0905-Device-orientation.html)
+
+**E0906**. Модел на виртуален компас.
+
+[<kbd><img src="LecturesBG/09/E0906-Compass.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/09/E0906-Compass.html)
+
+**E0907**. Извличане на данни за ускорението и гравитацията.
+
+[<kbd><img src="LecturesBG/09/E0907-Device-motion.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/09/E0907-Device-motion.html)
+
+**E0908**. Определяне на шума в данните от акселометъра.
+
+[<kbd><img src="LecturesBG/09/E0908-Accelometer-noise.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/09/E0908-Accelometer-noise.html)
+
+
+
+
+
+
+## Упражнение №9 &ndash; Позициониране
+
+**S0903**. Къде сме ние.
+
+[<kbd><img src="ExercisesBG/09/S0903-My-locaiton-map.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0903-My-locaiton-map.html)
+
+**S0905**. Диапазони на ъгли.
+
+[<kbd><img src="ExercisesBG/09/S0905-Device-orientation.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0905-Device-orientation.html)
+
+**S0907**. Търкаляща се топка.
+
+[<kbd><img src="ExercisesBG/09/S0907-Rolling-ball.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0907-Rolling-ball.html)
+
+**S0908**. Симулиран смартфон.
+
+[<kbd><img src="ExercisesBG/09/S0908-Simulated-smartphone.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0908-Simulated-smartphone.html)
+
+**S0909**. Вградена карта.
+
+[<kbd><img src="ExercisesBG/09/S0909-Embedded-map.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0909-Embedded-map.html)
+
+**S0910**. Крачкомер - събиране на данни.
+
+[<kbd><img src="ExercisesBG/09/S0910-Collect-data.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0910-Collect-data.html)
+
+**S0910**. Крачкомер.
+
+[<kbd><img src="ExercisesBG/09/S0910-Count-steps.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/09/S0910-Count-steps.html)
+
 
 

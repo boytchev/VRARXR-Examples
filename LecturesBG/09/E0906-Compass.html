@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,17 +22,16 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene, light, camera} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit();
+			VAX.init();
 			
-			scene.background = new THREE.Color('black');
+			VAX.scene.background = new THREE.Color('black');
 
-			light.position.set(100, 200, -50);
-			light.intensity = 3;
+			VAX.light.position.set(100, 200, -50);
 
-			camera.position.set(0, 120, 0);
-			camera.lookAt(new THREE.Vector3(0, 0, 0));
+			VAX.camera.position.set(0, 120, 0);
+			VAX.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 			// основа
 			var geometry = new THREE.ConeGeometry(6, 40, 4, 1, true),
@@ -53,7 +52,7 @@
 				else
 					mesh.scale.set(1, 0.1, 1);
 				mesh.rotation.y = i*Math.PI/4;
-				scene.add(mesh);
+				VAX.scene.add(mesh);
 			}
 
 			// основна стрелка
@@ -78,7 +77,7 @@
 			mesh.rotation.y = Math.PI;
 			arrow.add(mesh);
 
-			scene.add(arrow);
+			VAX.scene.add(arrow);
 
 			// слушаме за събитието на ориентацията на устройство
 			window.addEventListener("deviceorientation", deviceOrientation, true);

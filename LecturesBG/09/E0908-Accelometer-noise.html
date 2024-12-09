@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -22,22 +22,22 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene, camera} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit();
+			VAX.init();
 			
 			var O = new THREE.Vector3(0, 0, 0);
 
-			camera.position.set(50, 40, 150);
-			camera.lookAt(O);
+			VAX.camera.position.set(50, 40, 150);
+			VAX.camera.lookAt(O);
 
 			// координатна система
-			scene.add(new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), O, 80, 'red'));
-			scene.add(new THREE.ArrowHelper(new THREE.Vector3(-1, 0, 0), O, 80, 'red'));
-			scene.add(new THREE.ArrowHelper(new THREE.Vector3(0, 1, 0), O, 80, 'green'));
-			scene.add(new THREE.ArrowHelper(new THREE.Vector3(0, -1, 0), O, 80, 'green'));
-			scene.add(new THREE.ArrowHelper(new THREE.Vector3(0, 0, 1), O, 80, 'blue'));
-			scene.add(new THREE.ArrowHelper(new THREE.Vector3(0, 0, -1), O, 80, 'blue'));
+			VAX.scene.add(new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), O, 80, 'red'));
+			VAX.scene.add(new THREE.ArrowHelper(new THREE.Vector3(-1, 0, 0), O, 80, 'red'));
+			VAX.scene.add(new THREE.ArrowHelper(new THREE.Vector3(0, 1, 0), O, 80, 'green'));
+			VAX.scene.add(new THREE.ArrowHelper(new THREE.Vector3(0, -1, 0), O, 80, 'green'));
+			VAX.scene.add(new THREE.ArrowHelper(new THREE.Vector3(0, 0, 1), O, 80, 'blue'));
+			VAX.scene.add(new THREE.ArrowHelper(new THREE.Vector3(0, 0, -1), O, 80, 'blue'));
 
 			// слушаме за събитието на ориентацията на устройство
 			setTimeout(function ()
@@ -65,7 +65,7 @@
 
 					var material = new THREE.PointsMaterial({color: 'black', size: 3});
 					var points = new THREE.Points(geometry, material);
-					scene.add(points);
+					VAX.scene.add(points);
 
 					n--;
 				}
@@ -73,7 +73,7 @@
 
 			function animate(t)
 			{
-				scene.rotation.y = t/2;
+				VAX.scene.rotation.y = t/2;
 			}
 			
 		</script>
