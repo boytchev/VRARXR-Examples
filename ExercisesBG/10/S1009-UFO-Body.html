@@ -23,15 +23,15 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene, light, camera } from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 
-			light.position.set(0, 0, 0);
+			VAX.light.position.set(0, 0, 0);
 
-			camera.fov = 15;
-			camera.updateProjectionMatrix();
-			camera.position.set(0, 0, 0);
+			VAX.camera.fov = 15;
+			VAX.camera.updateProjectionMatrix();
+			VAX.camera.position.set(0, 0, 0);
 
 			// НЛО
 			var spline = new THREE.SplineCurve([
@@ -52,9 +52,9 @@
 			var ufo = new THREE.Mesh(geometry, material);
 
 			ufo.position.setFromSphericalCoords(40, 1.6, 1.5);
-			scene.add(ufo);
+			VAX.scene.add(ufo);
 
-			camera.lookAt(ufo.position);
+			VAX.camera.lookAt(ufo.position);
 
 			function animate(t)
 			{

@@ -27,7 +27,7 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene, light, camera} from "vax";
+			import * as VAX from "vax";
 
 			document.getElementById('button').addEventListener('click', getVideo);
 
@@ -51,18 +51,17 @@
 				document.getElementById('button').style.display = "none";
 			}
 
-			vaxInit(animate, {antialias: true, alpha: true});
+			VAX.init(animate, {antialias: true, alpha: true});
 
-			light.intensity = 3;
-			light.decay = 0;
-			light.position.set(0, 0, 0);
+			VAX.light.decay = 0;
+			VAX.light.position.set(0, 0, 0);
 
-			camera.fov = 15;
-			camera.near = 10;
-			camera.far = 4000;
-			camera.updateProjectionMatrix();
-			camera.position.set(0, 0, 0);
-			camera.lookAt(new THREE.Vector3(0, 0, -1));
+			VAX.camera.fov = 15;
+			VAX.camera.near = 10;
+			VAX.camera.far = 4000;
+			VAX.camera.position.set(0, 0, 0);
+			VAX.camera.lookAt(new THREE.Vector3(0, 0, -1));
+			VAX.camera.updateProjectionMatrix();
 
 			// НЛО
 			var spline = new THREE.SplineCurve([
@@ -113,7 +112,7 @@
 				ufo.path = new THREE.QuadraticBezierCurve3(startPoint, middlePoint, endPoint);
 
 				objects.push(ufo);
-				scene.add(ufo);
+				VAX.scene.add(ufo);
 			}
 
 			var t0 = 10;
@@ -121,12 +120,14 @@
 			// движение на рояка летящи чинии
 			function animate(t)
 			{
-
+				/*
 				document.getElementById('coord').innerHTML =
 					Math.round(objects[0].position.x) + ',' +
 					Math.round(objects[0].position.y) + ',' +
 					Math.round(objects[0].position.z);
-
+				*/
+				
+				
 				for (var i = 0; i < n; i++)
 					if (t>t0+i/5 && t<t0+i/5+10)
 					{
@@ -160,7 +161,7 @@
 				gamma = THREE.MathUtils.degToRad(gamma);
 
 				// въртим камерата
-				camera.rotation.set(gamma, alpha, 0, 'YXZ');
+				VAX.camera.rotation.set(gamma, alpha, 0, 'YXZ');
 			}
 			
 		</script>

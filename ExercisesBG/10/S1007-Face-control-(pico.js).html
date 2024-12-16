@@ -27,7 +27,7 @@
 		<script type="module">
 			
 			import * as THREE from "three";
-			import {vaxInit, scene, light} from "vax";
+			import * as VAX from "vax";
 
 			document.getElementById('button').addEventListener('click',getVideo);
 			
@@ -109,9 +109,9 @@
 				
 			}
 			
-			vaxInit( animate, {antialias:true, alpha:!true} );
+			VAX.init( animate, {antialias:true, alpha:!true} );
 						
-			light.intensity = 10;
+			VAX.light.intensity = 10;
 			
 
 			// обект
@@ -122,7 +122,7 @@
 			mainObject = new THREE.Mesh( geometry, faceNotDetected );	
 			mainObject.x = 0;
 			mainObject.y = 0;
-			scene.add( mainObject );
+			VAX.scene.add( mainObject );
 
 			var finalX = 0;
 			var finalY = 0;

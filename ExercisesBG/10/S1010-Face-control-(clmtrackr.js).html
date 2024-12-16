@@ -28,7 +28,7 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene, light, camera, orthogonal} from "vax";
+			import * as VAX from "vax";
 
 			var context, video, button, ctracker, score;
 
@@ -60,8 +60,8 @@
 				button.style.display = 'none';
 			}
 
-			orthogonal();
-			vaxInit(animate, {alias: true, alpha: !true} );
+			VAX.orthogonal();
+			VAX.init(animate, {alias: true, alpha: !true} );
 
 			// 71 точки по лицето
 			var n = 71;
@@ -75,7 +75,7 @@
 				mesh.x = 0;
 				mesh.y = 0;
 				objects.push(mesh);
-				scene.add(mesh);
+				VAX.scene.add(mesh);
 			}
 
 			// номера на свързани точки - всяка двойка е една отсечка
@@ -100,7 +100,7 @@
 			{
 				var mesh = new THREE.Mesh(geometry, material);
 				lines.push(mesh);
-				scene.add(mesh);
+				VAX.scene.add(mesh);
 			}
 
 			function animate()

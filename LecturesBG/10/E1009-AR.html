@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -39,20 +39,20 @@
 		
 		<script type="module">
 			import * as THREE from "three";
-			import {vaxInit, scene, light, camera} from "vax";
+			import * as VAX from "vax";
 				
-			vaxInit(animate, {antialias:true, alpha:true} );
+			VAX.init(animate, {antialias:true, alpha:true} );
 			
-			camera.fov = 27;
-			camera.near = 400;
-			camera.far = 3000;
-			camera.updateProjectionMatrix();
-			camera.position.set(0, 0, 0);
-			camera.lookAt(new THREE.Vector3(0, 0, -1));
+			VAX.camera.fov = 27;
+			VAX.camera.near = 400;
+			VAX.camera.far = 3000;
+			VAX.camera.updateProjectionMatrix();
+			VAX.camera.position.set(0, 0, 0);
+			VAX.camera.lookAt(new THREE.Vector3(0, 0, -1));
 
-			light.position.set(0, 0, 0);
+			VAX.light.position.set(0, 0, 0);
 
-			scene.fog = new THREE.Fog('lightcyan', 500, 3000);
+			VAX.scene.fog = new THREE.Fog('lightcyan', 500, 3000);
 
 			// обекти
 			var geometry = new THREE.OctahedronGeometry(1);
@@ -76,7 +76,7 @@
 				mesh.position.setFromSphericalCoords(r, b, a);
 
 				objects.push(mesh);
-				scene.add(mesh);
+				VAX.scene.add(mesh);
 			}
 
 			function animate(t)
@@ -113,7 +113,7 @@
 				gamma = THREE.MathUtils.degToRad(gamma);
 
 				// въртим камерата
-				camera.rotation.set(gamma, alpha, 0, 'YXZ');
+				VAX.camera.rotation.set(gamma, alpha, 0, 'YXZ');
 			}
 			
 		</script>

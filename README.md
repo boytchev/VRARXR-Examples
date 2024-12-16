@@ -10,12 +10,13 @@
 - [Лекция №7 &ndash; Стерео-1](#лекция-7--стерео-1)
 - [Лекция №8 &ndash; Стерео-2](#лекция-8--стерео-2)
 - [Лекция №9 &ndash; Позициониране](#лекция-9--позициониране)
+- [Лекция №10 &ndash; Камера](#лекция-10--камера)
 
 ## Упражнения
 [**S0808**](https://boytchev.github.io/CourseVAX/ExercisesBG/08/S0808.html)
 
 - [Упражнение №9 &ndash; Позициониране](#упражнение-9--позициониране)
-
+- [Упражнение №10 &ndash; Камера](#упражнение-10--камера)
 
 
 
@@ -572,6 +573,58 @@
 [<kbd><img src="LecturesBG/09/E0908-Accelometer-noise.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/09/E0908-Accelometer-noise.html)
 
 
+## Лекция №10 &ndash; Камера
+
+**E1001**. Проверка дали могат да се извлекат медийни данни.
+
+[<kbd><img src="LecturesBG/10/E1001-Check-getUserMedia.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1001-Check-getUserMedia.html)
+
+**E1002**. Извеждане на списък от входни и изходни медийни канали.
+
+[<kbd><img src="LecturesBG/10/E1002-Media-devices.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1002-Media-devices.html)
+
+**E1003**. Получаване на видео поток от камерата на устройството.
+
+[<kbd><img src="LecturesBG/10/E1003-Video-stream.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1003-Video-stream.html)
+
+**E1004**. Софтуерно пускане и спиране на камерата.
+
+[<kbd><img src="LecturesBG/10/E1004-Stop-video-stream.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1004-Stop-video-stream.html)
+
+**E1005**. Получаване на стоп-кадър (snapshot) от видео.
+
+[<kbd><img src="LecturesBG/10/E1005-Snapshot.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1005-Snapshot.html)
+
+**E1006**. Конвертиране на цветно изображение в черно-бяло.
+
+[<kbd><img src="LecturesBG/10/E1006-Grayscale.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1006-Grayscale.html)
+
+**E1007**. Наслагване на прозрачен слой с компютърно генерирана графика.
+
+[<kbd><img src="LecturesBG/10/E1007-Transparent-canvas.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1007-Transparent-canvas.html)
+
+**E1008**. Демонстрация на хлъзгане на слоевете.
+
+[<kbd><img src="LecturesBG/10/E1008-AR-sliding-effect.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1008-AR-sliding-effect.html)
+
+**E1009**. Премахване на хлъзгането с корекция във фрустума.
+
+[<kbd><img src="LecturesBG/10/E1009-AR.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1009-AR.html)
+
+**E1010**. Намиране на лица с филтър за достоверност.
+
+[<kbd><img src="LecturesBG/10/E1010-Face-detection-(pico.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1010-Face-detection-(pico.js).html)
+
+**E1011**. Намиране на лица без филтър за достоверност.
+
+[<kbd><img src="LecturesBG/10/E1011-Face-detection-2-(pico.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1011-Face-detection-2-(pico.js).html)
+
+**E1012**. Намиране на лица, очи и усти.
+
+[<kbd><img src="LecturesBG/10/E1012-Face-detection-(tracking.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/10/E1012-Face-detection-(tracking.js).html)
+
+
+
 
 
 
@@ -608,3 +661,48 @@
 
 
 
+## Упражнение №10 &ndash; Камера
+
+**S1001**. Включване на предна (селфи) камера.
+
+[<kbd><img src="ExercisesBG/10/S1001-Front-camera.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1001-Front-camera.html)
+
+**S1001**. Включване на задна камера.
+
+[<kbd><img src="ExercisesBG/10/S1001-Rear-camera.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1001-Rear-camera.html)
+
+**S1002**. Показване на черно-бял кадър от камерата.
+
+[<kbd><img src="ExercisesBG/10/S1002-Black-and-white-photo.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1002-Black-and-white-photo.html)
+
+**S1005**. Хаар шаблон 1.
+
+[<kbd><img src="ExercisesBG/10/S1005-Haar-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1005-Haar-1.html)
+
+**S1005**. Хаар шаблон 2.
+
+[<kbd><img src="ExercisesBG/10/S1005-Haar-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1005-Haar-2.html)
+
+**S1006**. Намиране на лица във видео с pico.js.
+
+[<kbd><img src="ExercisesBG/10/S1006-Face-video-detection-(pico.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1006-Face-video-detection-(pico.js).html)
+
+**S1007**. Контролиране на 3D обект с лице.
+
+[<kbd><img src="ExercisesBG/10/S1007-Face-control-(pico.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1007-Face-control-(pico.js).html)
+
+**S1008**. Намиране на лица във видео с tracking.js.
+
+[<kbd><img src="ExercisesBG/10/S1008-Face-video-detection-(tracking.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1008-Face-video-detection-(tracking.js).html)
+
+**S1009**. Опростен модел на НЛО.
+
+[<kbd><img src="ExercisesBG/10/S1009-UFO-Body.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1009-UFO-Body.html)
+
+**S1009**. Полет на НЛО с камера и добавена реалност.
+
+[<kbd><img src="ExercisesBG/10/S1009-UFO.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1009-UFO.html)
+
+**S1010**. Намиране на черти на лица с clmtrackr.js.
+
+[<kbd><img src="ExercisesBG/10/S1010-Face-control-(clmtrackr.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1010-Face-control-(clmtrackr.js).html)
