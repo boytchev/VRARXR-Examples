@@ -7,28 +7,38 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import * as VAX from "vax";
+
+			VAX.init(animate);
 			
-			var texture = new THREE.TextureLoader().load( 'earth.jpg' ),
-				geometry = new THREE.SphereGeometry( 40, 48, 32 ),
-				material = new THREE.MeshBasicMaterial( {map: texture} ),
-				earth = new THREE.Mesh( geometry, material );
+			var texture = new THREE.TextureLoader().load('images/earth.jpg'),
+				geometry = new THREE.SphereGeometry(40, 48, 32),
+				material = new THREE.MeshBasicMaterial({map: texture}),
+				earth = new THREE.Mesh(geometry, material);
 			
-			scene.add( earth );
-			
-			function animate( t )
+			VAX.scene.add(earth);
+
+			function animate(t)
 			{
-				earth.rotation.set( 0.5, t/2, 0, 'XYZ' );
+				earth.rotation.set(0.5, t/2, 0, 'XYZ');
 			}
 			
 		</script>
-		
 	</body>
 </html>
 

@@ -20,12 +20,10 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene, light} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 			
-			light.intensity = 4;
-				
 			// създаване на куб с много междинни върхове
 			var cubeGeometry = new THREE.BoxGeometry( 50, 50, 50, 20, 20, 20 );
 			
@@ -53,7 +51,7 @@
 				} );
 
 			var mesh = new THREE.Mesh( cubeGeometry, material );
-				scene.add( mesh );
+				VAX.scene.add( mesh );
 			
 			function animate( t )
 			{

@@ -21,20 +21,20 @@
 	<body>
 		<script type="module">
 			import * as THREE from "three";
-			import {vaxInitVR, scene, camera, renderer} from "vax";
+			import * as VAX from "vax";
 			
-			vaxInitVR( animate );
+			VAX.initVR( animate );
 			
 			// създаване на тунел 
 			var geometry = new THREE.BoxGeometry( 3, 3, 30, 10, 10, 100 ),
 				material = new THREE.MeshBasicMaterial( {color: 'black', wireframe: true} ),
 				cube = new THREE.Mesh( geometry, material );
 				cube.position.y = 1.5; // основата на тунела е на ниво 0
-				scene.add( cube );
+				VAX.scene.add( cube );
 
 			var user = new THREE.Group();
-				user.add( camera );
-				scene.add( user );
+				user.add( VAX.camera );
+				VAX.scene.add( user );
 			
 			function animate( t )
 			{

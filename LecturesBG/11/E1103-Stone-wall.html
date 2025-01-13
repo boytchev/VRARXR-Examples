@@ -7,31 +7,41 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInit();
-			
-			var texture = new THREE.TextureLoader().load( 'stone_wall.jpg' );
+		<script type="module">
+		
+			import * as THREE from "three";
+			import * as VAX from "vax";
+
+			VAX.init(animate);
+
+			var texture = new THREE.TextureLoader().load('images/stone_wall.jpg');
 				texture.wrapS = THREE.RepeatWrapping;
-				texture.repeat.set( 10, 1 );
-				
-			var geometry = new THREE.PlaneGeometry( 500, 50 ),
-				material = new THREE.MeshBasicMaterial( {map: texture} ),
-				wall = new THREE.Mesh( geometry, material );
-				
-			scene.add( wall );
-			
-			function animate( t )
+				texture.repeat.set(10, 1);
+
+			var geometry = new THREE.PlaneGeometry(500, 50),
+				material = new THREE.MeshBasicMaterial({map: texture}),
+				wall = new THREE.Mesh(geometry, material);
+
+			VAX.scene.add(wall);
+
+			function animate(t)
 			{
-				wall.rotation.set( 0, Math.sin(t/2)/2, 0 );
+				wall.rotation.set(0, Math.sin(t/2)/2, 0);
 			}
 			
 		</script>
-		
 	</body>
 </html>
 

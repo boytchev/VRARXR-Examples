@@ -7,53 +7,65 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
 		<canvas id="image" width="256" height="256" style="position:fixed; top: 1em; left: 1em; border: solid 1px black; z-index: 100"></canvas>
-		<script>
-			vaxInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import * as VAX from "vax";
+
+			VAX.init(animate);
 
 			// създаване на текстурата
 
 			// създаване на 2D контекст
 			var cnv = document.getElementById('image'),
-				ctx = cnv.getContext('2d');
-				
-			// рисуване на шума - случаен цвят на пиксели
-			for( x=0; x<256; x++ )
-			for( y=0; y<256; y++ )
-			{
-				var R = THREE.Math.randInt(0,200),
-					G = THREE.Math.randInt(100,200),
-					B = THREE.Math.randInt(200,255);
-				ctx.fillStyle = 'rgb('+R+','+G+','+B+')';
-				ctx.fillRect( x, y, 1, 1 );
-			}
-			
+			ctx = cnv.getContext('2d');
 
-			
+			// рисуване на шума - случаен цвят на пиксели
+			for (var x = 0; x < 256; x++)
+				for (var y = 0; y < 256; y++)
+				{
+					var R = THREE.MathUtils.randInt(0, 200),
+					G = THREE.MathUtils.randInt(100, 200),
+					B = THREE.MathUtils.randInt(200, 255);
+					ctx.fillStyle = 'rgb('+R+','+G+','+B+')';
+					ctx.fillRect(x, y, 1, 1);
+				}
+
 			// генериране на текстура
-			var texture = new THREE.CanvasTexture( cnv );
-				texture.anosotropy = renderer.capabilities.getMaxAnisotropy();
-					
-			var geometry = new THREE.BoxGeometry( 50, 50, 50 ),
-				material = new THREE.MeshPhongMaterial( {map: texture, shininess: 50 } ),
-				cube = new THREE.Mesh( geometry, material );
-				
+			var texture = new THREE.CanvasTexture(cnv);
+			texture.anosotropy = VAX.renderer.capabilities.getMaxAnisotropy();
+
+			var geometry = new THREE.BoxGeometry(50, 50, 50),
+				material = new THREE.MeshPhongMaterial({
+						map: texture,
+						shininess: 50
+					}),
+				cube = new THREE.Mesh(geometry, material);
+
 			// отместваме леко встрани
 			cube.position.x = 30;
 
-			scene.add( cube );
-			
-			function animate( t )
+			VAX.scene.add(cube);
+
+			function animate(t)
 			{
-				cube.rotation.set( t, t/2, t/3 );
+				cube.rotation.set(t, t/2, t/3);
 			}
+			
 		</script>
-		
 	</body>
 </html>
 

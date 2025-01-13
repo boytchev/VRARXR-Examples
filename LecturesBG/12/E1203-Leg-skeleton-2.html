@@ -22,9 +22,9 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 				
 			// кости на крак
 			var legA = new THREE.Bone(),
@@ -45,7 +45,7 @@
 
 			// показване на скелета
 			var helper = new THREE.SkeletonHelper( legA );
-			scene.add( helper, legA );
+			VAX.scene.add( helper, legA );
 			
 			function animate( t )
 			{

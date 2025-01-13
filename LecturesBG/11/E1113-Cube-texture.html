@@ -7,19 +7,30 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="OrbitControls.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInit();
-			
-			camera.fov = 30;
-			onWindowResize();
-	
-			var controls = new THREE.OrbitControls( camera, renderer.domElement );
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {OrbitControls} from "three/addons/controls/OrbitControls.js";
+			import * as VAX from "vax";
+
+			VAX.init(animate);
+
+			VAX.camera.fov = 30;
+			VAX.camera.updateProjectionMatrix();
+
+			var controls = new OrbitControls(VAX.camera, VAX.renderer.domElement);
 				controls.enableZoom = false;
 				controls.enablePan = false;
 				controls.enableDamping = true;
@@ -27,20 +38,18 @@
 				controls.maxPolarAngle = Math.PI - 0.1;
 				controls.dampingFactor = 0.1;
 
-				
-			scene.background = new THREE.CubeTextureLoader().load( [
-				'cube/posx.jpg', 'cube/negx.jpg',
-				'cube/posy.jpg', 'cube/negy.jpg',
-				'cube/posz.jpg', 'cube/negz.jpg' ] );
-				
+			VAX.scene.background = new THREE.CubeTextureLoader().load([
+						'cube/posx.jpg', 'cube/negx.jpg',
+						'cube/posy.jpg', 'cube/negy.jpg',
+						'cube/posz.jpg', 'cube/negz.jpg']);
+			VAX.scene.background.colorSpace = THREE.LinearSRGBColorSpace;
 
 			function animate()
 			{
 				controls.update();
 			}
 			
-		</script>
-		
+		</script>	
 	</body>
 </html>
 

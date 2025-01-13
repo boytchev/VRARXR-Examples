@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>E1116: Симплекс шум</title>
+		<meta charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
+	</head>
+	
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {SimplexNoise} from "three/addons/math/SimplexNoise.js";
+			import * as VAX from "vax";
+
+			VAX.init(animate);
+			
+			var simplex = new SimplexNoise( );
+			
+			// създаване на текстурата
+			function noiseTexture( scale )
+			{
+				// създаване на 2D контекст
+				var cnv = document.createElement('canvas');
+					cnv.width = 256;
+					cnv.height = 256;
+					
+				var ctx = cnv.getContext('2d');
+				
+				// рисуване на шума
+				for(var x=0; x<256; x++ )
+				for(var y=0; y<256; y++ )
+				{
+					var noise = simplex.noise( x/scale, y/scale );
+					var c = Math.round( 255*(1+noise)/2 );
+
+					ctx.fillStyle = 'rgb('+c+','+c+','+c+')';
+					ctx.fillRect( x, y, 1, 1 );
+				}
+			
+				// генериране на текстура
+				var texture = new THREE.CanvasTexture( cnv );
+					texture.anosotropy = VAX.renderer.capabilities.getMaxAnisotropy();
+			
+				return texture;
+			}
+
+
+			var geometry = new THREE.BoxGeometry( 50, 50, 50 );
+			
+			// ляв куб с текстура с мащаб 10
+			var material1 = new THREE.MeshPhongMaterial( {map: noiseTexture(10), shininess: 50 } ),
+				cube1 = new THREE.Mesh( geometry, material1 );
+				cube1.position.x = -40;
+				
+			// десен куб с текстура с мащаб 50
+			var material2 = new THREE.MeshPhongMaterial( {map: noiseTexture(50), shininess: 50 } ),
+				cube2 = new THREE.Mesh( geometry, material2 );
+				cube2.position.x = 40;
+				
+			VAX.scene.add( cube1, cube2 );
+				
+			
+			function animate( t )
+			{
+				cube1.rotation.set( t, t/2, t/3 );
+				cube2.rotation.set( t, -t/2, t/3 );
+			}
+			
+		</script>
+	</body>
+</html>
+
+

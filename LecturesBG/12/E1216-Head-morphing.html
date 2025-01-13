@@ -10,8 +10,8 @@
 		<script type="importmap">
 		  {
 			"imports": {
-			  "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
-			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/",
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
 			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
 			}
 		  }
@@ -24,11 +24,11 @@
 			import * as THREE from "three";
 			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 			import * as lil from "three/addons/libs/lil-gui.module.min.js";
-			import {vaxInit, scene, light} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 							
-			scene.background = new THREE.Color( 'lightgray' );
+			VAX.scene.background = new THREE.Color( 'lightgray' );
 			
 			// интерактивно контролиране на главата
 			var gui = new lil.GUI();
@@ -39,11 +39,6 @@
 			gui.add( pose, 'k0', -0.3, 0.5 ).name('Мозък').step(0.01);
 			gui.add( pose, 'k1', -0.3, 0.5 ).name('Врат').step(0.01);
 			gui.open();
-
-//			var light = new THREE.PointLight( 'white', 1 );
-//			light.position.z = 50;
-			light.intensity = 3.5;
-//				scene.add( light );
 				
 			// създаване на глава
 			var loader = new GLTFLoader();
@@ -92,7 +87,7 @@
 				lee.morphTargetInfluences = [0,0];
 				lee.position.y = 10;
 				
-				scene.add( lee );
+				VAX.scene.add( lee );
 				
 				//secondLee = new THREE.Mesh( lee.geometry, lee.material.clone() );
 				//secondLee.position.y = 10;
@@ -113,7 +108,7 @@
 					lee.morphTargetInfluences[ 1 ] = pose.k1;
 				}
 								
-				scene.rotation.y = Math.sin( t );
+				VAX.scene.rotation.y = Math.sin( t );
 			}
 		</script>	
 	</body>

@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>E1118: Остров</title>
+		<title>E1117: Симплекс терен 1, 2, 3 и 4</title>
 		<meta charset="utf-8">
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -27,36 +27,28 @@
 
 			VAX.init(animate);
 
-			//light.intensity = 3.2;
-
-			var light = VAX.light.clone();
-				light.position.set(0, 30, -50);
-				
-			VAX.scene.add(light);
-
 			var simplex = new SimplexNoise();
 
 			// водна повърхност
-			var geometry = new THREE.PlaneGeometry(95, 95, 50, 50);
+			var geometry = new THREE.PlaneGeometry(95, 95);
 				geometry.rotateX(-Math.PI/2);
-				
-			var material = new THREE.MeshPhongMaterial({
+			
+			var material = new THREE.MeshBasicMaterial({
 						color: 'steelblue',
-						shininess: 280,
 						transparent: true,
-						opacity: 0.9
+						opacity: 0.75
 					}),
 				water = new THREE.Mesh(geometry, material);
-				
+
 			water.position.y = -11;
 
 			VAX.scene.add(water);
 
 			// геометрия на терена
 			var geometry = new THREE.PlaneGeometry(100, 100, 250, 250);
-			geometry.rotateX(-Math.PI/2);
+				geometry.rotateX(-Math.PI/2);
 
-			// издигане и снижаване с шум
+			// издигане и снижаване със симплекс шум
 			var pos = geometry.getAttribute('position');
 
 			for (var i = 0; i < pos.count; i++)
@@ -66,16 +58,14 @@
 					z = pos.getZ(i);
 
 				if (Math.abs(x) > 49 || Math.abs(z) > 49)
-					y = -10;
+					y = -20; // околен ръб
 				else
 					if (Math.abs(x) < 45 && Math.abs(z) < 45)
 					{
-						y = 5 + 20*simplex.noise(x/40, z/40);
-						y += 5*simplex.noise(x/10, z/10);
-						y += 0.5*simplex.noise(x/2, z/2);
-						y += 0.2*simplex.noise(x*4, z*4);
-
-						y = y * (1+Math.cos(x/60*Math.PI)) * (1+Math.cos(z/60*Math.PI))/4 - 5;
+						y = 10*simplex.noise(x/40, z/40);
+						y += 2*simplex.noise(x/10, z/10);
+						y += 0.4*simplex.noise(x/2, z/2);
+						y += 0.1*simplex.noise(x*4, z*4);
 					}
 
 				pos.setY(i, y);
@@ -88,30 +78,15 @@
 						side: THREE.DoubleSide
 					}),
 				terrain = new THREE.Mesh(geometry, material);
-				
+
 			terrain.position.y = -10;
 
 			VAX.scene.add(terrain);
 
 			function animate(t)
 			{
-				var pos = water.geometry.getAttribute('position');
-
-				for (var i = 0; i < pos.count; i++)
-				{
-					var x = pos.getX(i),
-						y = pos.getY(i),
-						z = pos.getZ(i);
-
-					y = -2 + 0.15 * Math.sin(2*t+2*Math.PI*simplex.noise(x/0.5, z/0.5));
-
-					pos.setY(i, y);
-				}
-				pos.needsUpdate = true;
-				water.geometry.computeVertexNormals();
-
-				water.rotation.set(0.25, t/5, 0);
-				terrain.rotation.set(0.25, t/5, 0);
+				water.rotation.set(0.25, t/2, 0);
+				terrain.rotation.set(0.25, t/2, 0);
 			}
 			
 		</script>

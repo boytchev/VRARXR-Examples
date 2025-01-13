@@ -22,9 +22,9 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
+			VAX.init(animate);
 				
 			// основна кост
 			var pelvis = new THREE.Bone();
@@ -67,7 +67,7 @@
 
 			// показване на скелета
 			var helper = new THREE.SkeletonHelper( pelvis );
-			scene.add( helper, pelvis );
+			VAX.scene.add( helper, pelvis );
 			
 			function animate( t )
 			{
@@ -79,7 +79,7 @@
 				legB2.rotation.z = THREE.MathUtils.degToRad( -60 + 60*Math.sin(4*t) );
 				legC2.rotation.z = THREE.MathUtils.degToRad( 90 );
 				
-				scene.rotation.y = t;
+				VAX.scene.rotation.y = t;
 			}
 		</script>
 	</body>

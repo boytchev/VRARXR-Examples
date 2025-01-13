@@ -7,37 +7,47 @@
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		
-		<script src="three.min.js"></script>
-		<script src="vax.js"></script>
+		<script type="importmap">
+		  {
+			"imports": {
+			  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+			  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
+			  "vax": "https://boytchev.github.io/CourseVAX/lib/vax.js"
+			}
+		  }
+		</script>
 	</head>
 	
 	<body>
-		<script>
-			vaxInit();
+		<script type="module">
+		
+			import * as THREE from "three";
+			import * as VAX from "vax";
+
+			VAX.init(animate);
 			
-			var bumpMap = new THREE.TextureLoader().load( 'electronics-alpha.jpg' );
+			var bumpMap = new THREE.TextureLoader().load('images/electronics-alpha.jpg');
 				bumpMap.wrapS = THREE.RepeatWrapping;
 				bumpMap.wrapT = THREE.RepeatWrapping;
-				bumpMap.anisotropy = renderer.capabilities.getMaxAnisotropy();
-				bumpMap.repeat.set( 2, 2 );
-				
-			var geometry = new THREE.BoxGeometry( 60, 60, 60 ),
-				material = new THREE.MeshPhongMaterial( {
-					bumpMap: bumpMap,
-					bumpScale: 0.15,
-					color: 'cornsilk'
-				} ),
-				cube = new THREE.Mesh( geometry, material );
-			
-			scene.add( cube );
-			
-			function animate( t )
+				bumpMap.anisotropy = VAX.renderer.capabilities.getMaxAnisotropy();
+				bumpMap.repeat.set(2, 2);
+
+			var geometry = new THREE.BoxGeometry(60, 60, 60),
+				material = new THREE.MeshPhongMaterial({
+						bumpMap: bumpMap,
+						bumpScale: 0.6,
+						color: 'cornsilk'
+					}),
+				cube = new THREE.Mesh(geometry, material);
+
+			VAX.scene.add(cube);
+
+			function animate(t)
 			{
-				cube.rotation.set( t/4, t/3, t/2 );
+				cube.rotation.set(t/4, t/3, t/2);
 			}
 			
-		</script>
-		
+		</script>		
 	</body>
 </html>
 

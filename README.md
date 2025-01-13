@@ -11,6 +11,9 @@
 - [Лекция №8 &ndash; Стерео-2](#лекция-8--стерео-2)
 - [Лекция №9 &ndash; Позициониране](#лекция-9--позициониране)
 - [Лекция №10 &ndash; Камера](#лекция-10--камера)
+- [Лекция №11 &ndash; Текстури](#лекция-11--текстури)
+- [Лекция №12 &ndash; Скелети](#лекция-12--скелети)
+- [Лекция №13 &ndash; VR шлемове](#лекция-13--vr-шлемове)
 
 ## Упражнения
 [**S0808**](https://boytchev.github.io/CourseVAX/ExercisesBG/08/S0808.html)
@@ -706,3 +709,220 @@
 **S1010**. Намиране на черти на лица с clmtrackr.js.
 
 [<kbd><img src="ExercisesBG/10/S1010-Face-control-(clmtrackr.js).jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/ExercisesBG/10/S1010-Face-control-(clmtrackr.js).html)
+
+
+
+## Лекция №11 &ndash; Текстури
+
+**E1101**. Текстура върху куб.
+
+[<kbd><img src="LecturesBG/11/E1101-Texture-on-cube.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1101-Texture-on-cube.html)
+
+**E1102**. Вградена текстура с Data URI.
+
+[<kbd><img src="LecturesBG/11/E1102-Data-URI.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1102-Data-URI.html)
+
+**E1103**. Каменна стена.
+
+[<kbd><img src="LecturesBG/11/E1103-Stone-wall.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1103-Stone-wall.html)
+
+**E1104**. Грешни текстурни координати.
+
+[<kbd><img src="LecturesBG/11/E1104-Wrong-UV-coordinates.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1104-Wrong-UV-coordinates.html)
+
+**E1105**. Правилни текстурни координати.
+
+[<kbd><img src="LecturesBG/11/E1105-Correct-UV-coordinates.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1105-Correct-UV-coordinates.html)
+
+**E1106**. Текстура върху сфера.
+
+[<kbd><img src="LecturesBG/11/E1106-Texture-on-sphere.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1106-Texture-on-sphere.html)
+
+**E1107**. Модел на земното кълбо.
+
+[<kbd><img src="LecturesBG/11/E1107-Earth.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1107-Earth.html)
+
+**E1108**. Текстурна пикселизация и текстурен шум.
+
+[<kbd><img src="LecturesBG/11/E1108-Pixelization-and-noise.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1108-Pixelization-and-noise.html)
+
+**E1109**. Премахване на пикселизацията и шума с mipmap текстури.
+
+[<kbd><img src="LecturesBG/11/E1109-No-pixelization-and-noise.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1109-No-pixelization-and-noise.html)
+
+**E1110**. Използване на анизотропичен филтър.
+
+[<kbd><img src="LecturesBG/11/E1110-Anisotropy.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1110-Anisotropy.html)
+
+**E1111**. Текстура с прозрачност.
+
+[<kbd><img src="LecturesBG/11/E1111-Transparent-texture.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1111-Transparent-texture.html)
+
+**E1112**. Текстура с изпъкналост.
+
+[<kbd><img src="LecturesBG/11/E1112-Bumps.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1112-Bumps.html)
+
+**E1113**. Кубична текстура.
+
+[<kbd><img src="LecturesBG/11/E1113-Cube-texture.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1113-Cube-texture.html)
+
+**E1114**. Рисувана (канвас) текстура.
+
+[<kbd><img src="LecturesBG/11/E1114-Canvas-texture.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1114-Canvas-texture.html)
+
+**E1115**. Текстура с шум.
+
+[<kbd><img src="LecturesBG/11/E1115-Noise.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1115-Noise.html)
+
+**E1116**. Шум на Перлин.
+
+[<kbd><img src="LecturesBG/11/E1116-Perlin-noise.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1116-Perlin-noise.html)
+
+**E1117**. Терен с шум на Перлин &ndash; 1.
+
+[<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-1.html)
+
+**E1117**. Терен с шум на Перлин &ndash; 2.
+
+[<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-2.html)
+
+**E1117**. Терен с шум на Перлин &ndash; 3.
+
+[<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-3.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-3.html)
+
+**E1117**. Терен с шум на Перлин &ndash; 4.
+
+[<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-4.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-4.html)
+
+**E1117**. Терен с шум на Перлин &ndash; 1, 2, 3 и 4.
+
+[<kbd><img src="LecturesBG/11/E1117-Perlin-terrain-1234.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1117-Perlin-terrain-1234.html)
+
+**E1118**. Модел на остров с шум на Перлин.
+
+[<kbd><img src="LecturesBG/11/E1118-Island.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/11/E1118-Island.html)
+
+
+
+
+## Лекция №12 &ndash; Скелети
+
+**E1201**. Модел на бягащ човек.
+
+[<kbd><img src="LecturesBG/12/E1201-Running-human.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1201-Running-human.html)
+
+**E1202**. Скелет на крак.
+
+[<kbd><img src="LecturesBG/12/E1202-Leg-skeleton.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1202-Leg-skeleton.html)
+
+**E1203**. Скелет на крак и ходило.
+
+[<kbd><img src="LecturesBG/12/E1203-Leg-skeleton-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1203-Leg-skeleton-2.html)
+
+**E1204**. Скелет от два крака.
+
+[<kbd><img src="LecturesBG/12/E1204-Two-legs-skeleton.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1204-Two-legs-skeleton.html)
+
+**E1205**. Модел на кожа чрез сплайн.
+
+[<kbd><img src="LecturesBG/12/E1205-Spline-skin.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1205-Spline-skin.html)
+
+**E1206**. Модел на кожа чрез подразделяне.
+
+[<kbd><img src="LecturesBG/12/E1206-Subdivision-skin.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1206-Subdivision-skin.html)
+
+**E1207**. Свързване на кожа с кост.
+
+[<kbd><img src="LecturesBG/12/E1207-SkinnedMesh-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1207-SkinnedMesh-1.html)
+
+**E1208**. Свързване на кожа с няколко кости.
+
+[<kbd><img src="LecturesBG/12/E1208-SkinnedMesh-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1208-SkinnedMesh-2.html)
+
+**E1209**. Модел на огъващ се маркуч.
+
+[<kbd><img src="LecturesBG/12/E1209-Hose.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1209-Hose.html)
+
+**E1210**. Морфинг на поза на робот.
+
+[<kbd><img src="LecturesBG/12/E1210-Posture-morphing-1.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1210-Posture-morphing-1.html)
+
+**E1211**. Морфинг на поза на човек.
+
+[<kbd><img src="LecturesBG/12/E1211-Posture-morphing-2.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1211-Posture-morphing-2.html)
+
+**E1212**. Морфинг на върховете на обект.
+
+[<kbd><img src="LecturesBG/12/E1212-Vertex-morphing.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1212-Vertex-morphing.html)
+
+**E1213**. Морфинг на плътен обект без нормали.
+
+[<kbd><img src="LecturesBG/12/E1213-Vertex-wo-normal-morphing.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1213-Vertex-wo-normal-morphing.html)
+
+**E1214**. Морфинг на плътен обект с нормали.
+
+[<kbd><img src="LecturesBG/12/E1214-Vertex-with-normal-morphing.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1214-Vertex-with-normal-morphing.html)
+
+**E1215**. Морфинг между три обекта.
+
+[<kbd><img src="LecturesBG/12/E1215-Double-morphing.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1215-Double-morphing.html)
+
+**E1216**. Морфинг на глава на Лий Пери Смит.
+
+[<kbd><img src="LecturesBG/12/E1216-Head-morphing.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/12/E1216-Head-morphing.html)
+
+
+
+
+
+## Лекция №13 &ndash; VR шлемове
+
+**E1301**. Емулиране на VR шлем.
+
+[<kbd><img src="LecturesBG/13/E1301-WebXR-emulator.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/13/E1301-WebXR-emulator.html)
+
+**E1302**. Създаване на VR куб.
+
+[<kbd><img src="LecturesBG/13/E1302-VR-cube.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/13/E1302-VR-cube.html)
+
+**E1303**. Центриране на гледната точка във VR куб.
+
+[<kbd><img src="LecturesBG/13/E1303-Centered-VR-cube.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/13/E1303-Centered-VR-cube.html)
+
+**E1304**. Двжение напред и назад в тунел.
+
+[<kbd><img src="LecturesBG/13/E1304-Tunnel.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/13/E1304-Tunnel.html)
+
+**E1305**. Обработване на събитията на контролерите.
+
+[<kbd><img src="LecturesBG/13/E1305-Controllers.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/13/E1305-Controllers.html)
+
+**E1306**. Задаване на потребителски образ на контролерите.
+
+[<kbd><img src="LecturesBG/13/E1306-Controller-image.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/13/E1306-Controller-image.html)
+
+**E1307**. Използване на фабричен 3D модел на контролерите.
+
+[<kbd><img src="LecturesBG/13/E1307-Controller-model.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/13/E1307-Controller-model.html)
+
+**E1308**. Движение чрез контролерите.
+
+[<kbd><img src="LecturesBG/13/E1308-Controller-motion.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/13/E1308-Controller-motion.html)
+
+**E1309**. Избиране на обекти с поглед.
+
+[<kbd><img src="LecturesBG/13/E1309-Looking.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/13/E1309-Looking.html)
+
+**E1310**. Избиране на обекти с посочване с контролер.
+
+[<kbd><img src="LecturesBG/13/E1310-Selecting.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/13/E1310-Selecting.html)
+
+**E1311**. Посочване на точка от сцената с контролер.
+
+[<kbd><img src="LecturesBG/13/E1311-Intersection-point.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/13/E1311-Intersection-point.html)
+
+**E1312**. Създаване на кубове с посочване с контролер.
+
+[<kbd><img src="LecturesBG/13/E1312-Creating-cubes.jpg" width="400"></kbd>](https://boytchev.github.io/CourseVAX/LecturesBG/13/E1312-Creating-cubes.html)
+-->
+

@@ -21,12 +21,12 @@
 	<body>
 		<script type="module">
 			import * as THREE from "three";
-			import {vaxInitVR, scene, light, camera, renderer, Pillar} from "vax";
+			import * as VAX from "vax";
 
-			vaxInitVR( animate );
+			VAX.initVR( animate );
 			
-			camera.fov = 30;
-			camera.updateProjectionMatrix();
+			VAX.camera.fov = 30;
+			VAX.camera.updateProjectionMatrix();
 				
 			// земя
 			var ground = new THREE.Mesh(
@@ -37,20 +37,20 @@
 			ground.material.polygonOffsetUnits = 2;
 			ground.material.polygonOffsetFactor = 2;
 			ground.position.set( 0, -2, 0 );
-			scene.add( ground );
+			VAX.scene.add( ground );
 
 			// мрежа от квадратчета по земята
 			var grid = new THREE.GridHelper( 300, 30, 'white', 'white' );
 				grid.material.transparent = true;
 				grid.material.opacity = 0.3;
-			scene.add( grid );
+			VAX.scene.add( grid );
 			
 			// пилони 
 			for( var i=0; i<60; i++)
 			{
-				var p = new Pillar( new THREE.Vector3(THREE.MathUtils.randFloat(-100,100),THREE.MathUtils.randFloat(10,100),THREE.MathUtils.randFloat(-100,100)),ground.material);
+				var p = new VAX.Pillar( new THREE.Vector3(THREE.MathUtils.randFloat(-100,100),THREE.MathUtils.randFloat(10,100),THREE.MathUtils.randFloat(-100,100)),ground.material);
 					p.scale.set( 0.1, 0.1, 0.1 );
-					scene.add( p );
+					VAX.scene.add( p );
 			}
 
 			// балони (те ще могат да се избират с поглед)
@@ -70,11 +70,11 @@
 					balloon.hit = false;
 					allBalloons.push( balloon );
 			}
-			scene.add( ...allBalloons );
+			VAX.scene.add( ...allBalloons );
 			
 			// десен контролер
 			var move = false, // дали е натиснат десният спусък
-				rightController = renderer.xr.getController( 0 );
+				rightController = VAX.renderer.xr.getController( 0 );
 				rightController.addEventListener( 'selectstart', function(){ shoot(); ray.scale.set(5,5,1); } );
 				rightController.addEventListener( 'selectend', function(){ ray.scale.set(1,1,1); } );
 				rightController.addEventListener( 'squeezestart', function(){ move = true; } );
@@ -92,8 +92,8 @@
 			
 			// подвижен потребител
 			var user = new THREE.Group();
-				user.add( camera, rightController );
-				scene.add( user );
+				user.add( VAX.camera, rightController );
+				VAX.scene.add( user );
 
 			// трасиращ лъч и център на екрана
 			var raycaster = new THREE.Raycaster();

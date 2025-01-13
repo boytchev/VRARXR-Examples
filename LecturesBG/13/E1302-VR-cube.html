@@ -22,20 +22,20 @@
 		<script type="module">
 			import * as THREE from "three";
 			import { VRButton } from 'three/addons/webxr/VRButton.js'; // първи ред на промяна
-			import {vaxInit, scene, camera, renderer} from "vax";
+			import * as VAX from "vax";
 			
-			vaxInit( animate );
+			VAX.init( animate );
 				
-			document.body.appendChild( VRButton.createButton( renderer ) ); // втори ред на промяна
-			renderer.xr.enabled = true; // трети ред на промяна
+			document.body.appendChild( VRButton.createButton( VAX.renderer ) ); // втори ред на промяна
+			VAX.renderer.xr.enabled = true; // трети ред на промяна
 			
-			camera.position.set( 0, 0, 0 );
+			VAX.camera.position.set( 0, 0, 0 );
 			
 			// създаване на куб 
 			var geometry = new THREE.BoxGeometry( 3, 3, 3, 10, 10, 10 ),
 				material = new THREE.MeshBasicMaterial( {color: 'black', wireframe: true} ),
 				cube = new THREE.Mesh( geometry, material );
-				scene.add( cube );
+				VAX.scene.add( cube );
 
 			function animate()
 			{

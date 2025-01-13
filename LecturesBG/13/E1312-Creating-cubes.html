@@ -21,12 +21,12 @@
 	<body>
 		<script type="module">
 			import * as THREE from "three";
-			import {vaxInitVR, scene, light, camera, renderer, Pillar} from "vax";
+			import * as VAX from "vax";
 
-			vaxInitVR( animate );
+			VAX.initVR( animate );
 			
-			camera.fov = 30;
-			camera.updateProjectionMatrix();
+			VAX.camera.fov = 30;
+			VAX.camera.updateProjectionMatrix();
 				
 			// земя
 			var ground = new THREE.Mesh(
@@ -37,21 +37,21 @@
 			ground.material.polygonOffsetUnits = 2;
 			ground.material.polygonOffsetFactor = 2;
 			ground.position.set( 0, -2, 0 );
-			scene.add( ground );
+			VAX.scene.add( ground );
 
 			// пилони 
 			var pillars = [];
 			for( var i=0; i<60; i++)
 			{
-				var p = new Pillar( new THREE.Vector3(THREE.MathUtils.randFloat(-100,100),THREE.MathUtils.randFloat(10,100),THREE.MathUtils.randFloat(-100,100)),ground.material);
+				var p = new VAX.Pillar( new THREE.Vector3(THREE.MathUtils.randFloat(-100,100),THREE.MathUtils.randFloat(10,100),THREE.MathUtils.randFloat(-100,100)),ground.material);
 					p.scale.set( 0.1, 0.1, 0.1 );
 					pillars.push( p );
-					scene.add( p );
+					VAX.scene.add( p );
 			}
 
 			// десен контролер
 			var move = false, // дали е натиснат десният спусък
-				rightController = renderer.xr.getController( 0 );
+				rightController = VAX.renderer.xr.getController( 0 );
 				rightController.addEventListener( 'selectstart', createCube );
 				rightController.addEventListener( 'squeezestart', function(){ move = true; } );
 				rightController.addEventListener( 'squeezeend', function(){ move = false; } );
@@ -68,8 +68,8 @@
 			
 			// подвижен потребител
 			var user = new THREE.Group();
-				user.add( camera, rightController );
-				scene.add( user );
+				user.add( VAX.camera, rightController );
+				VAX.scene.add( user );
 
 			// трасиращ лъч и център на екрана
 			var raycaster = new THREE.Raycaster();
@@ -83,7 +83,7 @@
 					new THREE.IcosahedronGeometry( 0.1, 3 ),
 					new THREE.MeshPhongMaterial( {color:'crimson', shininess:100} )
 				);
-				scene.add( marker );
+				VAX.scene.add( marker );
 		
 			// макет на кубче, което се създава
 			var texture = new THREE.TextureLoader().load( 'cube.png' );
@@ -120,7 +120,7 @@
 				cube = cube.clone();
 				cube.position.copy( marker.position );
 				cube.position.addScaledVector( marker.normal, 0.5 );
-				scene.add( cube ); // за да видим новия куб
+				VAX.scene.add( cube ); // за да видим новия куб
 				intersectables.push( cube ); // за да долепяме други кубове към него
 			}
 			

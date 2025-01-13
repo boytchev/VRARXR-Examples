@@ -21,16 +21,16 @@
 	<body>
 		<script type="module">
 			import * as THREE from "three";
-			import {vaxInitVR, scene, camera, renderer} from "vax";
+			import * as VAX from "vax";
 			
-			vaxInitVR( animate );
+			VAX.initVR( animate );
 
 			
 			// създаване на куб 
 			var geometry = new THREE.BoxGeometry( 3, 3, 3, 10, 10, 10 ),
 				material = new THREE.MeshBasicMaterial( {color: 'black', wireframe: true} ),
 				cube = new THREE.Mesh( geometry, material );
-				scene.add( cube );
+				VAX.scene.add( cube );
 
 			var centered,
 				v = new THREE.Vector3();
@@ -38,11 +38,11 @@
 			function animate()
 			{
 				// само веднъж
-				if( !centered && renderer.xr.isPresenting )
+				if( !centered && VAX.renderer.xr.isPresenting )
 				{
 					// местим куба там, където е шлема
 					//cube.position.y = renderer.xr.getCamera(camera).getWorldPosition(v).y;
-					renderer.xr.getCamera(camera).getWorldPosition( cube.position );
+					VAX.renderer.xr.getCamera(VAX.camera).getWorldPosition( cube.position );
 
 					centered = cube.position.y!=0;
 				}

@@ -21,9 +21,9 @@
 	<body>
 		<script type="module">
 			import * as THREE from "three";
-			import {vaxInitVR, scene, camera, renderer} from "vax";
+			import * as VAX from "vax";
 			
-			vaxInitVR( animate );
+			VAX.initVR( animate );
 
 			
 			// създаване на куб 
@@ -31,9 +31,9 @@
 				material = new THREE.MeshBasicMaterial( {color: 'black', wireframe: true} ),
 				cube = new THREE.Mesh( geometry, material );
 				cube.position.y = 1.5;
-				scene.add( cube );
+				VAX.scene.add( cube );
 
-			var rightController = renderer.xr.getController( 0 );
+			var rightController = VAX.renderer.xr.getController( 0 );
 				rightController.addEventListener( 'select', function(){ console.log('Десен контролер използван спусък'); } );
 				rightController.addEventListener( 'selectstart', function(){ console.log('Десен контролер натиснат спусък'); } );
 				rightController.addEventListener( 'selectend', function(){ console.log('Десен контролер пуснат спусък'); } );
@@ -41,7 +41,7 @@
 				rightController.addEventListener( 'squeezestart', function(){ console.log('Десен контролер стисната ръкохватка'); } );
 				rightController.addEventListener( 'squeezeend', function(){ console.log('Десен контролер пусната ръкохватка'); } );
 
-			var leftController = renderer.xr.getController( 1 );
+			var leftController = VAX.renderer.xr.getController( 1 );
 				leftController.addEventListener( 'select', function(){ console.log('Ляв контролер използван спусък'); } );
 				leftController.addEventListener( 'selectstart', function(){ console.log('Ляв контролер натиснат спусък'); } );
 				leftController.addEventListener( 'selectend', function(){ console.log('Ляв контролер пуснат спусък'); } );

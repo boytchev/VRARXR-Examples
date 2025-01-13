@@ -22,11 +22,9 @@
 		<script type="module">
 		
 			import * as THREE from "three";
-			import {vaxInit, scene, light} from "vax";
+			import * as VAX from "vax";
 
-			vaxInit(animate);
-			
-			light.intensity = 3;	
+			VAX.init(animate);
 			
 			// създаване на скелет от две кости
 			var bones = [new THREE.Bone(), new THREE.Bone()],
@@ -62,7 +60,7 @@
 				mesh.add( skeleton.bones[0] );
 				mesh.bind( skeleton );
 
-			scene.add( mesh );
+			VAX.scene.add( mesh );
 			
 			function animate( t )
 			{
